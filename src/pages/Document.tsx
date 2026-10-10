@@ -165,7 +165,7 @@ export default function Document({
               {nestedPages.map((page, i) => (
                 <Card hoverable key={page.slug ?? i} className="h-full">
                   <CardContent>
-                    <h4 className="text-lg font-medium text-gray-900">
+                    <h4 className="text-lg font-medium text-primary-600 underline underline-offset-4">
                       {page.name}
                     </h4>
                     {page.description && (
@@ -182,7 +182,7 @@ export default function Document({
               {nestedPages.map((page, i) => (
                 <Card key={page.slug ?? i} className="mb-4">
                   <CardContent>
-                    <h4 className="text-lg font-medium text-gray-900">
+                    <h4 className="text-lg font-medium text-primary-600 underline underline-offset-4">
                       {page.name}
                     </h4>
                     {page.description && (

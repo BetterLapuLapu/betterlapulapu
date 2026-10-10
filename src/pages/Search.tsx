@@ -132,7 +132,7 @@ export default function Search() {
               <Link key={result.url} to={result.url} className="block">
                 <Card hoverable>
                   <CardContent>
-                    <h4 className="text-lg font-medium text-gray-900">
+                    <h4 className="text-lg font-medium text-primary-600 underline underline-offset-4">
                       {result.meta.title}
                     </h4>
                     <p

@@ -112,7 +112,7 @@ const Services: React.FC = () => {
                       className="h-full border-t-4 border-primary-500"
                     >
                       <CardContent>
-                        <h4 className="text-lg font-medium text-gray-900">
+                        <h4 className="text-lg font-medium text-primary-600 underline underline-offset-4">
                           {subcategory.name}
                         </h4>
                         {subcategory.description && (
@@ -134,7 +134,7 @@ const Services: React.FC = () => {
                   >
                     <Card hoverable className="mb-4">
                       <CardContent>
-                        <h4 className="text-lg font-medium text-gray-900">
+                        <h4 className="text-lg font-medium text-primary-600 underline underline-offset-4">
                           {subcategory.name}
                         </h4>
                         {subcategory.description && (
