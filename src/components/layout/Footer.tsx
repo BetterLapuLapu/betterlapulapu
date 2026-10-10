@@ -4,6 +4,9 @@ import { footerNavigation } from '../../data/navigation';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
+// Social icons are hidden for now; set to true to show them again.
+const SHOW_SOCIAL_LINKS = false;
+
 const Footer: React.FC = () => {
   const { t } = useTranslation('common');
 
@@ -43,19 +46,21 @@ const Footer: React.FC = () => {
               A community portal providing Philippine citizens, businesses, and
               visitors with information and services.
             </p>
-            <div className="flex space-x-4">
-              {footerNavigation.socialLinks.map(link => (
-                <Link
-                  key={link.label}
-                  to={link.href}
-                  className="text-gray-400 hover:text-white transition-colors"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {getSocialIcon(link.label)}
-                </Link>
-              ))}
-            </div>
+            {SHOW_SOCIAL_LINKS && (
+              <div className="flex space-x-4">
+                {footerNavigation.socialLinks.map(link => (
+                  <Link
+                    key={link.label}
+                    to={link.href}
+                    className="text-gray-400 hover:text-white transition-colors"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {getSocialIcon(link.label)}
+                  </Link>
+                ))}
+              </div>
+            )}
           </div>
 
           {footerNavigation.mainSections.map(section => (
