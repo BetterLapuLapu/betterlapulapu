@@ -101,7 +101,7 @@ const Footer: React.FC = () => {
                 Terms of Use
               </a> */}
               <Link
-                to="https://github.com/exiscosoft/betterlapulapu"
+                to="https://github.com/BetterLapuLapu/betterlapulapu"
                 className="text-gray-400 hover:text-white text-sm transition-colors"
               >
                 Contribute at GitHub

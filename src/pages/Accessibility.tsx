@@ -5,7 +5,7 @@ import { Text } from '../components/ui/Text';
 import SEO from '../components/SEO';
 import { Link } from 'react-router-dom';
 
-const issuesUrl = 'https://github.com/exiscosoft/betterlapulapu/issues';
+const issuesUrl = 'https://github.com/BetterLapuLapu/betterlapulapu/issues';
 
 const practices = [
   'A “Skip to main content” link is the first thing you reach with the Tab key.',
