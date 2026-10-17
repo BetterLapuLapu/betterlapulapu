@@ -17,6 +17,7 @@
     "setup": "node scripts/setup-starter-kit.js",
     "search:index": "node scripts/build-search-index.js",
     "llm:build": "node scripts/build-llm-files.js",
+    "i18n:check": "node scripts/check-locales.js",
     "fdp:build": "node scripts/fdp/build-fdp-data.js",
     "fdp:validate": "node scripts/fdp/validate.js"
   },

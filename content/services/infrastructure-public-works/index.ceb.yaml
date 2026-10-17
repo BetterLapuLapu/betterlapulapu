@@ -1,0 +1,23 @@
+# Cebuano overlay for index.yaml. Entries are matched by slug; omitted
+# fields fall back to English.
+
+pages:
+  - slug: 'use-public-facilities-like-gyms-barangay-halls-or-multipurpose-centers'
+    name: 'Pag-abang og venue o gym sa siyudad (Hoops Dome, Court 1, mga pasilidad sa Olango)'
+    description: 'Para sa mga eskwelahan, organisasyon, kompanya, barangay ug publiko. Request letter ngadto sa City Mayor ug booking form; ang bayad sa City Treasurer''s Office. Pag-apply labing menos 3 ka working days nga abante (7 para sa Hoops Dome).'
+
+  - slug: 'get-a-special-permit-for-a-procession-fun-run-or-dance-benefit'
+    name: 'Pagkuha og special permit para sa prosesyon, fun run o dance benefit'
+    description: 'Para sa dance benefit, prosesyon, motorcade, fluvial parade, fun run ug marathon. Request letter ngadto sa City Mayor ug endorsement sa barangay ug traffic; ang bayad sa City Treasurer''s Office. Pag-apply 3 hangtod 20 ka working days nga abante.'
+
+  - slug: 'pay-a-traffic-violation-fine'
+    name: 'Bayri ang multa sa traffic violation'
+    description: 'Para sa mga nakalapas sa trapiko, tag-iya sa sakyanan o ilang representante. Dad-a ang blue-green nga kopya sa citation ticket o clamp notice. Ang multa sumala sa gipaskin nga Schedule of Fees; mga 10 ka minuto (pagtangtang sa clamp sulod sa 1 ka oras).'
+
+  - slug: 'settle-a-traffic-dispute'
+    name: 'Husaya ang panaglalis sa trapiko'
+    description: 'Ipa-review ang traffic citation ticket sa desk o legal officer, o pagkuha og affidavit o undertaking bahin sa trapiko. Dad-a ang blue-green nga kopya sa ticket. Libre; hangtod 1 ka oras.'
+
+  - slug: 'claim-a-towed-or-impounded-vehicle'
+    name: 'Kuhaa ang na-tow o na-impound nga sakyanan'
+    description: 'Para sa mga drayber ug tag-iya. Dad-a ang kopya sa certificate of registration ug bag-ong registration receipt sa sakyanan, inyong driver''s license, ug ang towing notice o release order (ug court order kung gikinahanglan). Ang bayad sumala sa gipaskin nga Schedule of Fees; hangtod 1 ka oras.'

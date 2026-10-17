@@ -210,8 +210,9 @@ Brief description of the service.
    ```
 
 2. **Create translation files**
-   - Copy `src/i18n/locales/en.json` to `src/i18n/locales/your_lang.json`
-   - Translate all text content
+   - Copy `public/locales/en/common.json` to `public/locales/your_lang/common.json`
+   - Translate all text content, then run `npm run i18n:check`
+   - Add the code to `SWITCHER_LANGUAGES` in `src/i18n/languages.ts`
 
 3. **Update content files**
    - Create translated versions of your content files

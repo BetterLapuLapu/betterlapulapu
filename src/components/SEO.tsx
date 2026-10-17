@@ -1,4 +1,11 @@
 import { Helmet } from 'react-helmet-async';
+import { useTranslation } from 'react-i18next';
+
+// Open Graph locale and human-readable language name per UI language.
+const LOCALE_META: Record<string, { og: string; name: string }> = {
+  en: { og: 'en_US', name: 'English' },
+  ceb: { og: 'ceb_PH', name: 'Cebuano' },
+};
 
 interface SEOProps {
   title?: string;
@@ -19,12 +26,14 @@ export default function SEO({
   type = 'website',
   siteName = 'BetterLapuLapu',
 }: SEOProps) {
+  const { t, i18n } = useTranslation();
+  const locale = LOCALE_META[i18n.resolvedLanguage ?? 'en'] ?? LOCALE_META.en;
   const governmentName =
     import.meta.env.VITE_GOVERNMENT_NAME || 'Lapu-Lapu City';
-  const defaultTitle = `${siteName} | Community Portal of ${governmentName}`;
+  const defaultTitle = `${siteName} | ${t('seo.defaultTitle', { governmentName })}`;
   const defaultDescription =
     import.meta.env.VITE_SITE_DESCRIPTION ||
-    `${siteName} is a community-powered portal for ${governmentName}. Find city services, government offices, officials, and public reports in one place.`;
+    t('seo.defaultDescription', { siteName, governmentName });
   const defaultKeywords =
     import.meta.env.VITE_SITE_KEYWORDS ||
     'government, local government, services, public services, civic services';
@@ -45,7 +54,7 @@ export default function SEO({
       <meta name="keywords" content={fullKeywords} />
       <meta name="author" content={siteName} />
       <meta name="robots" content="index, follow" />
-      <meta name="language" content="English" />
+      <meta name="language" content={locale.name} />
       <meta name="revisit-after" content="7 days" />
 
       {/* Open Graph / Facebook */}
@@ -55,7 +64,7 @@ export default function SEO({
       <meta property="og:description" content={fullDescription} />
       <meta property="og:image" content={fullImage} />
       <meta property="og:site_name" content={siteName} />
-      <meta property="og:locale" content="en_US" />
+      <meta property="og:locale" content={locale.og} />
 
       {/* Twitter */}
       <meta property="twitter:card" content="summary_large_image" />

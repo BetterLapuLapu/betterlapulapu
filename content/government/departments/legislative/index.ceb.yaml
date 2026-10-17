@@ -1,0 +1,41 @@
+# Cebuano overlay for index.yaml. Entries are matched by slug (or en_name
+# when the English entry has no slug); omitted fields fall back to English.
+
+title: 'Departamento Lehislatibo'
+description: 'Sa termino 2025–2028, ang Sangguniang Panlungsod (City Council) sa Lapu-Lapu City adunay 12 ka napiling konsehal, ug ang Vice Mayor ang presiding officer sa konseho.'
+pages:
+  - en_name: 'Rufo Y. Bering'
+    description: 'Si Konsehal Rufo Y. Bering usa ka miyembro sa Lapu-Lapu City Council ug chairman sa mga komite sa Environment, Natural Resources, and Climate Change Adaptation, ug sa Ethics and Good Governance. Nagduso siya sa malungtarong pag-atiman sa kinaiyahan ug tin-aw nga pagdumala sa siyudad.'
+
+  - en_name: 'Annabeth D. Cuizon'
+    description: 'Si Konsehal Annabeth D. Cuizon nagtutok sa kaayohan sa komunidad ug mga programa sa serbisyo publiko. Chairman siya sa mga komite sa Finance and Appropriations ug Social Services, nga nagtabang sa pagbantay sa budget sa siyudad ug mga programa para sa mga senior citizen ug mga PWD.'
+
+  - en_name: 'Marciano A. Alforque Jr.'
+    description: 'Si Konsehal Marciano “Jun” A. Alforque Jr. nagtabang sa paghimo og mga palisiya bahin sa pagpangandam sa katalagman ug mga butang pinansyal. Siya karon ang nangulo sa Disaster Risk Reduction and Management Committee ug sa Ways and Means Committee, nga nagsuporta sa kalig-on ug maayong pagdumala sa siyudad.'
+
+  - en_name: 'Celestino C. Aying'
+    description: 'Si Konsehal Celestino “Tino” C. Aying nagtrabaho sa mga programa para sa mga mamumuo ug mga komunidad nga napasagdan. Chairman siya sa mga komite sa Labor and Employment ug Urban Poor and Cultural Minorities, nga nagtutok sa pag-apil sa tanan ug mga oportunidad sa panginabuhian.'
+
+  - en_name: 'Linda Susan C. Baring'
+    description: 'Si Konsehal Linda Susan C. Baring apil sa mga inisyatiba bahin sa pagdumala, pagplano, ug serbisyo publiko. Nangulo siya sa mga komite sa Human Resources Development, Urban Planning and Housing, ug Laws and Human Rights.'
+
+  - en_name: 'Jan Vincent A. Dela Serna'
+    description: 'Si Konsehal Jan Vincent “Janvi” A. Dela Serna nagsuporta sa mga programa para sa pag-apil sa kabatan-onan, kalamboan sa sports, ug kaluwasan sa komunidad. Chairman siya sa mga komite sa Sports Development, Games and Amusement, ug Police and Public Safety.'
+
+  - en_name: 'Efren T. Herrera'
+    description: 'Si Konsehal Efren T. Herrera nagtutok sa imprastraktura ug kalamboan sa siyudad. Chairman siya sa Infrastructure and Public Works Committee, nga nagtabang sa pagbantay sa pagpaayo sa mga dalan, pasilidad publiko, ug ubang proyekto sa siyudad.'
+
+  - en_name: 'Ariane Neil Marie Yap'
+    description: 'Si Konsehal Ariane Neil Marie Yap nagtrabaho sa mga inisyatiba sa kalamboan sa ekonomiya ug teknolohiya. Chairman siya sa mga komite sa Business and Industry, Energy and Power, Information and Communication Technology, ug Children, Women and Family.'
+
+  - en_name: 'Climaco A. Tatoy Jr.'
+    description: 'Si Konsehal Climaco “Tata” A. Tatoy Jr. nagtutok sa kaayohan sa mga konsumidor ug sa operasyon sa public market. Chairman siya sa komite sa Markets, Abattoir, and Consumer Protection, nga nagsuporta sa patas nga pamatigayon ug pagdumala sa public market.'
+
+  - en_name: 'Jeorgen Eyas-Book'
+    description: 'Si Konsehal Jeorgen Eyas-Book nagduso sa inklusibong pagdumala ug pagkaparehas sa gender. Chairman siya sa mga komite sa Accreditation of Civil Society Organizations ug Gender and Development (GAD).'
+
+  - en_name: 'Joseph T. Pangantungan'
+    description: 'Si Konsehal Joseph T. Pangantungan nagtutok sa kalamboan sa komunidad ug paghatag og gahom sa ekonomiya. Chairman siya sa mga komite sa Cooperatives and Livelihood, Tourism, ug Traffic and Transportation, nga nagsuporta sa pag-uswag sa ekonomiya ug sa transportasyon sa siyudad.'
+
+  - en_name: 'Emilio L. Galaroza Jr.'
+    description: 'Si Konsehal Emilio L. Galaroza Jr. nangulo sa mga inisyatiba alang sa panglawas publiko ug kaluwasan sa komunidad. Chairman siya sa mga komite sa Health and Hospital Services ug Anti-Drug Abuse and Drug Trafficking, nga nagsuporta sa mga programa nga nanalipod ug nagpalambo sa kaayohan sa mga residente.'

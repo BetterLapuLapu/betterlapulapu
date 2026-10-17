@@ -16,14 +16,14 @@ import { createMarkdownComponents } from '../lib/markdownComponents';
 import { Card, CardContent, CardHeader } from '@bettergov/kapwa/card';
 import { getTypographyTheme } from '../lib/typographyThemes';
 import {
-  serviceCategories,
-  governmentCategories,
   getCategorySubcategories,
   isNestedCategory,
   type Subcategory,
   type CategoryIndex,
 } from '../data/yamlLoader';
 import SEO from '../components/SEO';
+import { useTranslation } from 'react-i18next';
+import { useLocalizedCategories } from '../hooks/useLocalizedCategories';
 
 interface DocumentProps {
   theme?: string;
@@ -35,6 +35,9 @@ export default function Document({
   categoryType,
 }: DocumentProps) {
   const { documentSlug, category } = useParams();
+  const { t } = useTranslation();
+  const { lang, serviceCategories, governmentCategories } =
+    useLocalizedCategories();
   const [markdownContent, setMarkdownContent] =
     useState<MarkdownContent | null>(null);
   const [nestedIndex, setNestedIndex] = useState<CategoryIndex | null>(null);
@@ -46,12 +49,12 @@ export default function Document({
   );
 
   const [breadcrumbs, setBreadcrumbs] = useState([
-    { label: 'Home', href: '/' },
+    { label: t('common.home'), href: '/' },
   ]);
 
   useEffect(() => {
     if (!documentSlug || !category || !categoryType) {
-      setError('No document specified');
+      setError(t('document.noneSpecified'));
       setLoading(false);
       return;
     }
@@ -66,23 +69,25 @@ export default function Document({
         const categories = isGovernment
           ? governmentCategories.categories
           : serviceCategories.categories;
-        const sectionLabel = isGovernment ? 'Government' : 'Services';
+        const sectionLabel = isGovernment
+          ? t('nav.government')
+          : t('nav.services');
         const sectionHref = isGovernment ? '/government' : '/services';
         const categoryData = categories.find(c => c.slug === category);
 
         // If the slug maps to its own index, render it as a nested listing
         if (isNestedCategory(documentSlug)) {
-          const index = await getCategorySubcategories(documentSlug);
+          const index = await getCategorySubcategories(documentSlug, lang);
           setNestedIndex(index);
           setBreadcrumbs([
-            { label: 'Home', href: '/' },
+            { label: t('common.home'), href: '/' },
             { label: sectionLabel, href: sectionHref },
             {
               label: categoryData?.category ?? category,
               href: `${sectionHref}/${category}`,
             },
             {
-              label: documentSlug,
+              label: index.title ?? documentSlug,
               href: `${sectionHref}/${category}/${documentSlug}`,
             },
           ]);
@@ -97,7 +102,7 @@ export default function Document({
         setMarkdownContent(content);
 
         setBreadcrumbs([
-          { label: 'Home', href: '/' },
+          { label: t('common.home'), href: '/' },
           { label: sectionLabel, href: sectionHref },
           {
             label: categoryData?.category ?? category,
@@ -109,21 +114,27 @@ export default function Document({
           },
         ]);
       } catch (err) {
-        setError(
-          err instanceof Error ? err.message : 'Failed to load document'
-        );
+        setError(err instanceof Error ? err.message : t('document.loadFailed'));
       } finally {
         setLoading(false);
       }
     };
 
     loadContent();
-  }, [documentSlug, category, categoryType]);
+  }, [
+    documentSlug,
+    category,
+    categoryType,
+    lang,
+    t,
+    serviceCategories,
+    governmentCategories,
+  ]);
 
   if (loading) {
     return (
       <Section className="p-3 mb-12">
-        <Banner type="info" description="Loading document..." />
+        <Banner type="info" description={t('common.loading')} />
       </Section>
     );
   }
@@ -134,7 +145,7 @@ export default function Document({
         <Breadcrumbs className="mb-8" items={breadcrumbs} />
         <Banner
           type="error"
-          title="Document Not Found"
+          title={t('document.notFound')}
           description={error}
           icon
         />
@@ -147,7 +158,7 @@ export default function Document({
     return (
       <>
         <SEO
-          title={documentSlug}
+          title={nestedIndex.title ?? documentSlug}
           keywords={`${documentSlug}, government services, local government`}
         />
         <Section className="p-3 mb-12">
@@ -210,7 +221,7 @@ export default function Document({
         title={markdownContent.title || documentSlug}
         description={
           markdownContent.description ||
-          `Government service information for ${documentSlug}`
+          t('document.seoDescription', { slug: documentSlug })
         }
         keywords={`${documentSlug}, government services, public services, local government`}
       />

@@ -1,0 +1,39 @@
+# Cebuano overlay for services.yaml. Entries are matched by slug; omitted
+# fields fall back to English.
+
+categories:
+  - slug: 'health-services'
+    category: 'Serbisyo sa Panglawas'
+    description: 'Asa moadto para sa libreng check-up, bakuna, ug tambal, unsang mga ospital ang anaa, ug mga detalye sa mga programa sa panglawas sa inyong lugar.'
+
+  - slug: 'education'
+    category: 'Edukasyon'
+    description: 'Asa i-enroll ang mga bata sa daycare o preschool, unsaon pag-apply og scholarship, ug unsang suporta sa edukasyon ang gihatag sa inyong LGU.'
+
+  - slug: 'business'
+    category: 'Negosyo ug Panginabuhian'
+    description: 'Unsang mga permit ug clearance ang inyong kinahanglan, asa mobayad og buhis o mo-renew og permit, ug unsang mga oportunidad sa panginabuhian o pamatigayon ang gitanyag.'
+
+  - slug: 'social-welfare'
+    category: 'Kaayohang Sosyal'
+    description: 'Unsang tabang ang anaa para sa mga senior citizen, PWD, solo parent, ug mga pobreng pamilya, apil ang mga detalye sa relief goods ug tabang sa panginabuhian.'
+
+  - slug: 'agriculture-fisheries'
+    category: 'Agrikultura ug Pangisda'
+    description: 'Unsang suporta sa pag-uma o pangisda ang anaa, sama sa mga liso, abono, pag-atiman sa mga hayop, ug asa moapil sa training o manghulam og kagamitan.'
+
+  - slug: 'infrastructure-public-works'
+    category: 'Imprastraktura ug Public Works'
+    description: 'Unsaon pagreport sa naguba nga dalan o kanal, asa mangayo og suplay sa tubig, ug unsaon paggamit sa mga pasilidad publiko ug merkado.'
+
+  - slug: 'garbage-waste-disposal'
+    category: 'Basura ug Paglabay sa Basura'
+    description: 'Mga iskedyul sa pagkolekta sa basura, mga lagda sa paglabay sa basura, ug unsaon husto nga paglabay sa lain-laing klase sa basura.'
+
+  - slug: 'environment'
+    category: 'Kinaiyahan'
+    description: 'Mga kalihokan sa paglimpyo o pagtanom og kahoy, mga lagda sa pagpanalipod sa kinaiyahan, ug mga programa sa konserbasyon.'
+
+  - slug: 'housing-land-use'
+    category: 'Pabalay ug Paggamit sa Yuta'
+    description: 'Unsaon pag-apply sa mga proyekto sa pabalay, unsang mga zoning ug building permit ang gikinahanglan, ug asa ang mga relocation site.'

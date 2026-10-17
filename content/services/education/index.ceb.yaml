@@ -1,0 +1,35 @@
+# Cebuano overlay for index.yaml. Entries are matched by slug; omitted
+# fields fall back to English.
+
+pages:
+  - slug: 'enroll-children-in-lgu-daycare-or-preschool-programs'
+    name: 'I-enroll ang inyong anak sa daycare sa siyudad (Early Childhood Care and Development)'
+    description: 'Libreng klase sa city social welfare para sa mga bata nga nag-edad 3 hangtod 4 ka tuig ug 11 ka bulan. Kinahanglan ang birth certificate sa bata ug registration form. Lunes–Biyernes, 8:00am–5:00pm (gawas sa holiday).'
+
+  - slug: 'enroll-at-lapu-lapu-city-college'
+    name: 'Mag-enroll sa Lapu-Lapu City College'
+    description: 'On-site nga enrollment human sa pre-enrollment para sa bag-o, transferee, ug returnee nga estudyante. Pagparehistro pinaagi sa portal.llcc.edu.ph uban sa tabang sa enrollment officer. Molungtad og mga 13–18 ka minuto.'
+
+  - slug: 'request-school-records-from-lapu-lapu-city-college'
+    name: 'Pangayo og school records gikan sa Lapu-Lapu City College'
+    description: 'Transcript of records (₱350), sertipikasyon (₱50), pag-isyu pag-usab sa diploma (₱150), certified true copy, ug endorsement para sa CHED authentication (CAV). Dad-a ang school ID o valid ID. Pangayo sa Registrar o online.'
+
+  - slug: 'apply-for-local-scholarships'
+    name: 'Pag-apply og lokal nga scholarship'
+    description: 'Unsaon pag-apply og scholarship ug pinansyal nga tabang sa edukasyon gikan sa inyong lokal nga gobyerno.'
+
+  - slug: 'claim-the-board-or-bar-exam-passer-incentive'
+    name: 'Kuhaa ang insentibo sa board o bar exam passer'
+    description: 'Para sa mga PRC board ug bar passer nga nagpuyo sa Lapu-Lapu City ug rehistradong botante na sa panahon sa exam. Pag-apply sa City Mayor''s Office uban ang request letter ug pamatuod nga nakapasar. Libre; aprobado sulod sa 3 ka adlaw.'
+
+  - slug: 'access-educational-support-programs-from-the-lgu'
+    name: 'Pahimusli ang mga programa sa suporta sa edukasyon gikan sa LGU'
+    description: 'Lain-laing programa ug kahinguhaan sa suporta sa edukasyon nga gihatag sa inyong lokal nga gobyerno.'
+
+  - slug: 'learn-about-supplementary-activities-for-schools-in-your-area'
+    name: 'Hibaw-i ang mga dugang kalihokan para sa mga eskwelahan sa inyong lugar'
+    description: 'Impormasyon bahin sa mga dugang kalihokan ug programa sa edukasyon nga anaa para sa mga eskwelahan sa inyong lugar.'
+
+  - slug: 'get-a-lapu-lapu-city-library-card'
+    name: 'Pagkuha og Lapu-Lapu City Library card'
+    description: 'Libreng membership sa library para sa tanang residente sa Lapu-Lapu City. Dad-a ang ID gikan sa gobyerno nga nagpakita sa inyong address. Ulahing pagbalik: ₱5 matag adlaw. Lunes–Biyernes, 8:00am–5:00pm (gawas sa holiday).'

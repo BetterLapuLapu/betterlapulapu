@@ -1,55 +1,124 @@
 {
   "site_name": "Lapu Lapu City Portal",
+  "site_title": "Better Lapu Lapu",
   "site_description": "A community-run portal for the Lapu Lapu City",
+  "common": {
+    "home": "Home",
+    "search": "Search",
+    "sitemap": "Sitemap",
+    "accessibility": "Accessibility",
+    "language": "Language",
+    "skipToContent": "Skip to main content",
+    "logoAlt": "Lapu-Lapu City logo",
+    "breadcrumb": "Breadcrumb",
+    "loading": "Loading…",
+    "table": "Table",
+    "list": "List",
+    "categoryNotFound": "Category not found",
+    "categoryNotFoundDescription": "The category you are looking for does not exist."
+  },
+  "nav": {
+    "services": "Services",
+    "government": "Government",
+    "joinUs": "Join Us",
+    "aboutBetterGov": "About BetterGov",
+    "officialGovPh": "Official Gov.ph",
+    "hotlines": "Hotlines",
+    "about": "About",
+    "openMenu": "Open main menu"
+  },
   "hero": {
-    "title": "Welcome to BetterGov.ph",
+    "welcome": "Welcome to",
     "subtitle": "A community-run portal to find information of the Lapu Lapu City Government",
-    "nationalId": "National ID",
-    "birthCertificate": "Birth Certificate",
-    "businessRegistration": "Business Registration",
     "searchLabel": "Search",
     "searchPlaceholder": "e.g. business permit, birth certificate"
   },
   "services": {
     "title": "Services & Information",
-    "governmentServices": "Government Services",
     "description": "Access official government services quickly and easily. Find what you need for citizenship, business, education, and more.",
-    "viewAll": "View All Services",
-    "viewAllCategory": "View All"
+    "seoTitle": "Services",
+    "allTitle": "All local government services",
+    "allDescription": "All services provided by the {{governmentName}} government. Find what you need for citizenship, business, education, and more."
+  },
+  "government": {
+    "seoTitle": "Government",
+    "allTitle": "Local government",
+    "allDescription": "Departments, offices, reports and transparency documents of the {{governmentName}} government."
   },
   "governmentActivity": {
     "title": "Government Activity",
     "description": "Stay updated with the latest government activities and announcements."
   },
-  "weather": {
-    "title": "Weather Updates"
-  },
-  "forex": {
-    "title": "Foreign Exchange Rates"
-  },
-  "news": {
-    "title": "Latest News & Updates"
-  },
   "footer": {
-    "copyright": "© {{year}} BetterLapuLapu. All content is public domain unless otherwise specified."
+    "copyright": "© {{year}} BetterLapuLapu. All content is public domain unless otherwise specified.",
+    "portalLabel": "BetterGov.ph Portal",
+    "tagline": "A community portal providing Philippine citizens, businesses, and visitors with information and services.",
+    "contribute": "Contribute at GitHub",
+    "sections": {
+      "about": "About",
+      "services": "Services",
+      "government": "Government"
+    },
+    "links": {
+      "aboutPortal": "About the Portal",
+      "contactUs": "Contact Us",
+      "discord": "Community Discord",
+      "allServices": "All Services",
+      "holidays": "Holidays",
+      "reports": "Reports and Statistics",
+      "openData": "Open Data",
+      "foi": "Freedom of Information",
+      "contactCenter": "Contact Center",
+      "officialGazette": "Official Gazette"
+    }
   },
-  "navbar": {
-    "government": "Government",
-    "services": "Services",
-    "hotlines": "Hotlines",
-    "holidays": "Holidays"
+  "document": {
+    "noneSpecified": "No document specified",
+    "loadFailed": "Failed to load document",
+    "notFound": "Document Not Found",
+    "seoDescription": "Government service information for {{slug}}"
   },
-  "joinUs": {
-    "stripTitle": "🚀 Join the #CivicTech Revolution",
-    "stripSubtitle": "Help build the future of the Philippines and governance through technology",
-    "joinNow": "Join Now",
-    "discord": "Discord",
-    "bannerTitle": "Join the #CivicTech Revolution",
-    "bannerSubtitle": "Help build the future of the Philippines and governance through technology.",
-    "bannerHighlight": "Volunteer-led. Open source. Community-driven.",
-    "joinMovement": "Join Our Movement",
-    "or": "or",
-    "joinDiscord": "Join Discord",
-    "features": "🚀 Infrastructure • 💡 Mentorship • 🤝 Community • 🏢 Office Space"
+  "search": {
+    "seoDescription": "Search services, offices and information from the {{governmentName}} government.",
+    "intro": "Find services, offices and government information.",
+    "inputLabel": "Search the site",
+    "placeholder": "e.g. business permit, birth certificate, garbage collection",
+    "unavailable": "Search is unavailable right now. Please try again later.",
+    "noResults": "No results for “{{query}}”."
+  },
+  "sitemap": {
+    "seoDescription": "Every service and government page on the {{governmentName}} portal.",
+    "intro": "Every service and government page on this site.",
+    "machineReadable": "For search engines and AI tools:"
+  },
+  "seo": {
+    "defaultTitle": "Community Portal of {{governmentName}}",
+    "defaultDescription": "{{siteName}} is a community-powered portal for {{governmentName}}. Find city services, government offices, officials, and public reports in one place.",
+    "homeDescription": "BetterLapuLapu is a community-powered portal for Lapu-Lapu City, Cebu. Find city services, government offices, officials, and public reports in one place."
+  },
+  "accessibility": {
+    "seoDescription": "How the {{governmentName}} portal works for people with disabilities, and how to report a problem.",
+    "intro": "This portal should be usable by everyone, including people who use screen readers, keyboard navigation, magnification or other assistive technology.",
+    "standardTitle": "Our standard",
+    "standard": "We aim to meet the <wcag>Web Content Accessibility Guidelines (WCAG) 2.1</wcag> at level AA. The site is still being built, so some pages may fall short of that. We fix problems as we find them.",
+    "practicesTitle": "What we do",
+    "practices": [
+      "A “Skip to main content” link is the first thing you reach with the Tab key.",
+      "Pages use headings, lists and landmarks so screen readers can move through them.",
+      "Images that carry meaning have text alternatives.",
+      "Menus, links and the search box can be used with a keyboard. Press Escape to close a menu.",
+      "Text can be enlarged to 200% with your browser zoom without losing content.",
+      "Pages declare their language so screen readers pronounce them correctly."
+    ],
+    "plainTextTitle": "Plain-text versions",
+    "plainText": "Every service and government page is also available as plain Markdown text. Add <code>.md</code> to the end of a page address to open it. The <sitemap>sitemap</sitemap> lists every page on one screen, and <llms>llms-full.txt</llms> holds the full text of the site in a single file.",
+    "limitationsTitle": "Known limitations",
+    "limitations": [
+      "Charts on the Reports and Statistics dashboard can be hard to follow with a screen reader. The figures come from the city’s Full Disclosure Policy reports, which are linked from each section.",
+      "Some source documents published by the city are scanned PDFs without a text layer. We link to them as published and cannot change them.",
+      "The interface is available in Cebuano and English. Page content is still in English while translations are in progress."
+    ],
+    "reportTitle": "Report a problem",
+    "report": "If something on this site is hard to use, or you need information in a different format, tell us. Include the page address and what went wrong. You can <issue>open an issue on GitHub</issue>."
   }
 }

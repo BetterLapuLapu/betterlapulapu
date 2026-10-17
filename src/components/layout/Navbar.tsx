@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { X, Menu, ChevronDown, Globe, Search } from 'lucide-react';
-import { mainNavigation } from '../../data/navigation';
+import { getMainNavigation } from '../../data/navigation';
+import { useLocalizedCategories } from '../../hooks/useLocalizedCategories';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from '../LanguageSwitcher';
@@ -12,6 +13,12 @@ const Navbar: React.FC = () => {
   // pointer leaves it, so hover/focus-within can't immediately reopen it.
   const [dismissedMenu, setDismissedMenu] = useState<string | null>(null);
   const { t } = useTranslation('common');
+  const { serviceCategories, governmentCategories } = useLocalizedCategories();
+  const mainNavigation = getMainNavigation(
+    t,
+    serviceCategories,
+    governmentCategories
+  );
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -40,21 +47,21 @@ const Navbar: React.FC = () => {
               className="text-xs text-primary-600 hover:text-primary-700 font-semibold transition-colors"
               target="_blank"
             >
-              🚀 Join Us
+              🚀 {t('nav.joinUs')}
             </a>
             <a
               href="https://bettergov.ph/about"
               className="text-xs text-gray-800 hover:text-primary-600 transition-colors"
               target="_blank"
             >
-              About BetterGov
+              {t('nav.aboutBetterGov')}
             </a>
             <a
               href="https://www.gov.ph"
               className="text-xs text-gray-800 hover:text-primary-600 transition-colors"
               target="_blank"
             >
-              Official Gov.ph
+              {t('nav.officialGovPh')}
             </a>
 
             <a
@@ -63,7 +70,7 @@ const Navbar: React.FC = () => {
               target="_blank"
               rel="noreferrer"
             >
-              Hotlines
+              {t('nav.hotlines')}
             </a>
             <LanguageSwitcher className="hidden md:flex" />
           </div>
@@ -77,11 +84,11 @@ const Navbar: React.FC = () => {
             <Link to="/" className="flex items-center">
               <img
                 src="/logo.svg"
-                alt="Lapu-Lapu City logo"
+                alt={t('common.logoAlt')}
                 className="h-12 w-auto mr-3"
               />
               <div>
-                <div className="text-black font-bold">Better Lapu Lapu</div>
+                <div className="text-black font-bold">{t('site_title')}</div>
                 <div className="text-xs text-gray-800">
                   {t('site_description')}
                 </div>
@@ -93,11 +100,11 @@ const Navbar: React.FC = () => {
           <div className="hidden lg:flex items-center space-x-8 pr-24">
             {mainNavigation.map(item => (
               <div
-                key={item.label}
+                key={item.href}
                 className="relative group"
                 onKeyDown={e => {
                   if (e.key !== 'Escape' || !item.children) return;
-                  setDismissedMenu(item.label);
+                  setDismissedMenu(item.href);
                   e.currentTarget.querySelector('a')?.focus();
                 }}
                 onBlur={e => {
@@ -111,7 +118,7 @@ const Navbar: React.FC = () => {
                   href={item.href}
                   className="flex items-center text-gray-700 hover:text-primary-600 font-medium transition-colors"
                 >
-                  {t(`navbar.${item.label.replace(' ', '').toLowerCase()}`)}
+                  {item.label}
                   {item.children && (
                     <ChevronDown
                       className="ml-1 h-4 w-4 text-gray-800 group-hover:text-primary-600 transition-colors"
@@ -122,14 +129,14 @@ const Navbar: React.FC = () => {
                 {item.children && (
                   <div
                     className={`absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible transition-all duration-200 z-50 ${
-                      dismissedMenu === item.label
+                      dismissedMenu === item.href
                         ? ''
                         : 'group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible'
                     }`}
                   >
                     <ul className="py-1">
                       {item.children.map(child => (
-                        <li key={child.label}>
+                        <li key={child.href}>
                           <Link
                             to={child.href}
                             className="text-left block px-4 py-2 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-600 focus:bg-primary-50 focus:text-primary-600"
@@ -149,14 +156,14 @@ const Navbar: React.FC = () => {
               to="/about"
               className="flex items-center text-gray-700 hover:text-primary-600 font-medium transition-colors"
             >
-              About
+              {t('nav.about')}
             </Link>
             <Link
               to="/search"
               className="flex items-center text-gray-700 hover:text-primary-600 font-medium transition-colors"
             >
               <Search className="h-4 w-4 mr-1" />
-              Search
+              {t('common.search')}
             </Link>
             {/* <Link
               to="/sitemap"
@@ -172,7 +179,7 @@ const Navbar: React.FC = () => {
               onClick={toggleMenu}
               className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-primary-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500"
             >
-              <span className="sr-only">Open main menu</span>
+              <span className="sr-only">{t('nav.openMenu')}</span>
               {isOpen ? (
                 <X className="block h-6 w-6" aria-hidden="true" />
               ) : (
@@ -187,25 +194,25 @@ const Navbar: React.FC = () => {
       <div className={`lg:hidden ${isOpen ? 'block' : 'hidden'}`}>
         <div className="container mx-auto px-2 pt-2 pb-4 space-y-1 border-t border-gray-200 bg-white">
           {mainNavigation.map(item => (
-            <div key={item.label}>
+            <div key={item.href}>
               <button
-                onClick={() => toggleSubmenu(item.label)}
+                onClick={() => toggleSubmenu(item.href)}
                 className="w-full flex justify-between items-center px-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-primary-500"
               >
-                {t(`navbar.${item.label.toLowerCase()}`)}
+                {item.label}
                 {item.children && (
                   <ChevronDown
                     className={`h-5 w-5 transition-transform ${
-                      activeMenu === item.label ? 'transform rotate-180' : ''
+                      activeMenu === item.href ? 'transform rotate-180' : ''
                     }`}
                   />
                 )}
               </button>
-              {item.children && activeMenu === item.label && (
+              {item.children && activeMenu === item.href && (
                 <div className="pl-6 py-2 space-y-1 bg-gray-50">
                   {item.children.map(child => (
                     <Link
-                      key={child.label}
+                      key={child.href}
                       to={child.href}
                       onClick={closeMenu}
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-primary-500"
@@ -222,28 +229,28 @@ const Navbar: React.FC = () => {
             onClick={closeMenu}
             className="block px-4 py-2 text-base font-semibold text-primary-600 hover:bg-primary-50 hover:text-primary-700"
           >
-            🚀 Join Us
+            🚀 {t('nav.joinUs')}
           </Link>
           <Link
             to="/about"
             onClick={closeMenu}
             className="block px-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-primary-500"
           >
-            About
+            {t('nav.about')}
           </Link>
           <Link
             to="/search"
             onClick={closeMenu}
             className="block px-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-primary-500"
           >
-            Search
+            {t('common.search')}
           </Link>
           <Link
             to="/sitemap"
             onClick={closeMenu}
             className="block px-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-primary-500"
           >
-            Sitemap
+            {t('common.sitemap')}
           </Link>
           <div className="px-4 py-3 border-t border-gray-200">
             <div className="flex items-center">

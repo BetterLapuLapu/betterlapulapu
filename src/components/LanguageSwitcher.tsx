@@ -9,14 +9,14 @@ interface LanguageSwitcherProps {
 export default function LanguageSwitcher({
   className = '',
 }: LanguageSwitcherProps) {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   // The detector can report region variants like `en-US`.
   const current = (i18n.resolvedLanguage || i18n.language || '').split('-')[0];
 
   return (
     <div
       role="group"
-      aria-label="Language"
+      aria-label={t('common.language')}
       className={`flex items-center divide-x divide-gray-300 ${className}`}
     >
       {SWITCHER_LANGUAGES.map((code: LanguageType) => {
@@ -30,7 +30,7 @@ export default function LanguageSwitcher({
             aria-label={LANGUAGES[code].nativeName}
             aria-pressed={isActive}
             onClick={() => i18n.changeLanguage(code)}
-            className={`px-2 text-xs uppercase leading-none transition-colors first:pl-0 last:pr-0 focus:outline-none focus-visible:underline ${
+            className={`cursor-pointer px-2 text-xs uppercase leading-none transition-colors first:pl-0 last:pr-0 focus:outline-none focus-visible:underline ${
               isActive
                 ? 'font-semibold text-primary-600'
                 : 'text-gray-800 hover:text-primary-600'

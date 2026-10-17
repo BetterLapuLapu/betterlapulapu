@@ -1,0 +1,103 @@
+# Cebuano overlay for index.yaml. Entries are matched by slug; omitted
+# fields fall back to English.
+
+pages:
+  - slug: 'get-free-check-ups-basic-medicines-and-vaccines'
+    name: 'Pagkuha og libreng check-up, batakang tambal, ug bakuna'
+    description: 'Pahimusli ang libreng medical check-up, batakang tambal, ug serbisyo sa pagbakuna nga gihatag sa inyong lokal nga gobyerno.'
+
+  - slug: 'access-maternal-care-and-child-immunization'
+    name: 'Pahimusli ang pag-atiman sa inahan ug bakuna sa bata'
+    description: 'Impormasyon bahin sa serbisyo sa panglawas sa inahan ug mga programa sa pagbakuna sa bata nga anaa sa inyong lugar.'
+
+  - slug: 'go-to-the-local-hospital-for-treatment-or-confinement'
+    name: 'Adto sa lokal nga ospital para sa pagpatambal o pagpa-confine'
+    description: 'Giya sa duha ka ospital sa siyudad, ang Lapu-Lapu City Hospital ug Sta. Rosa Community Hospital, ug unsay madahom kung kamo ma-admit. Bukas ang ward 24/7; ang bayad sumala sa schedule sa billing section.'
+
+  - slug: 'get-emergency-care-at-a-city-hospital'
+    name: 'Pagkuha og emergency care sa ospital sa siyudad'
+    description: 'Para sa bisan kinsa nga nagkinahanglan og dinaliang pag-atiman. Ang emergency room sa Lapu-Lapu City Hospital ug Sta. Rosa Community Hospital bukas 24 oras. Dad-a ang referral form kung gipadala kamo sa laing pasilidad. Ang mga suplay ug test bayran sumala sa fee schedule sa ospital.'
+
+  - slug: 'consult-a-doctor-at-a-hospital-outpatient-department'
+    name: 'Pagpakonsulta sa doktor sa outpatient department sa ospital'
+    description: 'Para sa check-up nga dili emergency. Dad-a ang referral gikan sa inyong health center. Lapu-Lapu City Hospital OPD: Lunes–Biyernes, 8:00 AM–11:00 PM. Sta. Rosa OPD: Lunes–Biyernes, 8:00 AM–5:00 PM (gawas sa holiday).'
+
+  - slug: 'get-laboratory-tests-at-lapu-lapu-city-hospital'
+    name: 'Pagpa-laboratory test sa Lapu-Lapu City Hospital'
+    description: 'Test sa dugo, ihi ug uban pa para sa publiko. Kinahanglan ang laboratory request nga pirmado sa doktor. Ang bayad sumala sa laboratory schedule. Bukas 24 oras; kadaghanan sa resulta sulod sa 1–4 ka oras.'
+
+  - slug: 'get-an-x-ray-ultrasound-2d-echo-or-ecg'
+    name: 'Pagpa-X-ray, ultrasound, 2D echo o ECG'
+    description: 'Imaging ug test sa kasingkasing sa Radiology Department sa Lapu-Lapu City Hospital. Kinahanglan ang request sa doktor. 2D echo ₱2,000; ECG ₱100; X-ray ug ultrasound sumala sa fee schedule. Ang X-ray bukas 24 oras.'
+
+  - slug: 'pay-your-hospital-bill-before-discharge'
+    name: 'Bayri ang inyong hospital bill sa dili pa ma-discharge'
+    description: 'Para sa mga pasyente nga na-admit sa Lapu-Lapu City Hospital. Kuhaa ang inyong Statement of Account, bayri ang bill ug kuhaa ang inyong clearance. Mga 2 ka oras. Lunes–Sabado, 8:00 AM–8:00 PM; Domingo, 8:00 AM–5:00 PM.'
+
+  - slug: 'get-help-paying-hospital-bills-at-the-malasakit-center'
+    name: 'Pagkuha og tabang sa pagbayad sa hospital bill sa Malasakit Center'
+    description: 'Libreng tabang para sa mga pobre ug naglisod sa panalapi nga pasyente sa Lapu-Lapu City Hospital: PhilHealth enrollment, test, tambal ug hospital bill. Bukas adlaw-adlaw, 6:00 AM–10:00 PM.'
+
+  - slug: 'request-hospital-medical-records-and-certificates'
+    name: 'Pangayo og medical records ug sertipiko sa ospital'
+    description: 'Medical, medico-legal, birth ug death certificate ug discharge summary para sa mga pasyente sa mga ospital sa siyudad. Kinahanglan ang request form ug valid ID. Mga 6 ka oras sa Lapu-Lapu City Hospital.'
+
+  - slug: 'visit-the-free-monthly-mental-health-clinic'
+    name: 'Bisitaha ang libreng binulan nga mental health clinic'
+    description: 'Libreng assessment sa psychologist o psychiatrist, ug libreng tambal, nga gidumala sa City Social Welfare and Development Office kausa matag bulan. Walay requirements; dawaton ang walk-in. Mga 50 ka minuto.'
+
+  - slug: 'join-health-programs-nutrition-dengue-control-tb-treatment'
+    name: 'Apil sa mga programa sa panglawas (nutrisyon, pagpugong sa dengue, pagtambal sa TB)'
+    description: 'Apil sa lain-laing programa sa panglawas sama sa suporta sa nutrisyon, pagpugong sa dengue, ug mga inisyatiba sa pagtambal sa TB.'
+
+  - slug: 'apply-for-a-health-card-for-work-or-study'
+    name: 'Pag-apply og Health Card para sa trabaho o pag-eskwela'
+    description: 'Para sa mga job applicant, estudyante, OJT, massage therapist, ug CSW. Kinahanglan ang lab results, chest X-ray, ug drug test. Bayad: Php 155–515 depende sa klase. Bukas Lunes–Biyernes, 8:00am–5:00pm (gawas sa holiday).'
+
+  - slug: 'secure-a-sanitary-permit-for-your-business'
+    name: 'Pagkuha og Sanitary Permit para sa inyong negosyo'
+    description: 'Para sa tanang negosyo sa Lapu-Lapu City. Kinahanglan ang health card sa mga empleyado, water test (para sa negosyo sa pagkaon), inspection report, ug resibo sa sanitary fee (Php 100–300). Bukas Lunes–Biyernes, 8:00am–5:00pm.'
+
+  - slug: 'get-free-check-ups-and-consultations'
+    name: 'Pagkuha og libreng check-up ug konsulta'
+    description: 'Libreng konsulta sa mga health center. Kinahanglan ang treatment record o referral. Bukas Lunes–Biyernes, 8:00am–5:00pm (gawas sa holiday).'
+
+  - slug: 'receive-dental-care-and-treatment'
+    name: 'Pagdawat og pag-atiman ug pagtambal sa ngipon'
+    description: 'Para sa mga residente ug day care center. Apil ang paglimpyo, pasta, pagbunot, fluoride, ug libreng toothbrush/toothpaste. Bayad: Php 100–200 matag ngipon, ang uban libre. Bukas Lunes–Biyernes, 8:00am–5:00pm.'
+
+  - slug: 'vaccinate-your-child-for-free'
+    name: 'Pabakunahi ang inyong anak nga libre'
+    description: 'Libre ang routine nga bakuna (BCG, Pentavalent, OPV/IPV, MMR, Hepatitis B, PCV13). Kinahanglan ang ECCD card. Anaa matag Miyerkules, 8:00am–4:00pm (gawas sa holiday).'
+
+  - slug: 'access-prenatal-check-ups-and-supplements'
+    name: 'Pagkuha og prenatal check-up ug supplement'
+    description: 'Para sa mga mabdos. Kinahanglan ang Mother and Child Booklet ug HBMR. Libreng check-up ug supplement (Tetanus Toxoid, Ferrous Sulfate, Multivitamins, Calcium). Bukas Martes, 8:00am–1:00pm (gawas sa holiday).'
+
+  - slug: 'claim-free-medicines-with-a-prescription'
+    name: 'Kuhaa ang libreng tambal gamit ang reseta'
+    description: 'Libreng tambal para sa mga kliyente nga adunay reseta o referral sa doktor. Bukas Lunes–Biyernes, 8:00am–5:00pm (gawas sa holiday).'
+
+  - slug: 'get-rabies-vaccination-after-an-animal-bite'
+    name: 'Pagpabakuna batok sa rabies human makagat sa hayop'
+    description: 'Para sa mga residente nga napaakan sa iro, iring, o kabog. Kinahanglan ang pamatuod sa pagkapaak ug residency certificate. Libreng bakuna batok sa rabies. Bukas Lunes, Martes, Huwebes, Biyernes – 8:00am–5:00pm (gawas sa holiday).'
+
+  - slug: 'take-a-drug-test-for-employment-or-compliance'
+    name: 'Pagpa-drug test para sa trabaho o compliance'
+    description: 'Para sa mga kliyente nga nagkinahanglan og drug test. Kinahanglan ang valid ID; opsyonal ang referral. Bayad: Php 200. Bukas Lunes–Biyernes, 8:00am–5:00pm (gawas sa holiday).'
+
+  - slug: 'receive-free-tb-testing-and-treatment'
+    name: 'Pagdawat og libreng TB test ug pagtambal'
+    description: 'Para sa mga pasyente nga adunay sintomas sa TB, adunay nakit-an sa chest X-ray, o gi-refer. Kinahanglan ang chest X-ray ug referral. Libre ang test ug tambal. Anaa Lunes–Biyernes, 8:00am–5:00pm sa CHO, 8:00am–4:00pm sa mga health center (gawas sa holiday).'
+
+  - slug: 'get-counseling-and-services-for-family-planning'
+    name: 'Pagkuha og counseling ug serbisyo sa family planning'
+    description: 'Para sa mga kliyente nga nangita og serbisyo sa family planning. Kinahanglan nga personal nga moadto para sa counseling. Libre. Bukas Lunes–Biyernes, 8:00am–4:00pm, Sabado 8:00am–1:00pm (gawas sa holiday).'
+
+  - slug: 'take-a-covid-19-test-if-you-have-symptoms'
+    name: 'Pagpa-COVID-19 test kung adunay sintomas'
+    description: 'Para sa mga adunay sintomas, mabdos, ug mga pasyente nga adunay co-morbidity. Kinahanglan ang medical certificate, prenatal record, o referral. Libre. Bukas Lunes–Biyernes, 8:00am–10:00am (gawas sa holiday).'
+
+  - slug: 'get-a-hygiene-check-up-at-the-social-hygiene-clinic'
+    name: 'Pagpa-hygiene check-up sa Social Hygiene Clinic'
+    description: 'Para sa mga CSW ug mga pasyente nga gi-refer. Kinahanglan ang health card, resibo sa hygiene fee, lab results, ug referral. Bayad: Health Card Php 20, CBC Php 60, Stool Php 25, Urinalysis Php 30, HBsAg Php 80, HIV Php 90, Hygiene Fee Php 20. Bukas Lunes–Biyernes, 8:00am–2:30pm (gawas sa holiday).'

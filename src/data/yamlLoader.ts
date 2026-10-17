@@ -70,6 +70,106 @@ export const governmentCategories: CategoryData = yaml.load(
   governmentActivitiesYamlContent
 ) as CategoryData;
 
+// Translations live in sparse overlay files next to the English YAML, e.g.
+// services.ceb.yaml or content/services/business/index.ceb.yaml. Entries are
+// matched by slug (or `en_name` for pages without one) and any field the
+// overlay omits falls back to English.
+interface CategoryOverlay {
+  slug: string;
+  category?: string;
+  description?: string;
+  subcategories?: { slug: string; name?: string }[];
+}
+
+interface PageOverlay {
+  slug?: string;
+  en_name?: string;
+  name?: string;
+  description?: string;
+}
+
+interface CategoryIndexOverlay {
+  title?: string;
+  description?: string;
+  pages?: PageOverlay[];
+}
+
+const categoryOverlayFiles = import.meta.glob<string>('./*.*.yaml', {
+  query: '?raw',
+  import: 'default',
+  eager: true,
+});
+
+// Keyed by `${lang}:${folder}`, e.g. `ceb:business`.
+const indexOverlayLoaders: Record<string, () => Promise<string>> = {};
+for (const [path, load] of Object.entries(
+  import.meta.glob<string>('../../content/**/index.*.yaml', {
+    query: '?raw',
+    import: 'default',
+  })
+)) {
+  const match = path.match(/\/([^/]+)\/index\.([^.]+)\.yaml$/);
+  if (match) indexOverlayLoaders[`${match[2]}:${match[1]}`] = load;
+}
+
+const pageKey = (page: { slug?: string; name?: string }) =>
+  page.slug || page.name;
+
+function mergeBySlug<T extends { slug?: string; name?: string }, O>(
+  base: T[],
+  overlay: O[] | undefined,
+  keyOf: (entry: O) => string | undefined,
+  merge: (entry: T, translated: O) => T
+): T[] {
+  if (!overlay?.length) return base;
+  const byKey = new Map(overlay.map(entry => [keyOf(entry), entry]));
+  return base.map(entry => {
+    const translated = byKey.get(pageKey(entry));
+    return translated ? merge(entry, translated) : entry;
+  });
+}
+
+const localizedCategories = new Map<string, CategoryData>();
+
+/** Service or government categories with the overlay for `lang` applied. */
+export function getCategories(
+  kind: 'services' | 'government',
+  lang: string
+): CategoryData {
+  const base = kind === 'services' ? serviceCategories : governmentCategories;
+  const raw = categoryOverlayFiles[`./${kind}.${lang}.yaml`];
+  if (!raw) return base;
+
+  const cacheKey = `${lang}:${kind}`;
+  const cached = localizedCategories.get(cacheKey);
+  if (cached) return cached;
+
+  const overlay = yaml.load(raw) as { categories?: CategoryOverlay[] };
+  const result: CategoryData = {
+    ...base,
+    categories: mergeBySlug(
+      base.categories,
+      overlay.categories,
+      entry => entry.slug,
+      (category, translated) => ({
+        ...category,
+        category: translated.category || category.category,
+        description: translated.description || category.description,
+        subcategories:
+          category.subcategories &&
+          mergeBySlug(
+            category.subcategories,
+            translated.subcategories,
+            entry => entry.slug,
+            (sub, t) => ({ ...sub, name: t.name || sub.name })
+          ),
+      })
+    ),
+  };
+  localizedCategories.set(cacheKey, result);
+  return result;
+}
+
 export interface CategoryIndex {
   title?: string;
   description?: string;
@@ -77,9 +177,24 @@ export interface CategoryIndex {
   pages: Subcategory[];
 }
 
+async function loadIndexOverlay(
+  categorySlug: string,
+  lang: string
+): Promise<CategoryIndexOverlay | null> {
+  const load = indexOverlayLoaders[`${lang}:${categorySlug}`];
+  if (!load) return null;
+  try {
+    return yaml.load(await load()) as CategoryIndexOverlay;
+  } catch (error) {
+    console.warn(`Failed to load ${lang} overlay for ${categorySlug}:`, error);
+    return null;
+  }
+}
+
 // Function to load category index data
 export async function loadCategoryIndex(
-  categorySlug: string
+  categorySlug: string,
+  lang = 'en'
 ): Promise<CategoryIndex> {
   const yamlContent = categoryIndexMap[categorySlug];
   if (!yamlContent) {
@@ -89,11 +204,21 @@ export async function loadCategoryIndex(
     const indexData: CategoryIndexData = yaml.load(
       yamlContent
     ) as CategoryIndexData;
+    const overlay = await loadIndexOverlay(categorySlug, lang);
     return {
-      title: indexData.title,
-      description: indexData.description,
+      title: overlay?.title || indexData.title,
+      description: overlay?.description || indexData.description,
       layout: indexData.layout ?? 'list',
-      pages: indexData.pages || [],
+      pages: mergeBySlug(
+        indexData.pages || [],
+        overlay?.pages,
+        entry => entry.slug || entry.en_name,
+        (page, translated) => ({
+          ...page,
+          name: translated.name || page.name,
+          description: translated.description || page.description,
+        })
+      ),
     };
   } catch (parseError) {
     console.warn(
@@ -108,14 +233,16 @@ export async function loadCategoryIndex(
 const categoryCache = new Map<string, CategoryIndex>();
 
 export async function getCategorySubcategories(
-  categorySlug: string
+  categorySlug: string,
+  lang = 'en'
 ): Promise<CategoryIndex> {
-  if (categoryCache.has(categorySlug)) {
-    return categoryCache.get(categorySlug)!;
+  const cacheKey = `${lang}:${categorySlug}`;
+  if (categoryCache.has(cacheKey)) {
+    return categoryCache.get(cacheKey)!;
   }
 
-  const result = await loadCategoryIndex(categorySlug);
-  categoryCache.set(categorySlug, result);
+  const result = await loadCategoryIndex(categorySlug, lang);
+  categoryCache.set(cacheKey, result);
   return result;
 }
 

@@ -1,0 +1,19 @@
+# Cebuano overlay for index.yaml. Entries are matched by slug; omitted
+# fields fall back to English.
+
+pages:
+  - slug: 'check-garbage-collection-schedules-and-request-pickup'
+    name: 'Susiha ang iskedyul sa pagkolekta sa basura ug pangayo og pickup'
+    description: 'Libreng pagkolekta sa basura para sa mga panimalay daplin sa national road ug mga dalan sa siyudad. Isegregate una ang inyong basura. Ang mga trak moagi Lunes–Domingo, 6:00pm–12:00am.'
+
+  - slug: 'learn-proper-waste-segregation-and-disposal-methods'
+    name: 'Kat-oni ang husto nga pag-segregate ug paglabay sa basura'
+    description: 'Mga lagda sa husto nga pag-segregate ug paglabay sa basura sa inyong lugar.'
+
+  - slug: 'request-special-waste-collection-hazardous-materials-electronics'
+    name: 'Pangayo og espesyal nga pagkolekta sa basura (delikado nga materyales, electronics)'
+    description: 'Unsaon pagpangayo og espesyal nga serbisyo sa pagkolekta para sa delikado nga materyales ug electronic waste.'
+
+  - slug: 'report-illegal-dumping-or-waste-management-violations'
+    name: 'Ireport ang ilegal nga paglabay sa basura o paglapas sa waste management'
+    description: 'Ireport ang ilegal nga paglabay sa basura, pagsunog sa basura, ug ubang problema sa basura sa inyong barangay o pinaagi sa libreng proseso sa reklamo sa CENRO.'

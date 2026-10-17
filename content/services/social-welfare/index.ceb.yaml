@@ -1,0 +1,59 @@
+# Cebuano overlay for index.yaml. Entries are matched by slug; omitted
+# fields fall back to English.
+
+pages:
+  - slug: 'apply-for-senior-citizen-solo-parent-or-pwd-assistance'
+    name: 'Pag-apply og ID sa senior citizen, solo parent, o PWD'
+    description: 'Para sa mga residente nga nagkinahanglan og solo parent ID, PWD ID, o senior citizen ID ug purchase booklet. Libre. Molungtad og 1 hangtod 2 ka semana. Lunes–Biyernes, 8:00 AM–5:00 PM (gawas sa holiday).'
+
+  - slug: 'claim-senior-citizen-cash-gifts-and-incentives'
+    name: 'Kuhaa ang cash gift ug insentibo sa senior citizen'
+    description: 'Birthday cash gift, midyear ug year-end nga cash aid para sa rehistradong senior citizen ug PWD, ug ang centenarian cash award. Wala nakakuha sa inyong birthday cash gift? Pangayo og re-payroll gikan sa City Mayor''s Office sulod sa samang tuig. Libre.'
+
+  - slug: 'get-therapy-and-special-education-for-children-with-disabilities'
+    name: 'Pagkuha og therapy ug special education para sa mga batang adunay kakulangan'
+    description: 'Libreng physical therapy, occupational therapy, special education, ug social rehabilitation para sa mga batang adunay kakulangan nga nag-edad 0 hangtod 14. Kinahanglan ang Lapu-Lapu City PWD ID, X-ray, ug medical certificate. Lunes–Biyernes, 8:00 AM–5:00 PM.'
+
+  - slug: 'get-financial-assistance-in-a-crisis-aics'
+    name: 'Pagkuha og pinansyal nga tabang sa panahon sa krisis (AICS)'
+    description: 'Libreng tabang sa medikal, lubong, ug ubang krisis para sa mga residente nga nakita sa social worker nga kwalipikado. Kinahanglan ang barangay certificate of residency ug indigency ug mga dokumento sa inyong panginahanglan. Molungtad og mga 1 ka bulan. Lunes–Biyernes, 8:00 AM–5:00 PM.'
+
+  - slug: 'receive-relief-goods-or-cash-aid-during-disasters'
+    name: 'Pagdawat og relief goods o cash aid panahon sa katalagman'
+    description: 'Pagkaon ug dili pagkaon nga mga butang ug pinansyal nga tabang para sa mga biktima sa katalagman. Kinahanglan ang barangay certificate nga kamo naapektuhan. Libre. Anaa 24 oras, Lunes hangtod Domingo, apil ang holiday.'
+
+  - slug: 'join-livelihood-or-skills-training-programs'
+    name: 'Apil sa mga programa sa livelihood o skills training'
+    description: 'Libreng skills training pinaagi sa CSWDO (edad 18–60, high school graduate) ug mga kurso sa sewing ug dressmaking sa Manpower and Human Development Training Center. Ang training molungtad og 14 hangtod 30 ka adlaw depende sa programa.'
+
+  - slug: 'get-livelihood-capital-assistance'
+    name: 'Pagkuha og tabang nga puhunan para sa panginabuhian'
+    description: 'Para sa mga pobreng indibidwal o grupo nga adunay kasamtangang panginabuhian ug gamay nga puhunan. Kinahanglan ang barangay certificate of residency ug indigency, valid ID, ug 2x2 nga litrato. Libre. Molungtad og 2–3 ka bulan pinaagi sa partner agency o mga 1 ka bulan pinaagi sa AICS.'
+
+  - slug: 'get-family-and-community-welfare-support'
+    name: 'Pagkuha og suporta para sa kaayohan sa pamilya ug komunidad'
+    description: 'Libreng tabang para sa mga babaye ug bata nga biktima sa pagpanakit o pang-abuso, mga OFW nga mipauli nga nag-antos o napalagpot, ug mga tawo nga naka-probation ubos sa after-care program. Lunes–Biyernes, 8:00 AM–5:00 PM (gawas sa holiday).'
+
+  - slug: 'request-a-social-case-study-or-welfare-certificate'
+    name: 'Pangayo og social case study o welfare certificate'
+    description: 'Pagkuha og certificate of indigency, social case study, parental capability assessment report, o referral letter gikan sa CSWDO. Dad-a ang request letter gikan sa opisina nga nangayo niini. Libre. Molungtad og 2 hangtod 6 ka adlaw.'
+
+  - slug: 'register-a-birth-death-or-marriage'
+    name: 'Iparehistro ang pagkatawo, kamatayon, o kasal'
+    description: 'Iparehistro ang pagkatawo, kasal, o kamatayon sa Local Civil Registrar. Libre ang rehistro sa saktong panahon; ang late registration nagkantidad og ₱100. Lunes–Biyernes, 8:00 AM–5:00 PM.'
+
+  - slug: 'correct-or-update-a-civil-registry-record'
+    name: 'Tul-ira o i-update ang rekord sa civil registry'
+    description: 'Legitimation, paggamit sa apelyido sa amahan, supplemental report, pagtul-id sa clerical error ug first name, ug court decree sa Local Civil Registrar. Kadaghanan sa bayad ₱100; ang petisyon ubos sa R.A. 9048 ug R.A. 10172 nagkantidad og ₱1,000 hangtod ₱3,000.'
+
+  - slug: 'get-a-copy-of-a-birth-marriage-or-death-certificate'
+    name: 'Pagkuha og kopya sa birth, marriage, o death certificate'
+    description: 'Pangayo og certified nga lokal nga kopya (₱30 matag kopya ug ₱30 nga documentary stamp) o PSA nga kopya ug CENOMAR pinaagi sa Local Civil Registrar (₱155–₱210 matag kopya ug ₱50 nga processing). Dad-a ang valid ID. Lunes–Biyernes, 8:00 AM–5:00 PM.'
+
+  - slug: 'apply-for-a-marriage-license'
+    name: 'Pag-apply og marriage license'
+    description: 'Para sa magtiayon nga 18 pataas nga ang usa man lang kanila residente sa Lapu-Lapu City. Kinahanglan ang PSA birth certificate, CENOMAR, barangay residency certificate, ug CSWDO pre-marriage counseling certificate. Bayad: ₱100 aplikasyon, ₱50 serbisyo, ₱2 lisensya.'
+
+  - slug: 'get-married-at-city-hall-or-kasalan-ng-bayan'
+    name: 'Magpakasal sa City Hall o moapil sa Kasalan ng Bayan'
+    description: 'Pag-book og civil wedding uban sa City Mayor (dad-a ang inyong marriage license ug voter''s certificate), o moapil sa libreng tinuig nga Kasalan ng Bayan para sa mga pobreng magtiayon nga nag-ipon na sulod sa labing menos lima ka tuig.'

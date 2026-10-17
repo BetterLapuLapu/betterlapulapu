@@ -1,0 +1,83 @@
+# Cebuano overlay for index.yaml. Entries are matched by slug; omitted
+# fields fall back to English. Official office names are kept in English.
+
+pages:
+  - slug: 'executive'
+    name: 'Ehekutibo'
+    description: 'Ilaila ang inyong Mayor ug Vice Mayor, lakip ang mga umaabot nga kalihokan, ang Mayor''s Community Assistance Program, kasaysayan sa mga mayor, ug impormasyon bahin sa ubang makasaysayanong katungdanan sa lokal nga gobyerno.'
+
+  - slug: 'legislative'
+    name: 'Lehislatibo'
+    description: 'Sa termino 2025–2028, ang Sangguniang Panlungsod (City Council) sa Lapu-Lapu City adunay 12 ka napiling konsehal, ug ang Vice Mayor ang presiding officer sa konseho.'
+
+  - slug: 'city-mayors-office'
+    description: 'Special permit para sa mga kalihokan, pag-abang og venue, banner ug delivery; mga sertipikasyon para sa trabaho ug biyahe; iskedyul sa kasal; insentibo sa board ug bar passer; ug re-payroll sa cash gift sa senior citizen.'
+
+  - slug: 'city-administrators-office'
+    description: 'Occupational permit (Mayor''s Permit for Employment), Mayor''s Clearance para sa uniformed services, ug ang Committee on Discipline and Investigation para sa mga reklamo batok sa mga empleyado sa gobyerno.'
+
+  - slug: 'city-attorneys-office'
+    description: 'Nag-isyu, nag-renew ug nag-amyenda sa Motorized Tricycle Operator''s Permit (MTOP). Bukas Lunes hangtod Biyernes, 8:00 AM hangtod 5:00 PM.'
+
+  - slug: 'city-treasurers-office'
+    description: 'Bayri ang real property tax, business tax ug ubang lokal nga bayronon; pagkuha og real property tax clearance ug sertipikasyon; pagsira sa narehistrong negosyo.'
+
+  - slug: 'city-assessors-office'
+    description: 'Tax declaration, re-assessment, annotation, sertipikasyon sa propiedad ug lot map. Ground Floor, City Hall Main Bldg., Pusok.'
+
+  - slug: 'city-accountants-office'
+    description: 'Nagproseso sa payroll sa siyudad ug bayad sa mga supplier ug contractor, ug nag-isyu og mga sertipikasyon, city clearance ug BIR tax credit form.'
+
+  - slug: 'city-budget-office'
+    description: 'Nag-andam sa budget sa siyudad, nagpagawas og allotment, nagsertipikar sa anaa nga pondo, nagrepaso sa budget sa barangay ug SK, ug naghatag og kopya sa mga dokumento sa budget.'
+
+  - slug: 'city-general-services-office'
+    description: 'Mga bidding document ug purchase order para sa mga supplier, mga rekord gikan sa archive sa siyudad, ug suplay, propiedad ug serbisyo sa maintenance para sa mga opisina sa siyudad.'
+
+  - slug: 'city-engineering-office'
+    description: 'Building permit ug certificate of occupancy ubos sa National Building Code (PD 1096).'
+
+  - slug: 'city-planning-and-development-office'
+    description: 'Locational clearance, sertipikasyon sa zoning ug paggamit sa yuta, ug subdivision permit. Quezon National Highway, Pajo.'
+
+  - slug: 'city-environment-and-natural-resources-office'
+    description: 'Permit sa pangisda, hauling, research ug pagputol og kahoy, pagkolekta sa basura, reklamo bahin sa kinaiyahan, turn-over sa ihalas nga mananap, pag-apod-apod og liso, paglimpyo ug mga seminar.'
+
+  - slug: 'city-traffic-management-office'
+    description: 'Pagdumala ug pagpatuman sa trapiko: bayri ang multa sa traffic violation, husaya ang mga panaglalis sa trapiko, ug kuhaa ang na-tow o na-impound nga sakyanan.'
+
+  - slug: 'city-social-welfare-and-development-office'
+    description: 'Tabang sa krisis, daycare, relief sa katalagman, ID ug cash gift sa senior citizen, solo parent ug PWD, ug suporta sa kababayen-an, kabataan ug pamilya. Bukas Lunes hangtod Biyernes, 8:00 AM hangtod 5:00 PM.'
+
+  - slug: 'city-veterinary-office'
+    description: 'Libreng rehistro ug anti-rabies sa iro ug iring, pag-surrender ug pag-adopt sa binuhi, pag-impound sa mga istray nga mananap, ug inspeksyon sa karne sa ihawan. Sitio Seabreeze, Pusok; tel. 341-2612.'
+
+  - slug: 'local-civil-registrar'
+    description: 'Iparehistro ang pagkatawo, kasal ug kamatayon, pagkuha og certified copy ug PSA document, pagtul-id sa mga rekord, ug pag-apply og marriage license. 2nd Floor, City Library Building, Government Center.'
+
+  - slug: 'public-employment-service-office'
+    description: 'Libreng job referral ug placement, accreditation sa employer ug job fair, summer job para sa kabatan-onan, ang Government Internship Program ug career guidance. Tel. (032) 492 3249.'
+
+  - slug: 'manpower-and-human-development-training-center'
+    description: 'Libreng training sa industrial high-speed sewing ug dressmaking para sa mga residente ug rehistradong botante sa Lapu-Lapu City.'
+
+  - slug: 'market-and-slaughterhouse-division'
+    description: 'Nagdumala sa public market ug ihawan: bayad sa abang sa stall ug kuryente, market clearance, cash ticket ug bayad sa pag-ihaw.'
+
+  - slug: 'urban-poor-affairs-office'
+    description: 'Libreng accreditation sa mga urban poor association ug sertipiko para sa electrical permit sa ilang mga miyembro. Tel. 517-9926.'
+
+  - slug: 'lapu-lapu-city-hospital'
+    description: 'Emergency care, outpatient consultation, laboratoryo, X-ray ug ubang imaging, tabang sa Malasakit Center, billing ug medical records. A. Tumulak St., Gun-ob; tel. (032) 340-0248.'
+
+  - slug: 'sta-rosa-community-hospital'
+    description: 'PhilHealth-accredited nga Level 1 hospital sa Olango nga adunay 24/7 nga emergency ug ward, outpatient consultation ug medical records.'
+
+  - slug: 'lapu-lapu-city-college'
+    description: 'Office of the Registrar: enrollment, transcript, sertipikasyon, CAV endorsement ug puli nga diploma.'
+
+  - slug: 'lapu-lapu-city-library'
+    description: 'Libreng membership sa library ug panghulam og libro para sa mga residente. 2nd Floor, City Library Building, Government Center, Pusok; bukas Lunes hangtod Biyernes, 8:00 AM hangtod 5:00 PM.'
+
+  - slug: 'sangguniang-panlungsod-secretariat'
+    description: 'Certified true copy sa mga naaprobahang ordinansa ug resolusyon, tubag sa mga sulat sa pangutana, ug sertipikasyon sa mga pahibalo nga gipaskin sa bulletin board sa konseho.'

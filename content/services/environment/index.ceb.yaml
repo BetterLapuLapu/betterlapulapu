@@ -1,0 +1,31 @@
+# Cebuano overlay for index.yaml. Entries are matched by slug; omitted
+# fields fall back to English.
+
+pages:
+  - slug: 'join-clean-up-drives-and-tree-planting-activities'
+    name: 'Pag-organisar og coastal cleanup o pagtanom og bakhaw'
+    description: 'Para sa mga indibidwal, grupo, ug organisasyon nga maghimo og coastal cleanup o pagtanom og bakhaw. Isumite ang sulat ngadto sa CENRO. Bayad: ₱50. Pagproseso: 3–7 ka adlaw. Bukas Lunes–Biyernes, 8:00am–5:00pm.'
+
+  - slug: 'report-illegal-logging-quarrying-or-fishing'
+    name: 'Ireport ang mga problema sa kinaiyahan (paglabay sa basura, polusyon, baybayon ug dagat)'
+    description: 'Para sa mga residente, tag-iya og lote, ug negosyo. Ipadala ang sulat sa reklamo ngadto sa CENRO uban ang mga litrato ug sketch sa lokasyon. Libre. Pagproseso: 7 ka adlaw. Bukas Lunes–Biyernes, 8:00am–5:00pm.'
+
+  - slug: 'turn-over-rescued-wildlife'
+    name: 'I-turn over ang naluwas nga ihalas nga mananap'
+    description: 'Para sa mga residente ug organisasyon nga nakaluwas og ihalas nga mananap. Dad-a kini sa CENRO uban ang detalye sa klase, gidak-on, ug gigikanan niini aron makakuha og turn-over receipt. Libre. Bukas Lunes–Biyernes, 8:00am–5:00pm.'
+
+  - slug: 'get-a-tree-cutting-or-trimming-endorsement'
+    name: 'Pagkuha og endorsement sa pagputol o pagsanga sa kahoy'
+    description: 'Para sa mga residente, tag-iya og lote, developer, ug negosyo. Kinahanglan ang request letter, barangay clearance, litrato sa lugar, ug 5 ka seedling matag kahoy nga putlon. Bayad: ₱50. Pagproseso: 7 ka adlaw. Bukas Lunes–Biyernes, 8:00am–5:00pm.'
+
+  - slug: 'get-a-hauling-permit-for-soil-and-rocks'
+    name: 'Pagkuha og hauling permit para sa yuta ug bato'
+    description: 'Para sa mga contractor ug developer nga mohakot og ordinaryong waste rocks o yuta. Kinahanglan ang mga permit, clearance, ECC, ug site inspection. Ang bayad gitakda sa City Mayor''s Office. Pagproseso: 7 ka adlaw. Bukas Lunes–Biyernes, 8:00am–5:00pm.'
+
+  - slug: 'get-a-permit-to-conduct-environmental-research'
+    name: 'Pagkuha og permit sa paghimo og research bahin sa kinaiyahan'
+    description: 'Para sa mga estudyante, researcher, ug organisasyon. Isumite ang letter of request nga naghulagway sa inyong pagtuon. Bayad: ₱50 matag item. Pagproseso: 3 ka adlaw. Bukas Lunes–Biyernes, 8:00am–5:00pm.'
+
+  - slug: 'request-an-environmental-seminar-for-your-community'
+    name: 'Pangayo og seminar bahin sa kinaiyahan para sa inyong komunidad'
+    description: 'Para sa mga grupo publiko o pribado. Padad-i ang CENRO og sulat nga adunay petsa, lugar, mga moapil, ug topiko. Libre. Pagproseso: 7 ka adlaw. Bukas Lunes–Sabado, 8:00am–5:00pm.'

@@ -21,7 +21,8 @@ export const LANGUAGES: Record<LanguageType, LanguageInfo> = {
   mdh: { code: 'mdh', name: 'Maranao', nativeName: 'Meranaw' },
 };
 
-export const DEFAULT_LANGUAGE: LanguageType = 'en';
+// Cebuano first: the site is primarily for Lapu-Lapu City's constituents.
+export const DEFAULT_LANGUAGE: LanguageType = 'ceb';
 
 // Languages shown as buttons in the navbar language switcher.
-export const SWITCHER_LANGUAGES: LanguageType[] = ['en', 'ceb'];
+export const SWITCHER_LANGUAGES: LanguageType[] = ['ceb', 'en'];

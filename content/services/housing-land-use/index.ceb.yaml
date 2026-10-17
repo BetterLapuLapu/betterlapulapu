@@ -1,0 +1,47 @@
+# Cebuano overlay for index.yaml. Entries are matched by slug; omitted
+# fields fall back to English.
+
+pages:
+  - slug: 'accredit-an-urban-poor-association'
+    name: 'Ipa-accredit ang usa ka urban poor association'
+    description: 'Para sa mga urban poor association. Isumite ang listahan sa inyong mga opisyal ug miyembro, minutes sa miting, ug kasaysayan sa asosasyon ngadto sa area coordinator sa Urban Poor Affairs Office sa inyong barangay. Libre.'
+
+  - slug: 'get-an-electrical-permit-certificate-for-urban-poor-families'
+    name: 'Pagkuha og sertipiko sa electrical permit para sa mga urban poor nga pamilya'
+    description: 'Para sa mga miyembro sa accredited nga urban poor association. Kinahanglan ang sertipikasyon sa asosasyon, barangay electrical permit, cedula, ug tax declaration. Libre. Lunes–Biyernes, 8:00am–5:00pm.'
+
+  - slug: 'request-zoning-land-use-or-building-permits'
+    name: 'Pangayo og zoning, land use, o building permit'
+    description: 'Sugdi dinhi sa dili pa motukod. Pagkuha og locational clearance o zoning/land use certification gikan sa City Planning and Development Office, unya ang inyong building ug occupancy permit. Ang bayad sumala sa HLURB 2013 schedule.'
+
+  - slug: 'get-a-building-permit'
+    name: 'Pagkuha og building permit'
+    description: 'Gikinahanglan sa dili pa motukod, mag-renovate, mag-ayo, o mangguba. Kinahanglan ang locational clearance, pamatuod sa katungod sa lote, ug pirmado nga plano. Ang bayad sumala sa schedule sa National Building Code.'
+
+  - slug: 'get-an-occupancy-permit'
+    name: 'Pagkuha og occupancy permit'
+    description: 'Gikinahanglan sa dili pa gamiton ang bag-o o na-renovate nga building. Kinahanglan ang inyong building permit ug plano, Fire Safety Inspection Certificate, ug certificate of completion, ug site inspection.'
+
+  - slug: 'apply-for-a-subdivision-development-permit'
+    name: 'Pag-apply og subdivision development permit'
+    description: 'Para sa mga tag-iya og lote, korporasyon, ug land developer nga mobahin sa yuta. Kinahanglan ang subdivision plan, titulo, tax declaration, ug realty tax clearance, ug pag-aprobar sa City Council. Ang bayad sumala sa HLURB 2013 schedule.'
+
+  - slug: 'get-a-tax-declaration-for-your-property'
+    name: 'Pagkuha og tax declaration para sa inyong propiedad'
+    description: 'Para sa mga tag-iya og propiedad human sa pagbalhin sa ngalan, bag-ong building o makinarya, unang deklarasyon sa yuta, o pagbahin sa lote. Walay bayad sa Assessor; ang unang deklarasyon ug pagbahin mobayad og 10 ka tuig nga back taxes.'
+
+  - slug: 'update-or-cancel-a-tax-declaration'
+    name: 'I-update o kanselahon ang tax declaration'
+    description: 'Re-assessment, pagkansela human sa pagguba o hingpit nga kadaot, o annotation sa baligya, mortgage, o ubang encumbrance. Libre, gawas sa annotation nga ₱20 matag entry.'
+
+  - slug: 'request-property-records-from-the-assessor'
+    name: 'Pangayo og rekord sa propiedad gikan sa Assessor'
+    description: 'Certified copy sa tax declaration, certificate of land holdings o no improvement, kasaysayan sa propiedad, ug lot o vicinity map. Bayad gikan ₱20 hangtod ₱55.'
+
+  - slug: 'pay-real-property-tax'
+    name: 'Bayri ang real property tax'
+    description: 'Para sa mga tag-iya og propiedad ug bisan kinsa nga adunay legal nga interes sa propiedad. Dad-a ang inyong pinakabag-ong tax declaration ug resibo sa RPT. Bayran matag quarter. Lunes–Biyernes, 8:00am–5:00pm, gawas sa holiday.'
+
+  - slug: 'get-a-real-property-tax-clearance-or-certification'
+    name: 'Pagkuha og real property tax clearance o sertipikasyon'
+    description: 'Tax clearance sa ₱20 matag propiedad ug ₱30 nga documentary stamp matag panid, sulod sa mga 21 ka minuto. Anaa usab ang ubang sertipikasyon sa City Treasurer. Lunes–Biyernes, 8:00am–5:00pm, gawas sa holiday.'

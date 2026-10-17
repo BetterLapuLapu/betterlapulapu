@@ -12,6 +12,7 @@ import {
   useMemo,
 } from 'react';
 import { Table, List } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { type TypographyTheme } from './typographyThemes';
 
 type ElementProps = {
@@ -75,6 +76,7 @@ export const TableWithToggle = ({
   children: ReactNode;
   theme: TypographyTheme;
 } & HTMLAttributes<HTMLTableElement>) => {
+  const { t } = useTranslation();
   const [viewMode, setViewMode] = useState<'table' | 'list'>('list');
 
   // Extract table data for list view
@@ -106,7 +108,7 @@ export const TableWithToggle = ({
           }`}
         >
           <Table size={16} />
-          Table
+          {t('common.table')}
         </button>
         <button
           onClick={() => setViewMode('list')}
@@ -117,7 +119,7 @@ export const TableWithToggle = ({
           }`}
         >
           <List size={16} />
-          List
+          {t('common.list')}
         </button>
       </div>
 

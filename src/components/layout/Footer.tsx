@@ -1,6 +1,7 @@
 import React from 'react';
 import { Facebook, Twitter, Instagram, Youtube } from 'lucide-react';
-import { footerNavigation } from '../../data/navigation';
+import { getFooterNavigation, socialLinks } from '../../data/navigation';
+import { useLocalizedCategories } from '../../hooks/useLocalizedCategories';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
@@ -9,6 +10,8 @@ const SHOW_SOCIAL_LINKS = false;
 
 const Footer: React.FC = () => {
   const { t } = useTranslation('common');
+  const { serviceCategories } = useLocalizedCategories();
+  const footerNavigation = getFooterNavigation(t, serviceCategories);
 
   const getSocialIcon = (label: string) => {
     switch (label) {
@@ -33,22 +36,21 @@ const Footer: React.FC = () => {
             <div className="flex items-center mb-4">
               <img
                 src="/logo-white.svg"
-                alt="Lapu-Lapu City logo"
+                alt={t('common.logoAlt')}
                 className="h-12 w-auto mr-3"
               />
 
               <div>
                 <div className="font-bold">{t('site_name')}</div>
-                <div className="text-xs text-gray-400">BetterGov.ph Portal</div>
+                <div className="text-xs text-gray-400">
+                  {t('footer.portalLabel')}
+                </div>
               </div>
             </div>
-            <p className="text-gray-400 text-sm mb-4">
-              A community portal providing Philippine citizens, businesses, and
-              visitors with information and services.
-            </p>
+            <p className="text-gray-400 text-sm mb-4">{t('footer.tagline')}</p>
             {SHOW_SOCIAL_LINKS && (
               <div className="flex space-x-4">
-                {footerNavigation.socialLinks.map(link => (
+                {socialLinks.map(link => (
                   <Link
                     key={link.label}
                     to={link.href}
@@ -68,7 +70,7 @@ const Footer: React.FC = () => {
               <h3 className="text-lg font-semibold mb-4">{section.title}</h3>
               <ul className="space-y-2">
                 {section.links.map(link => (
-                  <li key={link.label}>
+                  <li key={link.href + link.label}>
                     <Link
                       to={link.href}
                       className="text-gray-400 hover:text-white text-sm transition-colors"
@@ -104,19 +106,19 @@ const Footer: React.FC = () => {
                 to="https://github.com/BetterLapuLapu/betterlapulapu"
                 className="text-gray-400 hover:text-white text-sm transition-colors"
               >
-                Contribute at GitHub
+                {t('footer.contribute')}
               </Link>
               <Link
                 to="/sitemap"
                 className="text-gray-400 hover:text-white text-sm transition-colors"
               >
-                Sitemap
+                {t('common.sitemap')}
               </Link>
               <a
                 href="/accessibility"
                 className="text-gray-400 hover:text-white text-sm transition-colors"
               >
-                Accessibility
+                {t('common.accessibility')}
               </a>
             </div>
           </div>

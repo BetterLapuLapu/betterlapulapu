@@ -1,0 +1,124 @@
+{
+  "site_name": "Portal sa Lapu Lapu City",
+  "site_title": "Better Lapu Lapu",
+  "site_description": "Usa ka portal nga gipadagan sa komunidad para sa Lapu Lapu City",
+  "common": {
+    "home": "Home",
+    "search": "Pangita",
+    "sitemap": "Mapa sa Site",
+    "accessibility": "Kasayon sa Paggamit",
+    "language": "Pinulongan",
+    "skipToContent": "Laktaw ngadto sa panguna nga sulod",
+    "logoAlt": "Logo sa Lapu-Lapu City",
+    "breadcrumb": "Agianan sa panid",
+    "loading": "Nagkarga…",
+    "table": "Talaan",
+    "list": "Lista",
+    "categoryNotFound": "Wala makit-i ang kategoriya",
+    "categoryNotFoundDescription": "Ang kategoriya nga imong gipangita wala maglungtad."
+  },
+  "nav": {
+    "services": "Mga Serbisyo",
+    "government": "Gobyerno",
+    "joinUs": "Apil Kanamo",
+    "aboutBetterGov": "Mahitungod sa BetterGov",
+    "officialGovPh": "Opisyal nga Gov.ph",
+    "hotlines": "Mga Hotline",
+    "about": "Mahitungod",
+    "openMenu": "Ablihi ang menu"
+  },
+  "hero": {
+    "welcome": "Maayong pag-abot sa",
+    "subtitle": "Usa ka portal nga gipadagan sa komunidad aron makit-an ang impormasyon sa Gobyerno sa Lapu Lapu City",
+    "searchLabel": "Pangita",
+    "searchPlaceholder": "pananglitan: business permit, birth certificate"
+  },
+  "services": {
+    "title": "Mga Serbisyo ug Impormasyon",
+    "description": "Dali ug sayon nga ma-access ang opisyal nga mga serbisyo sa gobyerno. Pangitaa ang imong kinahanglan para sa pagkalungsuranon, negosyo, edukasyon, ug uban pa.",
+    "seoTitle": "Mga Serbisyo",
+    "allTitle": "Tanang serbisyo sa lokal nga gobyerno",
+    "allDescription": "Tanang serbisyo nga gihatag sa gobyerno sa {{governmentName}}. Pangitaa ang imong kinahanglan para sa pagkalungsuranon, negosyo, edukasyon, ug uban pa."
+  },
+  "government": {
+    "seoTitle": "Gobyerno",
+    "allTitle": "Lokal nga gobyerno",
+    "allDescription": "Mga departamento, opisina, report ug mga dokumento sa transparency sa gobyerno sa {{governmentName}}."
+  },
+  "governmentActivity": {
+    "title": "Kalihokan sa Gobyerno",
+    "description": "Pabiling updated sa pinakabag-ong mga kalihokan ug pahibalo sa gobyerno."
+  },
+  "footer": {
+    "copyright": "© {{year}} BetterLapuLapu. Ang tanang sulod public domain gawas kung adunay laing gipahayag.",
+    "portalLabel": "Portal sa BetterGov.ph",
+    "tagline": "Usa ka portal sa komunidad nga naghatag og impormasyon ug serbisyo sa mga Pilipino, negosyo, ug bisita.",
+    "contribute": "Motabang sa GitHub",
+    "sections": {
+      "about": "Mahitungod",
+      "services": "Mga Serbisyo",
+      "government": "Gobyerno"
+    },
+    "links": {
+      "aboutPortal": "Mahitungod sa Portal",
+      "contactUs": "Kontaka Kami",
+      "discord": "Discord sa Komunidad",
+      "allServices": "Tanang Serbisyo",
+      "holidays": "Mga Holiday",
+      "reports": "Mga Report ug Estadistika",
+      "openData": "Open Data",
+      "foi": "Freedom of Information",
+      "contactCenter": "Contact Center",
+      "officialGazette": "Official Gazette"
+    }
+  },
+  "document": {
+    "noneSpecified": "Walay dokumento nga gipiho",
+    "loadFailed": "Napakyas ang pagkarga sa dokumento",
+    "notFound": "Wala Makit-i ang Dokumento",
+    "seoDescription": "Impormasyon bahin sa serbisyo sa gobyerno para sa {{slug}}"
+  },
+  "search": {
+    "seoDescription": "Pangitaa ang mga serbisyo, opisina ug impormasyon gikan sa gobyerno sa {{governmentName}}.",
+    "intro": "Pangitaa ang mga serbisyo, opisina ug impormasyon sa gobyerno.",
+    "inputLabel": "Pangita sa site",
+    "placeholder": "pananglitan: business permit, birth certificate, pagkolekta sa basura",
+    "unavailable": "Dili magamit ang pagpangita karon. Palihug sulayi pag-usab unya.",
+    "noResults": "Walay resulta para sa “{{query}}”."
+  },
+  "sitemap": {
+    "seoDescription": "Ang matag panid sa serbisyo ug gobyerno sa portal sa {{governmentName}}.",
+    "intro": "Ang matag panid sa serbisyo ug gobyerno niining site.",
+    "machineReadable": "Para sa mga search engine ug AI tool:"
+  },
+  "seo": {
+    "defaultTitle": "Portal sa Komunidad sa {{governmentName}}",
+    "defaultDescription": "Ang {{siteName}} usa ka portal nga gipadagan sa komunidad para sa {{governmentName}}. Pangitaa dinhi ang mga serbisyo sa siyudad, mga opisina sa gobyerno, mga opisyal, ug mga publikong report.",
+    "homeDescription": "Ang BetterLapuLapu usa ka portal nga gipadagan sa komunidad para sa Lapu-Lapu City, Cebu. Pangitaa dinhi ang mga serbisyo sa siyudad, mga opisina sa gobyerno, mga opisyal, ug mga publikong report."
+  },
+  "accessibility": {
+    "seoDescription": "Giunsa paglihok sa portal sa {{governmentName}} para sa mga tawo nga adunay kapansanan, ug unsaon pag-report og problema.",
+    "intro": "Kini nga portal angay magamit sa tanan, lakip ang mga tawo nga naggamit og screen reader, keyboard navigation, magnification o uban pang assistive technology.",
+    "standardTitle": "Among sukdanan",
+    "standard": "Gitinguha namo nga maabot ang <wcag>Web Content Accessibility Guidelines (WCAG) 2.1</wcag> sa level AA. Gihimo pa ang site, busa ang ubang panid basin dili pa makaabot niini. Among ayohon ang mga problema samtang among makit-an.",
+    "practicesTitle": "Unsay among gihimo",
+    "practices": [
+      "Ang link nga “Laktaw ngadto sa panguna nga sulod” mao ang unang maabot nimo gamit ang Tab key.",
+      "Ang mga panid naggamit og mga heading, lista ug landmark aron makalihok niini ang mga screen reader.",
+      "Ang mga hulagway nga adunay kahulogan adunay alternatibong teksto.",
+      "Ang mga menu, link ug search box magamit pinaagi sa keyboard. Pindota ang Escape aron sirad-an ang menu.",
+      "Mapadako ang teksto hangtod 200% gamit ang zoom sa imong browser nga walay sulod nga mawala.",
+      "Ang mga panid nagpahayag sa ilang pinulongan aron husto ang paglitok sa mga screen reader."
+    ],
+    "plainTextTitle": "Mga bersyon nga plain text",
+    "plainText": "Ang matag panid sa serbisyo ug gobyerno anaa usab isip plain Markdown text. Idugang ang <code>.md</code> sa katapusan sa address sa panid aron maablihan kini. Ang <sitemap>mapa sa site</sitemap> naglista sa matag panid sa usa ka screen, ug ang <llms>llms-full.txt</llms> naghupot sa tibuok teksto sa site sa usa ka file.",
+    "limitationsTitle": "Nahibal-an nga mga limitasyon",
+    "limitations": [
+      "Ang mga chart sa dashboard sa Mga Report ug Estadistika lisod sundon gamit ang screen reader. Ang mga numero gikan sa mga report sa Full Disclosure Policy sa siyudad, nga naka-link sa matag seksyon.",
+      "Ang ubang source document nga gipatik sa siyudad mga na-scan nga PDF nga walay text layer. Among gi-link kini sama sa pagkapatik ug dili namo kini mausab.",
+      "Ang interface anaa sa Cebuano ug English. Ang sulod sa mga panid naa pa sa English samtang gihubad pa kini."
+    ],
+    "reportTitle": "I-report ang problema",
+    "report": "Kung naay butang niining site nga lisod gamiton, o kinahanglan nimo ang impormasyon sa laing format, sultihi kami. Ilakip ang address sa panid ug unsay sayop. Mahimo kang <issue>mag-abli og issue sa GitHub</issue>."
+  }
+}

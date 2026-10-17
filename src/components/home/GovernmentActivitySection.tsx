@@ -5,8 +5,7 @@ import { Text } from '../ui/Text';
 import { useTranslation } from '../../hooks/useTranslation';
 import { Card, CardContent } from '@bettergov/kapwa/card';
 import { Link } from 'react-router-dom';
-
-import { governmentCategories } from '../../data/yamlLoader';
+import { useLocalizedCategories } from '../../hooks/useLocalizedCategories';
 
 interface Subcategory {
   name: string;
@@ -31,6 +30,7 @@ export default function GovernmentActivitySection({
   description,
 }: GovernmentActivitySectionProps = {}) {
   const { t } = useTranslation();
+  const { governmentCategories } = useLocalizedCategories();
 
   const getIcon = (category: string) => {
     const IconComponent = LucideIcons[

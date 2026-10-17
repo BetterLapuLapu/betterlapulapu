@@ -12,6 +12,7 @@ import Sitemap from './pages/Sitemap';
 import Accessibility from './pages/Accessibility';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
+import { useTranslation } from 'react-i18next';
 
 // Charts (Recharts) load only when the reports dashboard is opened.
 const Reports = lazy(() => import('./pages/reports/Reports'));
@@ -22,6 +23,8 @@ const reports = (
 );
 
 function App() {
+  const { t } = useTranslation();
+
   return (
     <HelmetProvider>
       <Router>
@@ -31,7 +34,7 @@ function App() {
               href="#main"
               className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-60 focus:rounded-md focus:bg-white focus:px-4 focus:py-2 focus:font-medium focus:text-primary-700 focus:shadow-lg focus:ring-2 focus:ring-primary-600"
             >
-              Skip to main content
+              {t('common.skipToContent')}
             </a>
             <Navbar />
             <ScrollToTop />

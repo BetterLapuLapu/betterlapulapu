@@ -1,0 +1,67 @@
+# Cebuano overlay for index.yaml. Entries are matched by slug; omitted
+# fields fall back to English.
+
+pages:
+  - slug: 'apply-for-a-business-permit-in-lapu-lapu-city'
+    name: 'Unsaon Pag-apply og Business Permit sa Lapu-Lapu City'
+    description: 'Para sa mga proprietor, korporasyon, partnership, kooperatiba ug asosasyon. Pag-apply sa Business One-Stop-Shop o online. Kinahanglan ang rehistro sa DTI/SEC/CDA, CTC, Sanitary Permit ug FSIC. Ang bayad sumala sa Schedule of Taxes and Fees. Lunes–Biyernes, 8:00am–5:00pm.'
+
+  - slug: 'apply-for-business-partnership-in-lapu-lapu-city'
+    name: 'Unsaon Pagtukod og Business Partnership sa Lapu-Lapu City'
+    description: 'Kompletong giya sa pagparehistro og business partnership sa Lapu-Lapu City.'
+
+  - slug: 'renew-permits-and-pay-local-business-taxes'
+    name: 'Mag-renew og permit ug bayri ang lokal nga business tax'
+    description: 'Bayri ang business tax, ubang lokal nga buhis, bayronon ug charges sa City Treasurer''s Office. Mga due date matag quarter: Enero 20, Abril 20, Hulyo 20 ug Oktubre 20. Lunes–Biyernes, 8:00am–5:00pm.'
+
+  - slug: 'close-or-retire-your-business'
+    name: 'Isira o i-retire ang inyong negosyo'
+    description: 'Pagkuha og Certificate of Closure gikan sa City Treasurer''s Office. Kinahanglan ang sulat, pinakabag-ong BIR returns o affidavit of no operation, ug location sketch. ₱50 nga bayad ug ₱30 nga documentary stamp. Mga 3 ka adlaw. Lunes–Biyernes, 8:00am–5:00pm.'
+
+  - slug: 'get-a-delivery-permit'
+    name: 'Pagkuha og delivery permit'
+    description: 'Para sa mga negosyo nga adunay trucking o delivery service. Kinahanglan ang booking form ug rehistro ug official receipt sa matag sakyanan. Pag-apply sa City Mayor''s Office labing menos 3 ka working days nga abante. 3 ka adlaw.'
+
+  - slug: 'get-a-permit-for-banners-streamers-or-signage'
+    name: 'Pagkuha og permit para sa banner, streamer o signage'
+    description: 'Para sa mga negosyo nga magbutang og temporaryong banner (7 ka adlaw) o permanenteng directional sign (15 ka adlaw). Kinahanglan ang request letter, layout ug endorsement sa mga opisina. Apil ang ₱50 nga CENRO certification para sa refund sa cash bond sa tarpaulin.'
+
+  - slug: 'get-a-tricycle-franchise-mtop'
+    name: 'Pagkuha o pag-renew og prangkisa sa tricycle (MTOP)'
+    description: 'Bag-ong MTOP (Olango Island), renewal, pagbalhin sa tag-iya o pag-ilis sa motorsiklo sa City Attorney''s Office. Ang bayad naglakip sa ₱50 Mayor''s permit, ₱40 supervision, ₱60 franchise ug ₱450 filing (unang 5 ka unit). Mga 1 ka adlaw. Lunes–Biyernes, 8:00am–5:00pm.'
+
+  - slug: 'sell-to-the-city-government'
+    name: 'Pagbaligya ngadto sa gobyerno sa siyudad'
+    description: 'Para sa mga supplier, contractor ug creditor. Pagkuha og bidding document ug purchase order sa CGSO, ug pagproseso sa bayad ug BIR Form 2307 sa City Accountant''s Office. Lunes–Biyernes, 8:00am–5:00pm.'
+
+  - slug: 'rent-stalls-in-public-markets'
+    name: 'Pag-abang og stall sa public market'
+    description: 'Para sa mga nag-abang og stall ug mga tindero. Bayri ang abang sa stall ug kuryente, pagkuha og market clearance (₱150), o pagpalit og cash ticket para sa dugang espasyo ug mga produkto nga gidala para ibaligya.'
+
+  - slug: 'join-trade-fairs-business-expos-or-tourism-promotions'
+    name: 'Apil sa trade fair, business expo, o promosyon sa turismo'
+    description: 'Apil sa mga lokal nga trade fair, business expo, ug mga kalihokan sa promosyon sa turismo.'
+
+  - slug: 'find-a-job-through-peso'
+    name: 'Pangita og trabaho pinaagi sa PESO'
+    description: 'Libreng job referral para sa lokal ug abroad nga trabaho. Dad-a ang inyong resume ug pun-a ang NSRP Form 1 sa Public Employment Service Office. Ang mga eskwelahan mahimo usab nga mangayo og career guidance session.'
+
+  - slug: 'hire-workers-or-join-a-job-fair-as-an-employer'
+    name: 'Pagkuha og mamumuo o apil sa job fair isip employer'
+    description: 'Para sa mga kompanya. Pagkuha og PESO accreditation (mga 1 ka adlaw) para makapaskin og bakante, o apil sa PESO job fair (mga 6 ka adlaw, kung adunay slot). Kinahanglan ang bag-ong business permit, BIR 2303, SEC registration ug NSRP Form 2. Libre.'
+
+  - slug: 'apply-for-the-summer-job-program'
+    name: 'Pag-apply sa Summer Job Program'
+    description: 'Bayad nga 3 ka adlaw nga trabaho para sa mga pobre apan takos nga estudyante ug out-of-school youth nga nag-edad 15 hangtod 25. Pagparehistro sa inyong barangay ug isumite ang NSRP Form 1, birth certificate, grado ug Certificate of Indigency. Libre.'
+
+  - slug: 'apply-for-the-government-internship-program'
+    name: 'Pag-apply sa Government Internship Program'
+    description: 'Para sa mga nag-edad 18 hangtod 30 nga walay work experience ug nakahuman labing menos sa high school. Isumite ang GIP form, birth certificate, pamatuod sa pag-eskwela ug Certificate of Indigency sa PESO. Libre. Mga 5 ka adlaw.'
+
+  - slug: 'get-an-occupational-permit-for-employment'
+    name: 'Pagkuha og occupational permit para sa trabaho'
+    description: 'Mayor''s Permit for Employment gikan sa Office of the City Administrator. Kinahanglan ang Police o NBI Clearance, City Health Card ug 2x2 nga litrato. ₱100 (tour guide ₱600; libre para sa first-time jobseeker). 1 ka oras.'
+
+  - slug: 'get-certifications-for-employment-or-work-abroad'
+    name: 'Pagkuha og sertipikasyon para sa trabaho o pagtrabaho sa abroad'
+    description: 'Certificate of Unemployment, Good Moral ug DFA Apostille nga sertipikasyon gikan sa City Mayor''s Office (3 ka adlaw), ug ang ₱80 nga Mayor''s Clearance para sa mga aplikante sa AFP, BFP, PNP, BJMP ug PCG (1 ka oras).'

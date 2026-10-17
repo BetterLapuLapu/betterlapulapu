@@ -1,0 +1,35 @@
+# Cebuano overlay for index.yaml. Entries are matched by slug; omitted
+# fields fall back to English.
+
+pages:
+  - slug: 'ask-for-free-seeds-seedlings-fertilizers-or-fingerlings'
+    name: 'Pangayo og libreng liso para sa garden sa balay'
+    description: 'Libreng pakete sa liso gikan sa CENRO para sa mga residente, tag-iya og lote, ug mga grupo publiko o pribado, para sa personal o pang-edukasyon nga gamit. Walay requirements. Lunes–Biyernes, 8:00am–5:00pm.'
+
+  - slug: 'have-livestock-slaughtered-and-meat-inspected'
+    name: 'Ipaihaw ang mga hayop ug ipa-inspeksyon ang karne'
+    description: 'Para sa mga supplier ug negosyante sa karne. Ante-mortem ug post-mortem nga inspeksyon sa ihawan sa siyudad, ug post-abattoir nga inspeksyon sa karne gikan sa ubang ihawan. Bayad matag ulo o matag kilo. Bukas adlaw-adlaw, apil ang holiday, sa tulo ka shift.'
+
+  - slug: 'register-your-dog-or-cat'
+    name: 'Iparehistro ang inyong iro o iring'
+    description: 'Para sa tanang tag-iya og iro ug iring sa siyudad. Kinahanglan ang napuno nga form. Libre ang usa ka higayon nga rehistro (₱100 para sa pag-isyu pag-usab sa Green Card). Walk-in o home service, Lunes–Biyernes, 8:00am–5:00pm (gawas sa holiday).'
+
+  - slug: 'get-your-dog-or-cat-vaccinated-against-rabies'
+    name: 'Pabakunahi ang inyong iro o iring batok sa rabies'
+    description: 'Libreng bakuna batok sa rabies para sa rehistradong iro ug iring nga 3 ka bulan pataas. Kinahanglan ang Green Card. Walk-in o home service, Lunes–Biyernes, 8:00am–5:00pm (gawas sa holiday).'
+
+  - slug: 'surrender-or-adopt-a-pet'
+    name: 'I-surrender o mag-adopt og binuhi'
+    description: 'I-surrender ang binuhi nga dili na ninyo maatiman (₱1,000) o mag-adopt og wala gikuha nga na-impound nga binuhi (₱250 matag binuhi, 1 ka valid ID). City Veterinary Office, Lunes–Biyernes, 8:00am–5:00pm (gawas sa holiday).'
+
+  - slug: 'report-stray-dogs-and-cats-for-impounding'
+    name: 'Ireport ang mga istray nga iro ug iring para ma-impound'
+    description: 'Para sa mga residente. Hangyoa ang City Veterinary Office nga i-impound ang mga istray o dili gusto nga iro ug iring; ang operasyon iskedyul sulod sa 20 ka working days. Ang mga tag-iya nga mokuha sa na-impound nga binuhi mobayad og ₱500–₱2,000 matag binuhi. Lunes–Biyernes, 8:00am–5:00pm.'
+
+  - slug: 'get-a-fishing-permit-and-register-your-boat'
+    name: 'Pagkuha og fishing permit ug iparehistro ang inyong sakayan'
+    description: 'Fishing permit (₱20/tuig para sa lokal nga mangingisda), rehistro sa sakayan, ug permit to operate (₱150–₱250 depende sa tonnage) gikan sa CENRO. Kinahanglan ang barangay certificate ug detalye sa sakayan. 3 ka adlaw. Lunes–Biyernes, 8:00am–5:00pm.'
+
+  - slug: 'get-an-auxiliary-invoice-to-ship-fish-products'
+    name: 'Pagkuha og auxiliary invoice para sa pagpadala og produkto sa isda'
+    description: 'Para sa bisan kinsa nga magpadala og isda ug produkto sa pangisda. Walay requirements. ₱50 matag kahon. CENRO, Lunes–Biyernes 8:00am–5:00pm, Sabado–Domingo 5:00am–2:00pm.'

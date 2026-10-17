@@ -9,6 +9,7 @@ import { Input } from '@bettergov/kapwa/input';
 import { Search as SearchIcon } from 'lucide-react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface PagefindResultData {
   url: string;
@@ -42,11 +43,12 @@ function loadPagefind(): Promise<Pagefind> {
 }
 
 export default function Search() {
+  const { t } = useTranslation();
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('q') ?? '';
   const [results, setResults] = useState<PagefindResultData[]>([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     const term = query.trim();
@@ -69,13 +71,13 @@ export default function Search() {
         );
         if (cancelled) return;
         setResults(data);
-        setError(null);
+        setError(false);
         setLoading(false);
       })
       .catch(err => {
         if (cancelled) return;
         console.error('Search failed', err);
-        setError('Search is unavailable right now. Please try again later.');
+        setError(true);
         setLoading(false);
       });
 
@@ -91,15 +93,15 @@ export default function Search() {
   return (
     <>
       <SEO
-        title="Search"
-        description={`Search services, offices and information from the ${import.meta.env.VITE_GOVERNMENT_NAME} government.`}
+        title={t('common.search')}
+        description={t('search.seoDescription', {
+          governmentName: import.meta.env.VITE_GOVERNMENT_NAME,
+        })}
       />
       <Section className="p-3 mb-12">
         <Breadcrumbs className="mb-8" />
-        <Heading>Search</Heading>
-        <Text className="text-gray-600 mb-6">
-          Find services, offices and government information.
-        </Text>
+        <Heading>{t('common.search')}</Heading>
+        <Text className="text-gray-600 mb-6">{t('search.intro')}</Text>
 
         <form
           role="search"
@@ -109,8 +111,8 @@ export default function Search() {
           <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400 pointer-events-none" />
           <Input
             type="search"
-            aria-label="Search the site"
-            placeholder="e.g. business permit, birth certificate, garbage collection"
+            aria-label={t('search.inputLabel')}
+            placeholder={t('search.placeholder')}
             className="pl-10"
             value={query}
             onChange={e => handleChange(e.target.value)}
@@ -118,11 +120,13 @@ export default function Search() {
           />
         </form>
 
-        {error && <Banner type="error" description={error} icon />}
+        {error && (
+          <Banner type="error" description={t('search.unavailable')} icon />
+        )}
 
         {!error && query.trim() && !loading && results.length === 0 && (
           <Text className="text-gray-600">
-            No results for &ldquo;{query.trim()}&rdquo;.
+            {t('search.noResults', { query: query.trim() })}
           </Text>
         )}
 

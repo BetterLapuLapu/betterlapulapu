@@ -3,7 +3,6 @@ import { useParams, Link } from 'react-router-dom';
 import { Heading } from '../components/ui/Heading';
 import { Text } from '../components/ui/Text';
 import {
-  governmentCategories,
   getCategorySubcategories,
   type Subcategory,
   type CategoryIndex,
@@ -15,9 +14,14 @@ import SEO from '../components/SEO';
 import { Card, CardContent } from '@bettergov/kapwa/card';
 import { Banner } from '@bettergov/kapwa/banner';
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useLocalizedCategories } from '../hooks/useLocalizedCategories';
 
 const Government: React.FC = () => {
   const { category } = useParams();
+  const { t } = useTranslation();
+  const { lang, governmentCategories } = useLocalizedCategories();
+  const governmentName = import.meta.env.VITE_GOVERNMENT_NAME;
   const [categoryIndex, setCategoryIndex] = useState<CategoryIndex>({
     layout: 'list',
     pages: [],
@@ -37,24 +41,24 @@ const Government: React.FC = () => {
   useEffect(() => {
     if (category && categoryData) {
       setLoading(true);
-      getCategorySubcategories(category)
+      getCategorySubcategories(category, lang)
         .then(setCategoryIndex)
         .catch(console.error)
         .finally(() => setLoading(false));
     }
-  }, [category, categoryData]);
+  }, [category, categoryData, lang]);
 
   if (!category) {
     return (
       <>
         <SEO
-          title="Services"
-          description={`All services provided by the ${import.meta.env.VITE_GOVERNMENT_NAME} government. Find what you need for citizenship, business, education, and more.`}
+          title={t('government.seoTitle')}
+          description={t('government.allDescription', { governmentName })}
           keywords="government services, public services, local government, civic services"
         />
         <GovernmentActivitySection
-          title={`All local government services`}
-          description={`All services provided by the ${import.meta.env.VITE_GOVERNMENT_NAME} government. Find what you need for citizenship, business, education, and more.`}
+          title={t('government.allTitle')}
+          description={t('government.allDescription', { governmentName })}
         />
       </>
     );
@@ -65,8 +69,8 @@ const Government: React.FC = () => {
         <Breadcrumbs className="mb-8" />
         <Banner
           type="error"
-          title="Category not found"
-          description="The category you are looking for does not exist."
+          title={t('common.categoryNotFound')}
+          description={t('common.categoryNotFoundDescription')}
           icon
         />
       </Section>
@@ -88,7 +92,7 @@ const Government: React.FC = () => {
 
         {loading ? (
           <div className="flex justify-center items-center p-8">
-            <Text>Loading services...</Text>
+            <Text>{t('common.loading')}</Text>
           </div>
         ) : (
           <>

@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { ChevronRight, Home } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+import { useLocalizedCategories } from '../../hooks/useLocalizedCategories';
 
 interface BreadcrumbItem {
   label: string;
@@ -14,11 +16,31 @@ interface BreadcrumbsProps {
 
 const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items, className = '' }) => {
   const location = useLocation();
+  const { t } = useTranslation();
+  const { serviceCategories, governmentCategories } = useLocalizedCategories();
+
+  // Translated names for path segments that have one; anything else is
+  // title-cased from the slug.
+  const segmentLabels: Record<string, string> = {
+    services: t('nav.services'),
+    government: t('nav.government'),
+    search: t('common.search'),
+    sitemap: t('common.sitemap'),
+    accessibility: t('common.accessibility'),
+  };
+  for (const category of [
+    ...serviceCategories.categories,
+    ...governmentCategories.categories,
+  ]) {
+    segmentLabels[category.slug] = category.category;
+  }
 
   // Generate breadcrumbs from current path if no items provided
   const generateBreadcrumbs = (): BreadcrumbItem[] => {
     const pathSegments = location.pathname.split('/').filter(Boolean);
-    const breadcrumbs: BreadcrumbItem[] = [{ label: 'Home', href: '/' }];
+    const breadcrumbs: BreadcrumbItem[] = [
+      { label: t('common.home'), href: '/' },
+    ];
 
     let currentPath = '';
     pathSegments.forEach((segment, index) => {
@@ -26,10 +48,12 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items, className = '' }) => {
       const isLast = index === pathSegments.length - 1;
 
       // Convert segment to readable label
-      const label = segment
-        .split('-')
-        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(' ');
+      const label =
+        segmentLabels[segment] ??
+        segment
+          .split('-')
+          .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+          .join(' ');
 
       breadcrumbs.push({
         label,
@@ -45,7 +69,7 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items, className = '' }) => {
   return (
     <nav
       className={`flex items-center space-x-1 text-sm text-gray-600 ${className}`}
-      aria-label="Breadcrumb"
+      aria-label={t('common.breadcrumb')}
     >
       {breadcrumbItems.map((item, index) => (
         <React.Fragment key={index}>
