@@ -22,3 +22,6 @@ export const LANGUAGES: Record<LanguageType, LanguageInfo> = {
 };
 
 export const DEFAULT_LANGUAGE: LanguageType = 'en';
+
+// Languages shown as buttons in the navbar language switcher.
+export const SWITCHER_LANGUAGES: LanguageType[] = ['en', 'ceb'];
