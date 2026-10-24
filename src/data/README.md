@@ -50,6 +50,7 @@ This principle ensures that:
 - category: 'New Category'
   slug: 'new-category'
   description: 'Brief description of what this category covers and what services are available.'
+  summary: 'A few words for the home page.' # Optional; falls back to description
   subcategories:
     - name: 'New Service'
       slug: 'new-service'

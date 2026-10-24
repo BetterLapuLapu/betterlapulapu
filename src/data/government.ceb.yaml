@@ -5,6 +5,7 @@ categories:
   - slug: 'departments'
     category: 'Mga Departamento'
     description: 'Susiha ang mga departamento, ahensya, ug opisina sa lokal nga gobyerno, ilang mga mandato, serbisyo, ug contact details.'
+    summary: 'Mga opisina sa Siyudad, ilang serbisyo ug contact details.'
     subcategories:
       - slug: 'executive'
         name: 'Departamento Ehekutibo'
@@ -20,6 +21,7 @@ categories:
   - slug: 'reports-and-statistics'
     category: 'Mga Report ug Estadistika'
     description: 'Susiha ang budget sa Siyudad, kita ug gasto, procurement, paggamit sa pondo, ug mga empleyado gikan sa mga report sa Full Disclosure Policy.'
+    summary: 'Budget, gasto, procurement ug mga empleyado.'
     subcategories:
       - slug: 'finances'
         name: 'Kita ug Gasto'
@@ -39,6 +41,7 @@ categories:
   - slug: 'transparency-documents'
     category: 'Mga Dokumento sa Transparency'
     description: 'Tan-awa ang mga Freedom of Information release ug mga dokumento sa transparency para sa pagkamay-tulubagon sa lokal nga gobyerno.'
+    summary: 'Mga Freedom of Information release ug dokumento.'
     subcategories:
       - slug: 'transparency-documents'
         name: 'Mga Dokumento sa Transparency'

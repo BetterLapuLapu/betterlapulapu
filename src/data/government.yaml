@@ -6,6 +6,7 @@ categories:
   - category: 'Departments'
     slug: 'departments'
     description: 'Explore local government departments, agencies, and offices with their mandates, services, and contact details.'
+    summary: 'City offices, their services and contact details.'
     icon: 'Building2'
     subcategories:
       - name: 'Executive Department'
@@ -21,6 +22,7 @@ categories:
   - category: 'Reports and Statistics'
     slug: 'reports-and-statistics'
     description: 'Explore the City budget, income and spending, procurement, fund use and workforce from Full Disclosure Policy reports.'
+    summary: 'Budget, spending, procurement and workforce.'
     icon: 'ChartBar'
     subcategories:
       - name: 'Income and Expenditures'
@@ -40,6 +42,7 @@ categories:
   - category: 'Transparency Documents'
     slug: 'transparency-documents'
     description: 'Access Freedom of Information releases and transparency documents for local government accountability.'
+    summary: 'Freedom of Information releases and documents.'
     icon: 'FileText'
     subcategories:
       - name: 'Transparency Documents'
