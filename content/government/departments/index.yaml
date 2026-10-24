@@ -22,6 +22,10 @@ pages:
     slug: 'legislative'
     group: 'executive-legislative'
     description: 'As of the 2025–2028 term, the Sangguniang Panlungsod (City Council) of Lapu-Lapu City has 12 elected councilors, with the Vice Mayor as the presiding officer of the council.'
+  - name: 'Barangays and Barangay Officials'
+    slug: 'barangays'
+    group: 'executive-legislative'
+    description: 'The 30 barangays of Lapu-Lapu City with their punong barangays and SK chairpersons for the 2023–2026 term, plus what barangay officials do.'
 
   # City offices and other units (from the Citizen's Charter)
   - name: 'Office of the City Mayor'
