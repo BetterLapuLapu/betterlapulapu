@@ -89,10 +89,6 @@ export default function Document({
               label: categoryData?.category ?? category,
               href: `${sectionHref}/${category}`,
             },
-            {
-              label: index.title ?? documentSlug,
-              href: `${sectionHref}/${category}/${documentSlug}`,
-            },
           ]);
           return;
         }
@@ -115,10 +111,6 @@ export default function Document({
           {
             label: categoryData?.category ?? category,
             href: `${sectionHref}/${category}`,
-          },
-          {
-            label: content.title ?? documentSlug,
-            href: `${sectionHref}/${category}/${documentSlug}`,
           },
         ]);
       } catch (err) {

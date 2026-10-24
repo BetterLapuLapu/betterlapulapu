@@ -212,11 +212,9 @@ export default function Reports() {
             items={[
               { label: 'Home', href: '/' },
               { label: 'Government', href: '/government' },
-              {
-                label: 'Reports and Statistics',
-                href: section ? REPORTS_PATH : undefined,
-              },
-              ...(section ? [{ label: section.title }] : []),
+              ...(section
+                ? [{ label: 'Reports and Statistics', href: REPORTS_PATH }]
+                : []),
             ]}
           />
           <Heading className="tablet:mb-[30px]">{title}</Heading>
