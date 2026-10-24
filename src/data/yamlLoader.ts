@@ -19,6 +19,8 @@ export interface Category {
   category: string;
   slug: string;
   description: string;
+  // Shorter description for the home page grid; falls back to `description`
+  summary?: string;
   icon: string;
   subcategories?: Subcategory[]; // Keep for backward compatibility
 }
@@ -87,6 +89,7 @@ interface CategoryOverlay {
   slug: string;
   category?: string;
   description?: string;
+  summary?: string;
   subcategories?: { slug: string; name?: string }[];
 }
 
@@ -165,6 +168,7 @@ export function getCategories(
         ...category,
         category: translated.category || category.category,
         description: translated.description || category.description,
+        summary: translated.summary || category.summary,
         subcategories:
           category.subcategories &&
           mergeBySlug(

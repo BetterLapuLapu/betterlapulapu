@@ -8,48 +8,56 @@ categories:
   - category: 'Health Services'
     slug: 'health-services'
     description: 'Where to go for free check-ups, vaccines, and medicines, which hospitals are available, and details on health programs in your area.'
+    summary: 'Check-ups, vaccines, medicines and hospitals.'
     icon: 'Heart'
 
   # Education Services
   - category: 'Education'
     slug: 'education'
     description: 'Where to enroll kids in daycare or preschool, how to apply for scholarships, and what education support your LGU offers.'
+    summary: 'Daycare, preschool and scholarships.'
     icon: 'GraduationCap'
 
   # Business & Livelihood Services
   - category: 'Business and Livelihood'
     slug: 'business'
     description: 'What permits and clearances you need, where to pay taxes or renew permits, and what livelihood or trade opportunities are offered.'
+    summary: 'Permits, clearances, taxes and livelihood.'
     icon: 'Building2'
 
   # Social Welfare Services
   - category: 'Social Welfare'
     slug: 'social-welfare'
     description: 'What assistance is available for seniors, PWDs, solo parents, and indigent families, plus details on relief goods, and livelihood aid.'
+    summary: 'Help for seniors, PWDs, solo parents and families in need.'
     icon: 'Users'
   
   # Agriculture & Fisheries Services
   - category: 'Agriculture & Fisheries'
     slug: 'agriculture-fisheries'
     description: 'What farm or fishing support is available, including seeds, fertilizers, veterinary care, and where to join training or borrow equipment.'
+    summary: 'Farm and fishing support, training and equipment.'
     icon: 'Wheat'
   
   # Infrastructure & Public Works Services
   - category: 'Infrastructure & Public Works'
     slug: 'infrastructure-public-works'
     description: 'How to report damaged roads or drainage, where to request water supply, and how to access public facilities and markets.'
+    summary: 'Roads, drainage, water supply and public facilities.'
     icon: 'Wrench'
   
   # Garbage and Waste Disposal Services
   - category: 'Garbage and Waste Disposal'
     slug: 'garbage-waste-disposal'
     description: 'Garbage collection schedules, waste disposal guidelines, and how to properly dispose of different types of waste.'
+    summary: 'Collection schedules and how to dispose of waste.'
     icon: 'Trash2'
   
   # Environment Services
   - category: 'Environment'
     slug: 'environment'
     description: 'Clean-up or tree planting activities, environmental protection rules, and conservation programs.'
+    summary: 'Clean-ups, tree planting and conservation.'
     icon: 'TreePine'
   
   # Disaster Preparedness Services
@@ -65,5 +73,6 @@ categories:
   - category: 'Housing & Land Use'
     slug: 'housing-land-use'
     description: 'How to apply for housing projects, what zoning and building permits are needed, and where relocation sites are available.'
+    summary: 'Housing projects, zoning and building permits.'
     icon: 'Home'
   

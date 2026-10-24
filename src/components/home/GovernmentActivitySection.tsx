@@ -27,7 +27,7 @@ export default function GovernmentActivitySection() {
           key: category.slug,
           title: category.category,
           href: `/government/${category.slug}`,
-          description: category.description,
+          description: category.summary ?? category.description,
         }))}
       />
     </Section>

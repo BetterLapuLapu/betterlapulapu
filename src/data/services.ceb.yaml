@@ -5,35 +5,44 @@ categories:
   - slug: 'health-services'
     category: 'Serbisyo sa Panglawas'
     description: 'Asa moadto para sa libreng check-up, bakuna, ug tambal, unsang mga ospital ang anaa, ug mga detalye sa mga programa sa panglawas sa inyong lugar.'
+    summary: 'Check-up, bakuna, tambal ug mga ospital.'
 
   - slug: 'education'
     category: 'Edukasyon'
     description: 'Asa i-enroll ang mga bata sa daycare o preschool, unsaon pag-apply og scholarship, ug unsang suporta sa edukasyon ang gihatag sa inyong LGU.'
+    summary: 'Daycare, preschool ug scholarship.'
 
   - slug: 'business'
     category: 'Negosyo ug Panginabuhian'
     description: 'Unsang mga permit ug clearance ang inyong kinahanglan, asa mobayad og buhis o mo-renew og permit, ug unsang mga oportunidad sa panginabuhian o pamatigayon ang gitanyag.'
+    summary: 'Permit, clearance, buhis ug panginabuhian.'
 
   - slug: 'social-welfare'
     category: 'Kaayohang Sosyal'
     description: 'Unsang tabang ang anaa para sa mga senior citizen, PWD, solo parent, ug mga pobreng pamilya, apil ang mga detalye sa relief goods ug tabang sa panginabuhian.'
+    summary: 'Tabang para sa mga senior citizen, PWD, solo parent ug pobreng pamilya.'
 
   - slug: 'agriculture-fisheries'
     category: 'Agrikultura ug Pangisda'
     description: 'Unsang suporta sa pag-uma o pangisda ang anaa, sama sa mga liso, abono, pag-atiman sa mga hayop, ug asa moapil sa training o manghulam og kagamitan.'
+    summary: 'Suporta sa pag-uma ug pangisda, training ug kagamitan.'
 
   - slug: 'infrastructure-public-works'
     category: 'Imprastraktura ug Public Works'
     description: 'Unsaon pagreport sa naguba nga dalan o kanal, asa mangayo og suplay sa tubig, ug unsaon paggamit sa mga pasilidad publiko ug merkado.'
+    summary: 'Dalan, kanal, suplay sa tubig ug mga pasilidad publiko.'
 
   - slug: 'garbage-waste-disposal'
     category: 'Basura ug Paglabay sa Basura'
     description: 'Mga iskedyul sa pagkolekta sa basura, mga lagda sa paglabay sa basura, ug unsaon husto nga paglabay sa lain-laing klase sa basura.'
+    summary: 'Iskedyul sa pagkolekta ug unsaon paglabay sa basura.'
 
   - slug: 'environment'
     category: 'Kinaiyahan'
     description: 'Mga kalihokan sa paglimpyo o pagtanom og kahoy, mga lagda sa pagpanalipod sa kinaiyahan, ug mga programa sa konserbasyon.'
+    summary: 'Paglimpyo, pagtanom og kahoy ug konserbasyon.'
 
   - slug: 'housing-land-use'
     category: 'Pabalay ug Paggamit sa Yuta'
     description: 'Unsaon pag-apply sa mga proyekto sa pabalay, unsang mga zoning ug building permit ang gikinahanglan, ug asa ang mga relocation site.'
+    summary: 'Proyekto sa pabalay, zoning ug building permit.'

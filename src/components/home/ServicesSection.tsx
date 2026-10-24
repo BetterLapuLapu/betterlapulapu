@@ -24,7 +24,7 @@ export default function ServicesSection() {
           key: category.slug,
           title: category.category,
           href: `/services/${category.slug}`,
-          description: category.description,
+          description: category.summary ?? category.description,
         }))}
       />
     </Section>

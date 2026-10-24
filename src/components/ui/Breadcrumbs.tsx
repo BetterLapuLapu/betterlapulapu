@@ -36,7 +36,8 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items, className = '' }) => {
     segmentLabels[category.slug] = category.category;
   }
 
-  // Generate breadcrumbs from current path if no items provided
+  // Generate breadcrumbs from the current path if no items are provided. The
+  // current page itself is left out, since its heading already names it.
   const generateBreadcrumbs = (): BreadcrumbItem[] => {
     const pathSegments = location.pathname.split('/').filter(Boolean);
     const breadcrumbs: BreadcrumbItem[] = [
@@ -44,9 +45,8 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items, className = '' }) => {
     ];
 
     let currentPath = '';
-    pathSegments.forEach((segment, index) => {
+    pathSegments.slice(0, -1).forEach(segment => {
       currentPath += `/${segment}`;
-      const isLast = index === pathSegments.length - 1;
 
       // Convert segment to readable label
       const label =
@@ -56,10 +56,7 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items, className = '' }) => {
           .map(word => word.charAt(0).toUpperCase() + word.slice(1))
           .join(' ');
 
-      breadcrumbs.push({
-        label,
-        href: isLast ? undefined : currentPath,
-      });
+      breadcrumbs.push({ label, href: currentPath });
     });
 
     return breadcrumbs;
