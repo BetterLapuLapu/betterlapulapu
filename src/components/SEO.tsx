@@ -50,6 +50,7 @@ export default function SEO({
   const fullImage =
     image || `${siteUrl}/og${path === '/' ? '/index' : path}.png`;
   const twitterHandle = import.meta.env.VITE_TWITTER_HANDLE || '';
+  const facebookAppId = import.meta.env.VITE_FACEBOOK_APP_ID;
 
   return (
     <Helmet>
@@ -72,6 +73,7 @@ export default function SEO({
       <meta property="og:image:height" content="630" />
       <meta property="og:site_name" content={siteName} />
       <meta property="og:locale" content={locale.og} />
+      {facebookAppId && <meta property="fb:app_id" content={facebookAppId} />}
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
