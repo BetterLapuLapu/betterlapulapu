@@ -42,7 +42,7 @@
   },
   "services": {
     "title": "Services & Information",
-    "description": "Access official government services quickly and easily. Find what you need for citizenship, business, education, and more.",
+    "description": "Guides to city government services: what you need, where to go and what it costs, for citizenship, business, education and more.",
     "seoTitle": "Services",
     "allTitle": "All local government services",
     "allDescription": "All services provided by the {{governmentName}} government. Find what you need for citizenship, business, education, and more.",
@@ -54,14 +54,23 @@
     "allDescription": "Departments, offices, reports and transparency documents of the {{governmentName}} government.",
     "otherCategories": "More from the City Government"
   },
+  "directory": {
+    "filterLabel": "Search for a department or office",
+    "resultCount_one": "{{count}} department or office",
+    "resultCount_other": "{{count}} departments and offices",
+    "noResults": "No departments or offices match “{{query}}”.",
+    "other": "Other offices"
+  },
   "governmentActivity": {
     "title": "Government Activity",
-    "description": "Stay updated with the latest government activities and announcements."
+    "description": "Learn about the City Government's departments, budget and spending, and transparency documents."
   },
   "footer": {
     "copyright": "© {{year}} BetterLapuLapu. All content is public domain unless otherwise specified.",
+    "buildCost": "Cost to build this site to date: <cost>{{cost}}</cost>.",
+    "costToPeople": "Cost to the People of the Philippines: <free>{{free}}</free>.",
     "portalLabel": "BetterGov.ph Portal",
-    "tagline": "A community portal providing Philippine citizens, businesses, and visitors with information and services.",
+    "tagline": "A community portal with information about government services for Philippine citizens, businesses and visitors.",
     "contribute": "Contribute at GitHub",
     "sections": {
       "about": "About",
@@ -98,6 +107,14 @@
     "show": "Show",
     "hide": "Hide",
     "step": "Step"
+  },
+  "alert": {
+    "note": "Note",
+    "tip": "Tip",
+    "important": "Important",
+    "warning": "Warning",
+    "caution": "Caution",
+    "error": "There is a problem"
   },
   "search": {
     "seoDescription": "Search services, offices and information from the {{governmentName}} government.",

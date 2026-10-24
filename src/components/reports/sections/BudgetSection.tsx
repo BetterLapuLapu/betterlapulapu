@@ -1,4 +1,3 @@
-import { Building2, Coins, HardHat, Users } from 'lucide-react';
 import { useState } from 'react';
 import {
   Bar,
@@ -134,7 +133,6 @@ export default function BudgetSection({
               label="Total (offices shown)"
               value={formatPeso(total, { compact: true })}
               subtext={`${offices.length} offices`}
-              icon={Building2}
             />
             <StatCard
               label="Personnel services"
@@ -144,7 +142,6 @@ export default function BudgetSection({
                   ? `${formatPercent((ps / total) * 100)} of total`
                   : undefined
               }
-              icon={Users}
               tone="neutral"
             />
             <StatCard
@@ -155,7 +152,6 @@ export default function BudgetSection({
                   ? `${formatPercent((mooe / total) * 100)} of total`
                   : undefined
               }
-              icon={Coins}
               tone="accent"
             />
             <StatCard
@@ -166,7 +162,6 @@ export default function BudgetSection({
                   ? `${formatPercent((co / total) * 100)} of total`
                   : undefined
               }
-              icon={HardHat}
               tone="income"
             />
           </div>

@@ -1,4 +1,3 @@
-import { HandCoins, Landmark, Percent } from 'lucide-react';
 import {
   CartesianGrid,
   Line,
@@ -51,7 +50,6 @@ export default function DebtSection({
               label="Outstanding balance"
               value={formatPeso(selected.totalOutstanding, { compact: true })}
               subtext={formatPeso(selected.totalOutstanding)}
-              icon={Landmark}
               tone="expense"
             />
             <StatCard
@@ -61,7 +59,6 @@ export default function DebtSection({
                 .map(l => l.lender)
                 .filter(Boolean)
                 .join(', ')}
-              icon={HandCoins}
               tone="neutral"
             />
             <StatCard
@@ -75,7 +72,6 @@ export default function DebtSection({
                   ? `Interest: ${selected.loans.map(l => formatPercent(l.interestRate, 2)).join(', ')}`
                   : 'Interest-free'
               }
-              icon={Percent}
             />
           </div>
         </>
