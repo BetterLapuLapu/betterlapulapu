@@ -1,18 +1,15 @@
 import Section from '../components/ui/Section';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Heading } from '../components/ui/Heading';
 import { Text } from '../components/ui/Text';
 import {
   getCategorySubcategories,
-  type Subcategory,
   type CategoryIndex,
 } from '../data/yamlLoader';
-import * as LucideIcons from 'lucide-react';
 import Breadcrumbs from '../components/ui/Breadcrumbs';
-import ServicesSection from '../components/home/ServicesSection';
+import LinkList from '../components/ui/LinkList';
+import RelatedLinks from '../components/ui/RelatedLinks';
 import SEO from '../components/SEO';
-import { Card, CardContent } from '@bettergov/kapwa/card';
-import { Banner } from '@bettergov/kapwa/banner';
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLocalizedCategories } from '../hooks/useLocalizedCategories';
@@ -27,16 +24,10 @@ const Services: React.FC = () => {
     pages: [],
   });
   const [loading, setLoading] = useState(false);
-  const subcategories: Subcategory[] = categoryIndex.pages;
 
-  const getCategory = () => {
-    return serviceCategories.categories.find(c => c.slug === category);
-  };
-
-  const categoryData = getCategory();
-  const Icon = LucideIcons[
-    categoryData?.icon as keyof typeof LucideIcons
-  ] as React.ComponentType<{ className?: string }>;
+  const categoryData = serviceCategories.categories.find(
+    c => c.slug === category
+  );
 
   useEffect(() => {
     if (category && categoryData) {
@@ -56,23 +47,32 @@ const Services: React.FC = () => {
           description={t('services.allDescription', { governmentName })}
           keywords="government services, public services, local government, civic services"
         />
-        <ServicesSection
-          title={t('services.allTitle')}
-          description={t('services.allDescription', { governmentName })}
-        />
+        <Section>
+          <Breadcrumbs />
+          <Heading>{t('services.allTitle')}</Heading>
+          <Text size="lg" className="max-w-[640px]">
+            {t('services.allDescription', { governmentName })}
+          </Text>
+          <LinkList
+            layout="grid"
+            headingLevel={2}
+            items={serviceCategories.categories.map(c => ({
+              key: c.slug,
+              title: c.category,
+              href: `/services/${c.slug}`,
+              description: c.description,
+            }))}
+          />
+        </Section>
       </>
     );
   }
   if (!categoryData) {
     return (
-      <Section className="p-3 mb-12">
-        <Breadcrumbs className="mb-8" />
-        <Banner
-          type="error"
-          title={t('common.categoryNotFound')}
-          description={t('common.categoryNotFoundDescription')}
-          icon
-        />
+      <Section>
+        <Breadcrumbs />
+        <Heading>{t('common.categoryNotFound')}</Heading>
+        <Text>{t('common.categoryNotFoundDescription')}</Text>
       </Section>
     );
   }
@@ -84,76 +84,52 @@ const Services: React.FC = () => {
         description={categoryData.description}
         keywords={`${categoryData.category}, government services, public services, local government`}
       />
-      <Section className="p-3 mb-12">
-        <Breadcrumbs className="mb-8" />
-        <Icon className="h-8 w-8 mb-4 text-primary-600 rounded-md" />
-        <Heading>{categoryData.category || category}</Heading>
-        <Text className="text-gray-600 mb-6">{categoryData.description}</Text>
+      <Section>
+        <Breadcrumbs />
+        <div className="flex flex-wrap items-start gap-x-[60px] gap-y-10">
+          <div className="min-w-0 flex-[999_1_560px]">
+            <span className="type-lead mb-[5px] block text-ink-secondary">
+              {t('nav.services')}
+            </span>
+            <Heading className="tablet:mb-[30px]">
+              {categoryData.category || category}
+            </Heading>
+            <Text size="lg">{categoryData.description}</Text>
 
-        {loading ? (
-          <div className="flex justify-center items-center p-8">
-            <Text>{t('common.loading')}</Text>
-          </div>
-        ) : (
-          <>
-            {categoryIndex.title && (
-              <Heading level={3}>{categoryIndex.title}</Heading>
-            )}
-            {categoryIndex.description && (
-              <Text className="text-gray-600 mb-4">
-                {categoryIndex.description}
-              </Text>
-            )}
-            {categoryIndex.layout === 'grid' ? (
-              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {subcategories.map(subcategory => (
-                  <Link
-                    key={subcategory.slug}
-                    to={`/services/${category}/${subcategory.slug}`}
-                  >
-                    <Card
-                      hoverable
-                      className="h-full border-t-4 border-primary-500"
-                    >
-                      <CardContent>
-                        <h4 className="text-lg font-medium text-primary-600 underline underline-offset-4">
-                          {subcategory.name}
-                        </h4>
-                        {subcategory.description && (
-                          <p className="mt-2 text-sm text-gray-600">
-                            {subcategory.description}
-                          </p>
-                        )}
-                      </CardContent>
-                    </Card>
-                  </Link>
-                ))}
-              </div>
+            {loading ? (
+              <Text>{t('common.loading')}</Text>
             ) : (
-              <div className="space-y-4">
-                {subcategories.map(subcategory => (
-                  <Link
-                    key={subcategory.slug}
-                    to={`/services/${category}/${subcategory.slug}`}
-                  >
-                    <Card hoverable className="mb-4">
-                      <CardContent>
-                        <h4 className="text-lg font-medium text-primary-600 underline underline-offset-4">
-                          {subcategory.name}
-                        </h4>
-                        {subcategory.description && (
-                          <p className="mt-2 text-sm text-gray-600">
-                            {subcategory.description}
-                          </p>
-                        )}
-                      </CardContent>
-                    </Card>
-                  </Link>
-                ))}
-              </div>
+              <>
+                {categoryIndex.title && (
+                  <Heading level={2} size="m">
+                    {categoryIndex.title}
+                  </Heading>
+                )}
+                {categoryIndex.description && (
+                  <Text>{categoryIndex.description}</Text>
+                )}
+                <LinkList
+                  layout={categoryIndex.layout}
+                  headingLevel={categoryIndex.title ? 3 : 2}
+                  items={categoryIndex.pages.map(page => ({
+                    key: page.slug,
+                    title: page.name,
+                    href: `/services/${category}/${page.slug}`,
+                    description: page.description,
+                  }))}
+                />
+              </>
             )}
-          </>
-        )}
+          </div>
+          <div className="min-w-0 flex-[1_1_300px]">
+            <RelatedLinks
+              title={t('services.otherCategories')}
+              links={serviceCategories.categories
+                .filter(c => c.slug !== category)
+                .map(c => ({ label: c.category, href: `/services/${c.slug}` }))}
+            />
+          </div>
+        </div>
       </Section>
     </>
   );

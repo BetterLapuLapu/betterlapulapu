@@ -29,19 +29,18 @@ function CategoryLinks({
 }) {
   return (
     <div>
-      <Link
-        to={`/${path}/${category.slug}`}
-        className="text-lg font-semibold text-gray-900 hover:text-primary-600"
-      >
-        {category.category}
-      </Link>
+      <h3 className="type-s mb-2.5">
+        <Link to={`/${path}/${category.slug}`} className="link">
+          {category.category}
+        </Link>
+      </h3>
       {pages.length > 0 && (
-        <ul className="mt-2 space-y-1 border-l border-gray-200 pl-4">
+        <ul className="type-small space-y-[5px]">
           {pages.map(page => (
             <li key={page.slug}>
               <Link
                 to={`/${path}/${category.slug}/${page.slug}`}
-                className="text-sm text-gray-600 hover:text-primary-600"
+                className="link"
               >
                 {page.name}
               </Link>
@@ -89,19 +88,22 @@ export default function Sitemap() {
           governmentName: import.meta.env.VITE_GOVERNMENT_NAME,
         })}
       />
-      <Section className="p-3 mb-12">
-        <Breadcrumbs className="mb-8" />
+      <Section>
+        <Breadcrumbs />
         <Heading>{t('common.sitemap')}</Heading>
-        <Text className="text-gray-600 mb-8">{t('sitemap.intro')}</Text>
+        <Text size="lg">{t('sitemap.intro')}</Text>
 
         {sections.map(section => (
-          <div key={section.path} className="mb-10">
+          <div
+            key={section.path}
+            className="mb-[30px] border-t border-rule pt-[15px] tablet:mb-[50px]"
+          >
             <Heading level={2}>
-              <Link to={`/${section.path}`} className="hover:text-primary-600">
+              <Link to={`/${section.path}`} className="link">
                 {section.label}
               </Link>
             </Heading>
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            <div className="grid grid-cols-1 gap-[30px] tablet:grid-cols-2">
               {section.data.categories.map(category => (
                 <CategoryLinks
                   key={category.slug}
@@ -114,12 +116,12 @@ export default function Sitemap() {
           </div>
         ))}
 
-        <Text size="sm" className="text-gray-500">
+        <Text size="sm" className="text-ink-secondary">
           {t('sitemap.machineReadable')}{' '}
           {machineReadableFiles.map((file, i) => (
             <span key={file}>
               {i > 0 && ', '}
-              <a href={`/${file}`} className="underline hover:text-primary-600">
+              <a href={`/${file}`} className="link">
                 {file}
               </a>
             </span>

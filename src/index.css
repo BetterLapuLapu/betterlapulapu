@@ -8,16 +8,35 @@
 @theme {
   --font-serif: Georgia, 'Times New Roman', serif;
 
-  --color-primary-50: #e6f0fd;
-  --color-primary-100: #cce0fb;
-  --color-primary-200: #99c2f7;
-  --color-primary-300: #66a3f3;
-  --color-primary-400: #3385ef;
-  --color-primary-500: #0066eb;
-  --color-primary-600: #0052bc;
-  --color-primary-700: #003d8d;
-  --color-primary-800: #00295e;
-  --color-primary-900: #00142f;
+  /* Tablet breakpoint (641px), used as the `tablet:` variant */
+  --breakpoint-tablet: 40.0625rem;
+
+  /* Site palette. Primary is the brand blue (#1d70b8) with its tints and
+     shades, so existing primary-* utilities follow it. */
+  --color-primary-50: #f4f8fb;
+  --color-primary-100: #e8f1f8;
+  --color-primary-200: #d2e2f1;
+  --color-primary-300: #8eb8dc;
+  --color-primary-400: #5694ca;
+  --color-primary-500: #1d70b8;
+  --color-primary-600: #1d70b8;
+  --color-primary-700: #16548a;
+  --color-primary-800: #0f385c;
+  --color-primary-900: #0c2d4a;
+
+  --color-ink: #0b0c0c;
+  --color-ink-secondary: #505a5f;
+  --color-rule: #b1b4b6;
+  --color-surface: #f3f2f1;
+  --color-link: #1d70b8;
+  --color-link-hover: #003078;
+  --color-focus: #ffdd00;
+  --color-go: #00703c;
+  --color-go-hover: #005a30;
+  --color-go-shadow: #002d18;
+  --color-tag: #bbd4ea;
+  --color-tag-text: #0c2d4a;
+  --color-alert: #d4351c;
 
   --color-secondary-50: #ffede6;
   --color-secondary-100: #ffdbcc;
@@ -114,9 +133,130 @@
   --font-mono: var(--font-kapwa-mono);
 }
 
-/* Checklist styling */
-.task-list-item {
-  @apply text-base text-gray-700 leading-relaxed relative flex items-start gap-3 font-sans rounded-md mb-5 transition-all duration-200 border border-transparent cursor-pointer items-center;
+/* Layout and type scale. Sizes step up at 641px, the tablet breakpoint. */
+/* 1140px of content */
+@utility width-container {
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 15px;
+  @media (width >= 40.0625rem) {
+    padding-inline: 30px;
+  }
+}
+
+@utility type-xl {
+  font-size: 2rem;
+  line-height: 1.09375;
+  font-weight: 700;
+  @media (width >= 40.0625rem) {
+    font-size: 3rem;
+    line-height: 1.0416667;
+  }
+}
+
+@utility type-l {
+  font-size: 1.6875rem;
+  line-height: 1.0416667;
+  font-weight: 700;
+  @media (width >= 40.0625rem) {
+    font-size: 2.25rem;
+    line-height: 1.1111111;
+  }
+}
+
+@utility type-m {
+  font-size: 1.125rem;
+  line-height: 1.1111111;
+  font-weight: 700;
+  @media (width >= 40.0625rem) {
+    font-size: 1.5rem;
+    line-height: 1.25;
+  }
+}
+
+@utility type-s {
+  font-size: 1rem;
+  line-height: 1.25;
+  font-weight: 700;
+  @media (width >= 40.0625rem) {
+    font-size: 1.1875rem;
+    line-height: 1.3157895;
+  }
+}
+
+@utility type-lead {
+  font-size: 1.125rem;
+  line-height: 1.1111111;
+  @media (width >= 40.0625rem) {
+    font-size: 1.5rem;
+    line-height: 1.25;
+  }
+}
+
+@utility type-body {
+  font-size: 1rem;
+  line-height: 1.25;
+  @media (width >= 40.0625rem) {
+    font-size: 1.1875rem;
+    line-height: 1.3157895;
+  }
+}
+
+@utility type-small {
+  font-size: 0.875rem;
+  line-height: 1.1428571;
+  @media (width >= 40.0625rem) {
+    font-size: 1rem;
+    line-height: 1.25;
+  }
+}
+
+@utility link {
+  color: var(--color-link);
+  text-decoration-line: underline;
+  text-decoration-thickness: max(1px, 0.0625rem);
+  text-underline-offset: 0.1578em;
+  &:hover {
+    color: var(--color-link-hover);
+    text-decoration-thickness: max(3px, 0.1875rem);
+  }
+}
+
+@utility link-text {
+  color: var(--color-ink);
+  text-decoration-line: underline;
+  text-decoration-thickness: max(1px, 0.0625rem);
+  text-underline-offset: 0.1578em;
+  &:hover {
+    text-decoration-thickness: max(3px, 0.1875rem);
+  }
+}
+
+@utility link-inverse {
+  color: #fff;
+  text-decoration-line: underline;
+  text-decoration-thickness: max(1px, 0.0625rem);
+  text-underline-offset: 0.1578em;
+  &:hover {
+    text-decoration-thickness: max(3px, 0.1875rem);
+  }
+}
+
+/* Underlined only on hover, for navigation and the header logo */
+@utility link-plain {
+  text-decoration-line: none;
+  text-underline-offset: 0.1578em;
+  &:hover {
+    text-decoration-line: underline;
+    text-decoration-thickness: max(3px, 0.1875rem);
+  }
+}
+
+@layer base {
+  body {
+    color: var(--color-ink);
+    background-color: #fff;
+  }
 }
 
 /* Sticky table styling */
@@ -132,15 +272,6 @@
   width: var(--first-col-width, 12rem);
   min-width: var(--first-col-width, 12rem);
   background-color: white;
-  border-right: 2px solid #9ca3af;
-}
-
-.sticky-table thead th:first-child {
-  background-color: #f9fafb;
-}
-
-.sticky-table tbody tr:hover td:first-child {
-  background-color: #f3f4f6;
 }
 
 /* FDP transcription viewer (src/components/reports/TranscriptModal.tsx) */
@@ -167,4 +298,102 @@
 .fdp-transcript td[align='right'],
 .fdp-transcript th[align='right'] {
   @apply whitespace-nowrap tabular-nums;
+}
+
+/* Focus states. Unlayered so they win over utility colours: a focused
+   link turns black on yellow with a black underline bar. */
+a:focus-visible {
+  outline: 3px solid transparent;
+  color: var(--color-ink) !important;
+  background-color: var(--color-focus);
+  box-shadow:
+    0 -2px var(--color-focus),
+    0 4px var(--color-ink);
+  text-decoration: none;
+}
+
+button:focus-visible,
+summary:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 0;
+  box-shadow: 0 0 0 6px var(--color-ink);
+}
+
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 0;
+  box-shadow: inset 0 0 0 2px var(--color-ink);
+}
+
+@layer components {
+  /* Button: green, square, with a darker bottom edge */
+  .button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0 0 22px;
+    padding: 8px 10px 7px;
+    border: 2px solid transparent;
+    border-radius: 0;
+    background-color: var(--color-go);
+    box-shadow: 0 2px 0 var(--color-go-shadow);
+    color: #fff;
+    font-size: 1rem;
+    line-height: 1.1875;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  @media (width >= 40.0625rem) {
+    .button {
+      font-size: 1.1875rem;
+      line-height: 1;
+    }
+  }
+  .button:hover {
+    background-color: var(--color-go-hover);
+  }
+  .button-secondary {
+    background-color: var(--color-surface);
+    box-shadow: 0 2px 0 #929191;
+    color: var(--color-ink);
+  }
+  .button-secondary:hover {
+    background-color: #dbdad9;
+  }
+
+  /* Checkbox: a 40px box with a black tick */
+  .checkbox {
+    appearance: none;
+    flex: none;
+    width: 40px;
+    height: 40px;
+    margin: 0;
+    border: 2px solid var(--color-ink);
+    background: #fff center / 24px no-repeat;
+    cursor: pointer;
+  }
+  .checkbox:checked {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 18'%3E%3Cpath d='M2 9l7 7L22 2' fill='none' stroke='%230b0c0c' stroke-width='4'/%3E%3C/svg%3E");
+  }
+}
+
+/* Focus states for the components above */
+.button:focus-visible,
+a.button:focus-visible {
+  outline: 3px solid transparent;
+  border-color: var(--color-focus);
+  background-color: var(--color-focus);
+  box-shadow:
+    inset 0 0 0 1px var(--color-focus),
+    0 2px 0 var(--color-ink);
+  color: var(--color-ink) !important;
+}
+
+.checkbox:focus-visible {
+  outline: 3px solid transparent;
+  border-width: 4px;
+  box-shadow: 0 0 0 3px var(--color-focus);
 }

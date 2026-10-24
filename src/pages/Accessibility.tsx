@@ -5,9 +5,10 @@ import { Text } from '../components/ui/Text';
 import SEO from '../components/SEO';
 import { Link } from 'react-router-dom';
 import { Trans, useTranslation } from 'react-i18next';
+import { ISSUES_URL } from '../data/navigation';
 
-const issuesUrl = 'https://github.com/BetterLapuLapu/betterlapulapu/issues';
-const linkClass = 'underline hover:text-primary-600';
+const linkClass = 'link';
+const listClass = 'type-body list-disc space-y-[5px] pl-5';
 
 export default function Accessibility() {
   const { t } = useTranslation();
@@ -26,15 +27,19 @@ export default function Accessibility() {
           governmentName: import.meta.env.VITE_GOVERNMENT_NAME,
         })}
       />
-      <Section className="p-3 mb-12">
-        <Breadcrumbs className="mb-8" />
-        <Heading>{t('common.accessibility')}</Heading>
-        <Text className="text-gray-600 mb-8">{t('accessibility.intro')}</Text>
+      <Section>
+        <Breadcrumbs />
+        <div className="max-w-[640px]">
+          <Heading>{t('common.accessibility')}</Heading>
+          <Text size="lg">{t('accessibility.intro')}</Text>
+        </div>
 
-        <div className="max-w-3xl space-y-10 text-gray-700">
+        <div className="max-w-[640px] space-y-[30px] tablet:space-y-[45px]">
           <div>
-            <Heading level={2}>{t('accessibility.standardTitle')}</Heading>
-            <p>
+            <Heading level={2} size="m">
+              {t('accessibility.standardTitle')}
+            </Heading>
+            <p className="type-body">
               <Trans
                 i18nKey="accessibility.standard"
                 components={{
@@ -50,8 +55,10 @@ export default function Accessibility() {
           </div>
 
           <div>
-            <Heading level={2}>{t('accessibility.practicesTitle')}</Heading>
-            <ul className="list-disc space-y-2 pl-6">
+            <Heading level={2} size="m">
+              {t('accessibility.practicesTitle')}
+            </Heading>
+            <ul className={listClass}>
               {practices.map(item => (
                 <li key={item}>{item}</li>
               ))}
@@ -59,8 +66,10 @@ export default function Accessibility() {
           </div>
 
           <div>
-            <Heading level={2}>{t('accessibility.plainTextTitle')}</Heading>
-            <p>
+            <Heading level={2} size="m">
+              {t('accessibility.plainTextTitle')}
+            </Heading>
+            <p className="type-body">
               <Trans
                 i18nKey="accessibility.plainText"
                 components={{
@@ -73,8 +82,10 @@ export default function Accessibility() {
           </div>
 
           <div>
-            <Heading level={2}>{t('accessibility.limitationsTitle')}</Heading>
-            <ul className="list-disc space-y-2 pl-6">
+            <Heading level={2} size="m">
+              {t('accessibility.limitationsTitle')}
+            </Heading>
+            <ul className={listClass}>
               {limitations.map(item => (
                 <li key={item}>{item}</li>
               ))}
@@ -82,14 +93,16 @@ export default function Accessibility() {
           </div>
 
           <div>
-            <Heading level={2}>{t('accessibility.reportTitle')}</Heading>
-            <p>
+            <Heading level={2} size="m">
+              {t('accessibility.reportTitle')}
+            </Heading>
+            <p className="type-body">
               <Trans
                 i18nKey="accessibility.report"
                 components={{
                   issue: (
                     <a
-                      href={issuesUrl}
+                      href={ISSUES_URL}
                       className={linkClass}
                       target="_blank"
                       rel="noopener noreferrer"

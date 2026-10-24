@@ -2,8 +2,6 @@ import { useEffect, useRef, type FormEvent } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { Search } from 'lucide-react';
-import { Heading } from '../ui/Heading';
-import { Text } from '../ui/Text';
 import HeroIllustration from './HeroIllustration';
 
 // How far down the sun drifts (in SVG units) while the statue scrolls up,
@@ -12,6 +10,8 @@ const SUN_DRIFT = 220;
 // Share of the hero the statue's feet stop above, clear of the bottom fade.
 const FEET_CLEARANCE = 0.1;
 
+// Home page banner: a blue band with the title and site
+// search, and the Lapu-Lapu statue sketch on the right.
 export default function Hero() {
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -64,7 +64,7 @@ export default function Hero() {
   return (
     <div
       ref={heroRef}
-      className="relative flex items-center overflow-hidden bg-gradient-to-r from-primary-600 to-primary-700 text-white py-12 md:py-24 min-h-[480px] md:min-h-[560px] lg:min-h-[640px]"
+      className="relative overflow-hidden bg-primary-600 py-[30px] text-white tablet:pt-[50px] tablet:pb-[55px] lg:min-h-[520px]"
     >
       {/* Statue shown from the head down to the waist; the rest is revealed
           on scroll. The bottom edge fades out instead of cutting hard. */}
@@ -77,43 +77,44 @@ export default function Hero() {
         <HeroIllustration
           ref={artRef}
           sunRef={sunRef}
-          className="absolute top-0 -right-24 h-[175%] w-auto text-white opacity-20 will-change-transform md:right-0 lg:right-[4%] lg:opacity-60"
+          className="absolute top-0 -right-24 h-[175%] w-auto text-white opacity-20 will-change-transform md:right-0 lg:right-[max(4%,calc((100%-1140px)/2))] lg:opacity-60"
         />
       </div>
-      <div className="relative container mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-          {/* Left section with title and search */}
-          <div className="animate-fade-in">
-            <Text transform="uppercase">{t('hero.welcome')}</Text>
-            <Heading>{import.meta.env.VITE_GOVERNMENT_NAME}</Heading>
-            <Text>{t('hero.subtitle')}</Text>
+      <div className="width-container relative">
+        <p className="type-lead mb-2.5">{t('hero.welcome')}</p>
+        <h1 className="type-xl mb-[15px] tablet:mb-5">
+          {import.meta.env.VITE_GOVERNMENT_NAME}
+        </h1>
+        <p className="type-lead max-w-[640px]">{t('hero.subtitle')}</p>
 
-            <form role="search" className="mt-8" onSubmit={handleSearch}>
-              <label
-                htmlFor="hero-search"
-                className="block mb-3 text-xl font-bold"
-              >
-                {t('hero.searchLabel')}
-              </label>
-              <div className="flex focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-white">
-                <input
-                  id="hero-search"
-                  name="q"
-                  type="search"
-                  placeholder={t('hero.searchPlaceholder')}
-                  className="min-w-0 flex-1 h-14 px-4 bg-white text-gray-900 placeholder:text-gray-500 focus:outline-none"
-                />
-                <button
-                  type="submit"
-                  aria-label={t('hero.searchLabel')}
-                  className="flex h-14 w-16 shrink-0 items-center justify-center bg-primary-50 text-primary-600 transition-colors hover:bg-primary-100 focus:outline-none focus-visible:bg-primary-100"
-                >
-                  <Search className="h-6 w-6" strokeWidth={2.5} />
-                </button>
-              </div>
-            </form>
+        <form
+          role="search"
+          className="mt-[30px] max-w-[640px] tablet:mt-[35px]"
+          onSubmit={handleSearch}
+        >
+          <label htmlFor="hero-search" className="type-s mb-[5px] block">
+            {t('hero.searchLabel')}
+          </label>
+          <div id="hero-search-hint" className="type-body mb-[15px]">
+            {t('hero.searchPlaceholder')}
           </div>
-        </div>
+          <div className="flex">
+            <input
+              id="hero-search"
+              name="q"
+              type="search"
+              aria-describedby="hero-search-hint"
+              className="type-body h-[50px] min-w-0 flex-1 rounded-none border-2 border-r-0 border-ink bg-white px-2.5 text-ink"
+            />
+            <button
+              type="submit"
+              aria-label={t('hero.searchLabel')}
+              className="flex h-[50px] w-[50px] shrink-0 cursor-pointer items-center justify-center bg-go text-white hover:bg-go-hover"
+            >
+              <Search className="h-6 w-6" strokeWidth={3} aria-hidden="true" />
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   );

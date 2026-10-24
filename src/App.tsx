@@ -2,6 +2,7 @@ import { NuqsAdapter } from 'nuqs/adapters/react';
 import { HelmetProvider } from 'react-helmet-async';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
+import PhaseBanner from './components/layout/PhaseBanner';
 import Home from './pages/Home';
 import ScrollToTop from './components/ui/ScrollToTop';
 import Services from './pages/Services';
@@ -32,16 +33,17 @@ function App() {
           <div className="min-h-screen flex flex-col">
             <a
               href="#main"
-              className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-60 focus:rounded-md focus:bg-white focus:px-4 focus:py-2 focus:font-medium focus:text-primary-700 focus:shadow-lg focus:ring-2 focus:ring-primary-600"
+              className="type-small sr-only block py-2.5 px-[15px] underline focus:not-sr-only tablet:px-[30px]"
             >
               {t('common.skipToContent')}
             </a>
             <Navbar />
+            <PhaseBanner />
             <ScrollToTop />
             <main
               id="main"
               tabIndex={-1}
-              className="flex-grow scroll-mt-32 focus:outline-none"
+              className="flex-grow focus:outline-none"
             >
               <Routes>
                 <Route path="/" element={<Home />} />

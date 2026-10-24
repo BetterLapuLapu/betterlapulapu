@@ -1,6 +1,5 @@
 import { parseAsInteger, useQueryState } from 'nuqs';
 import {
-  ArrowRight,
   Banknote,
   FileSignature,
   Landmark,
@@ -14,6 +13,8 @@ import SEO from '../../components/SEO';
 import Breadcrumbs from '../../components/ui/Breadcrumbs';
 import { Heading } from '../../components/ui/Heading';
 import Section from '../../components/ui/Section';
+import { Text } from '../../components/ui/Text';
+import LinkList from '../../components/ui/LinkList';
 import { DataDisclaimer } from '../../components/reports/AboutThisData';
 import ChartCard from '../../components/reports/ChartCard';
 import CoverageMatrix from '../../components/reports/CoverageMatrix';
@@ -141,32 +142,18 @@ function Overview({ data, year }: { data: FdpDatasets; year: number }) {
       </div>
 
       <div>
-        <Heading level={2} className="text-xl">
+        <Heading level={2} size="m">
           Explore the reports
         </Heading>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {REPORT_SECTIONS.map(s => (
-            <Link
-              key={s.slug}
-              to={`${REPORTS_PATH}/${s.slug}${s.slug === 'documents' ? '' : `?year=${year}`}`}
-              className="group flex flex-col rounded-lg border border-gray-200 border-t-4 border-t-primary-500 bg-white p-5 shadow-xs transition hover:shadow-md"
-            >
-              <div className="flex items-center gap-3">
-                <span className="rounded-md bg-primary-100 p-2 text-primary-600">
-                  <s.icon className="h-5 w-5" aria-hidden />
-                </span>
-                <h3 className="font-semibold text-gray-900">{s.title}</h3>
-              </div>
-              <p className="mt-3 flex-1 text-sm text-gray-600">
-                {s.description}
-              </p>
-              <span className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-primary-600 group-hover:gap-2">
-                View {s.short.toLowerCase()}
-                <ArrowRight className="h-4 w-4 transition-all" aria-hidden />
-              </span>
-            </Link>
-          ))}
-        </div>
+        <LinkList
+          layout="grid"
+          items={REPORT_SECTIONS.map(s => ({
+            key: s.slug,
+            title: s.title,
+            href: `${REPORTS_PATH}/${s.slug}${s.slug === 'documents' ? '' : `?year=${year}`}`,
+            description: s.description,
+          }))}
+        />
       </div>
 
       <ChartCard
@@ -200,10 +187,10 @@ export default function Reports() {
 
   if (slug && !section) {
     return (
-      <Section className="p-3 mb-12">
-        <Breadcrumbs className="mb-8" />
+      <Section>
+        <Breadcrumbs />
         <Heading>Report not found</Heading>
-        <Link to={REPORTS_PATH} className="text-primary-600 hover:underline">
+        <Link to={REPORTS_PATH} className="link type-body">
           Back to Reports and Statistics
         </Link>
       </Section>
@@ -217,10 +204,9 @@ export default function Reports() {
         description={description}
         keywords="full disclosure policy, budget, receipts and expenditures, procurement, bid results, transparency, Lapu-Lapu City"
       />
-      <div className="bg-gray-50">
-        <div className="container mx-auto px-4 pt-6 pb-2">
+      <div>
+        <div className="width-container">
           <Breadcrumbs
-            className="mb-6"
             items={[
               { label: 'Home', href: '/' },
               { label: 'Government', href: '/government' },
@@ -231,15 +217,17 @@ export default function Reports() {
               ...(section ? [{ label: section.title }] : []),
             ]}
           />
-          <Heading>{title}</Heading>
-          <p className="max-w-3xl text-gray-600">{description}</p>
+          <Heading className="tablet:mb-[30px]">{title}</Heading>
+          <Text size="lg" className="max-w-[640px]">
+            {description}
+          </Text>
         </div>
 
-        <div className="z-20 border-b border-gray-200 bg-gray-50/95 backdrop-blur lg:sticky lg:top-[121px]">
-          <div className="container mx-auto flex flex-col gap-3 px-4 py-3 lg:flex-row lg:items-center lg:justify-between">
+        <div className="z-20 border-b border-rule bg-white lg:sticky lg:top-0">
+          <div className="width-container flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
             <nav
               aria-label="Report sections"
-              className="flex gap-1 overflow-x-auto"
+              className="flex gap-x-[25px] overflow-x-auto"
             >
               {[{ slug: '', short: 'Overview' }, ...REPORT_SECTIONS].map(s => {
                 const active = (section?.slug ?? '') === s.slug;
@@ -249,10 +237,10 @@ export default function Reports() {
                     to={`${REPORTS_PATH}${s.slug ? `/${s.slug}` : ''}${s.slug === 'documents' ? '' : `?year=${year}`}`}
                     aria-current={active ? 'page' : undefined}
                     className={cn(
-                      'shrink-0 rounded-md px-3 py-1.5 text-sm font-medium',
+                      'type-small shrink-0 border-b-[5px] pt-[15px] pb-2.5',
                       active
-                        ? 'bg-white text-primary-700 shadow-xs ring-1 ring-gray-200'
-                        : 'text-gray-600 hover:bg-white hover:text-gray-900'
+                        ? 'border-primary-600 font-bold text-ink'
+                        : 'link-plain border-transparent text-link'
                     )}
                   >
                     {s.short}
@@ -270,7 +258,7 @@ export default function Reports() {
           </div>
         </div>
 
-        <div className="container mx-auto space-y-8 px-4 py-8">
+        <div className="width-container space-y-8 pt-[30px] pb-[30px] tablet:pb-[60px]">
           {loading && (
             <div className="flex min-h-64 items-center justify-center">
               <div className="h-10 w-10 animate-spin rounded-full border-b-2 border-primary-600" />

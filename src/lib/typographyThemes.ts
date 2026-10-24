@@ -16,7 +16,7 @@ export interface TypographyTheme {
     ul?: string;
     ol?: string;
     li?: string;
-    'li.ordered'?: string; // Special styling for ordered list items
+    'li.task-list-item'?: string; // Checklist items
     blockquote?: string;
     code?: string;
     pre?: string;
@@ -33,38 +33,37 @@ export interface TypographyTheme {
   };
 }
 
-// Default theme with Tailwind classes
+// Default theme: the site's typography (see the type-* utilities
+// in src/index.css)
 export const defaultTheme: TypographyTheme = {
   name: 'default',
   components: {
-    h1: 'text-3xl font-bold mb-6 mt-2',
-    h2: 'text-2xl font-semibold mb-4 mt-10',
-    h3: 'text-2xl font-medium text-gray-800 mb-4 mt-6 ',
-    h4: 'text-xl text-gray-800 mb-3 mt-5 ',
-    h5: 'text-lg text-gray-800 mb-3 mt-4 ',
-    h6: 'text-base text-gray-800 mb-3 mt-4 ',
-    p: 'text-base text-gray-700 mb-4 leading-relaxed ',
-    small: 'text-sm text-gray-600 mb-3 ',
-    ul: 'list-none mb-6 space-y-4 pl-0',
-    ol: 'list-none mb-6 space-y-4 pl-0',
-    li: 'text-base text-gray-700 leading-relaxed relative pl-6 mb-2 before:content-["•"] before:absolute before:left-0 before:text-gray-700 before:font-bold before:text-lg ',
-    'li.ordered':
-      'text-base text-gray-700 leading-relaxed relative pl-8 mb-2 before:content-[counter(list-item)] before:absolute before:left-0 before:text-gray-700 before:font-bold before:text-base before:counter-increment-[list-item] ',
+    h1: 'type-xl mb-[30px] tablet:mb-[50px]',
+    h2: 'type-l mt-[30px] mb-[15px] tablet:mt-[45px] tablet:mb-[20px]',
+    h3: 'type-m mt-[25px] mb-[15px] tablet:mt-[30px] tablet:mb-[20px]',
+    h4: 'type-s mt-[20px] mb-[15px] tablet:mt-[25px] tablet:mb-[20px]',
+    h5: 'type-s mt-[20px] mb-[15px] tablet:mb-[20px]',
+    h6: 'type-s mt-[20px] mb-[15px] tablet:mb-[20px]',
+    p: 'type-body mb-[15px] tablet:mb-[20px]',
+    small: 'type-small',
+    ul: 'type-body mb-[15px] list-disc space-y-[5px] pl-5 tablet:mb-[20px] [&_ul]:mt-[5px] [&_ul]:mb-0',
+    ol: 'type-body mb-[15px] list-decimal space-y-[5px] pl-5 tablet:mb-[20px] [&_ol]:mt-[5px] [&_ol]:mb-0',
+    li: '[&>p]:mb-[5px]',
+    'li.task-list-item': 'type-body',
     blockquote:
-      'border-l-4 border-blue-600 pl-6 py-4 mb-6 bg-blue-50 text-gray-700 italic text-base leading-relaxed ',
-    code: 'bg-gray-100 text-gray-800 px-2 py-1 rounded text-sm font-mono border',
-    pre: 'bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto mb-6 border font-mono text-sm leading-relaxed',
-    a: 'text-blue-600 hover:text-blue-800 underline font-medium transition-colors duration-200 ',
-    strong: 'font-bold text-gray-900 ',
-    em: 'italic text-gray-700 ',
-    hr: 'border-t-2 border-gray-300 my-8',
-    table:
-      'w-full border-collapse border border-gray-300 rounded-lg overflow-hidden min-w-max',
-    thead: 'bg-gray-50',
+      'my-[20px] border-l-[10px] border-rule p-[15px] tablet:my-[30px] [&>p:last-child]:mb-0',
+    code: 'bg-surface px-1 font-mono text-[0.9em]',
+    pre: 'mb-[20px] overflow-x-auto bg-surface p-[15px] font-mono type-small',
+    a: 'link',
+    strong: 'font-bold',
+    em: 'italic',
+    hr: 'my-[30px] border-t border-rule tablet:my-10',
+    table: 'type-small w-full border-collapse',
+    thead: '',
     tbody: '',
-    tr: 'border-b border-gray-200 hover:bg-gray-50 transition-colors [&:hover_td:first-child]:bg-gray-100',
-    th: 'text-left py-4 px-6 font-semibold text-gray-800 border-r border-gray-300 text-base ',
-    td: 'py-4 px-6 text-gray-700 border-r border-gray-300 text-base ',
+    tr: '',
+    th: 'border-b border-rule py-2.5 pr-5 text-left align-top font-bold',
+    td: 'border-b border-rule py-2.5 pr-5 text-left align-top',
   },
 };
 

@@ -3,10 +3,6 @@ import Breadcrumbs from '../components/ui/Breadcrumbs';
 import { Heading } from '../components/ui/Heading';
 import { Text } from '../components/ui/Text';
 import SEO from '../components/SEO';
-import { Banner } from '@bettergov/kapwa/banner';
-import { Card, CardContent } from '@bettergov/kapwa/card';
-import { Input } from '@bettergov/kapwa/input';
-import { Search as SearchIcon } from 'lucide-react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -98,22 +94,32 @@ export default function Search() {
           governmentName: import.meta.env.VITE_GOVERNMENT_NAME,
         })}
       />
-      <Section className="p-3 mb-12">
-        <Breadcrumbs className="mb-8" />
+      <Section>
+        <Breadcrumbs />
         <Heading>{t('common.search')}</Heading>
-        <Text className="text-gray-600 mb-6">{t('search.intro')}</Text>
+        <Text size="lg" className="max-w-[640px]">
+          {t('search.intro')}
+        </Text>
 
         <form
           role="search"
-          className="relative mb-8"
+          className="mb-[30px] max-w-[640px] tablet:mb-10"
           onSubmit={e => e.preventDefault()}
         >
-          <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400 pointer-events-none" />
-          <Input
+          <label htmlFor="search-input" className="type-s mb-[5px] block">
+            {t('search.inputLabel')}
+          </label>
+          <div
+            id="search-hint"
+            className="type-body mb-[15px] text-ink-secondary"
+          >
+            {t('search.placeholder')}
+          </div>
+          <input
+            id="search-input"
             type="search"
-            aria-label={t('search.inputLabel')}
-            placeholder={t('search.placeholder')}
-            className="pl-10"
+            aria-describedby="search-hint"
+            className="type-body h-10 w-full rounded-none border-2 border-ink px-[5px]"
             value={query}
             onChange={e => handleChange(e.target.value)}
             autoFocus
@@ -121,45 +127,42 @@ export default function Search() {
         </form>
 
         {error && (
-          <Banner type="error" description={t('search.unavailable')} icon />
+          <div
+            role="alert"
+            className="mb-[30px] max-w-[640px] border-[5px] border-alert p-[15px] tablet:p-5"
+          >
+            <p className="type-body">{t('search.unavailable')}</p>
+          </div>
         )}
 
         {!error && query.trim() && !loading && results.length === 0 && (
-          <Text className="text-gray-600">
-            {t('search.noResults', { query: query.trim() })}
-          </Text>
+          <Text>{t('search.noResults', { query: query.trim() })}</Text>
         )}
 
         {!error && results.length > 0 && (
-          <div className="space-y-4" aria-busy={loading}>
+          <ol
+            className="max-w-[640px] border-t border-rule"
+            aria-busy={loading}
+          >
             {results.map(result => (
-              <Link key={result.url} to={result.url} className="block">
-                <Card hoverable>
-                  <CardContent>
-                    <h4 className="text-lg font-medium text-primary-600 underline underline-offset-4">
-                      {result.meta.title}
-                    </h4>
-                    <p
-                      className="mt-2 text-sm text-gray-600 [&_mark]:bg-yellow-100 [&_mark]:text-gray-900"
-                      dangerouslySetInnerHTML={{ __html: result.excerpt }}
-                    />
-                    <div className="mt-2 flex flex-wrap gap-2">
-                      {[result.filters.section?.[0], result.meta.category]
-                        .filter(Boolean)
-                        .map(label => (
-                          <span
-                            key={label}
-                            className="inline-block px-2 py-1 text-xs font-medium rounded-sm bg-gray-100 text-gray-800"
-                          >
-                            {label}
-                          </span>
-                        ))}
-                    </div>
-                  </CardContent>
-                </Card>
-              </Link>
+              <li key={result.url} className="border-b border-rule py-5">
+                <h2 className="type-s mb-2.5">
+                  <Link to={result.url} className="link">
+                    {result.meta.title}
+                  </Link>
+                </h2>
+                <p
+                  className="type-small mb-2.5 [&_mark]:bg-transparent [&_mark]:font-bold [&_mark]:text-ink"
+                  dangerouslySetInnerHTML={{ __html: result.excerpt }}
+                />
+                <p className="type-small text-ink-secondary">
+                  {[result.filters.section?.[0], result.meta.category]
+                    .filter(Boolean)
+                    .join(' · ')}
+                </p>
+              </li>
             ))}
-          </div>
+          </ol>
         )}
       </Section>
     </>

@@ -18,6 +18,8 @@ function interpolate(
 
 export interface MarkdownContent {
   content: string;
+  // The content without its title and description paragraph
+  body: string;
   title?: string;
   description?: string;
   data?: Record<string, unknown>;
@@ -58,12 +60,28 @@ export async function loadMarkdownContent(
     const titleMatch = content.match(/^#\s+(.+)$/m);
     const title = titleMatch ? titleMatch[1] : undefined;
 
-    const descriptionMatch = content.match(/^#\s+.+$\n\n(.+?)(?:\n\n|$)/s);
-    const description = descriptionMatch
-      ? descriptionMatch[1].replace(/^>\s*/, '').trim()
-      : undefined;
+    // The description is the plain paragraph straight after the title. The
+    // page header shows both, so the body starts after them (and after a
+    // horizontal rule that follows them).
+    let body = content;
+    let description: string | undefined;
+    if (titleMatch) {
+      const rest = content
+        .slice(titleMatch.index! + titleMatch[0].length)
+        .replace(/^\s+/, '');
+      const [paragraph] = rest.split(/\n\s*\n/);
+      const isPlain =
+        paragraph && !/^(#|\||[-*+] |\d+\. |```|---)/.test(paragraph);
+      if (isPlain) {
+        description = paragraph.replace(/^>\s*/, '').trim();
+      }
+      body = (isPlain ? rest.slice(paragraph.length) : rest).replace(
+        /^\s*(?:-{3,}|\*{3,})\s*\n/,
+        ''
+      );
+    }
 
-    return { content, title, description, data };
+    return { content, body, title, description, data };
   } catch (error) {
     console.error(
       `Failed to load markdown content for document: ${documentSlug}`,

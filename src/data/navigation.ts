@@ -5,28 +5,34 @@ import type { CategoryData } from './yamlLoader';
 // Labels are built per render so they follow the active language. Pass the
 // localized categories from useLocalizedCategories().
 
-export function getMainNavigation(
-  t: TFunction,
-  services: CategoryData,
-  government: CategoryData
-): NavigationItem[] {
+export const REPORTS_HREF = '/government/reports-and-statistics';
+export const REPO_URL = 'https://github.com/BetterLapuLapu/betterlapulapu';
+export const ISSUES_URL = `${REPO_URL}/issues`;
+
+// Service navigation: a flat list of the site's main sections.
+export function getMainNavigation(t: TFunction): NavigationItem[] {
   return [
+    { label: t('common.home'), href: '/' },
+    { label: t('nav.services'), href: '/services' },
+    { label: t('nav.government'), href: '/government' },
+    { label: t('nav.reports'), href: REPORTS_HREF },
+    { label: t('common.search'), href: '/search' },
+  ];
+}
+
+// Links in the footer's bottom row, after the section columns.
+export function getSupportLinks(t: TFunction): NavigationItem[] {
+  return [
+    { label: t('common.sitemap'), href: '/sitemap' },
+    { label: t('common.accessibility'), href: '/accessibility' },
     {
-      label: t('nav.services'),
-      href: '/services',
-      children: services.categories.map(category => ({
-        label: category.category,
-        href: `/services/${category.slug}`,
-      })),
+      label: t('nav.hotlines'),
+      href: 'https://bettergov.ph/philippines/hotlines',
     },
-    {
-      label: t('nav.government'),
-      href: '/government/departments',
-      children: government.categories.map(category => ({
-        label: category.category,
-        href: `/government/${category.slug}`,
-      })),
-    },
+    { label: t('nav.joinUs'), href: 'https://bettergov.ph/join-us' },
+    { label: t('nav.aboutBetterGov'), href: 'https://bettergov.ph/about' },
+    { label: t('nav.officialGovPh'), href: 'https://www.gov.ph' },
+    { label: t('footer.contribute'), href: REPO_URL },
   ];
 }
 
@@ -62,10 +68,7 @@ export function getFooterNavigation(t: TFunction, services: CategoryData) {
       {
         title: t('footer.sections.government'),
         links: [
-          {
-            label: t('footer.links.reports'),
-            href: '/government/reports-and-statistics',
-          },
+          { label: t('footer.links.reports'), href: REPORTS_HREF },
           { label: t('footer.links.openData'), href: 'https://data.gov.ph' },
           {
             label: t('footer.links.foi'),

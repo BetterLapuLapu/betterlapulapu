@@ -3,9 +3,9 @@ import { formatPeso } from '../../lib/format';
 // Hex values of the theme tokens in src/index.css (SVG fills can't rely on
 // CSS variables in every browser).
 export const COLORS = {
-  primary: '#0066eb',
-  primaryDark: '#003d8d',
-  primaryLight: '#99c2f7',
+  primary: '#1d70b8',
+  primaryDark: '#0f385c',
+  primaryLight: '#8eb8dc',
   secondary: '#ff4d00',
   accent: '#f58900',
   income: '#16a34a',
@@ -16,7 +16,7 @@ export const COLORS = {
 
 /** Categorical palette for series and slices, in order of use. */
 export const SERIES = [
-  '#0066eb',
+  '#1d70b8',
   '#f58900',
   '#16a34a',
   '#9333ea',
