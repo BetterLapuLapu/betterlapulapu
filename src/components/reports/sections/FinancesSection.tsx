@@ -1,4 +1,3 @@
-import { Banknote, Landmark, Percent, Scale } from 'lucide-react';
 import { useMemo } from 'react';
 import {
   Bar,
@@ -180,7 +179,6 @@ export default function FinancesSection({
                   ? `${formatPercent((income / target) * 100)} of the ${formatPeso(target, { compact: true })} annual target`
                   : formatPeso(income)
               }
-              icon={Banknote}
               tone="income"
               title={formatPeso(income)}
             />
@@ -188,7 +186,6 @@ export default function FinancesSection({
               label="Current operating expenditures"
               value={formatPeso(expenditure, { compact: true })}
               subtext="Personnel, operations and interest"
-              icon={Landmark}
               tone="expense"
               title={formatPeso(expenditure)}
             />
@@ -200,7 +197,6 @@ export default function FinancesSection({
                   ? 'Income exceeded operating spending'
                   : 'Operating spending exceeded income'
               }
-              icon={Scale}
               tone={isNumber(net) && net < 0 ? 'accent' : 'primary'}
               title={formatPeso(net)}
             />
@@ -212,7 +208,6 @@ export default function FinancesSection({
                   : '—'
               }
               subtext="National Tax Allotment as a share of income"
-              icon={Percent}
               tone="neutral"
             />
           </div>

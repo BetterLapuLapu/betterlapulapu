@@ -3,6 +3,7 @@ import Breadcrumbs from '../components/ui/Breadcrumbs';
 import { Heading } from '../components/ui/Heading';
 import { Text } from '../components/ui/Text';
 import SEO from '../components/SEO';
+import NotificationBanner from '../components/ui/NotificationBanner';
 import { Link, useSearchParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -127,12 +128,9 @@ export default function Search() {
         </form>
 
         {error && (
-          <div
-            role="alert"
-            className="mb-[30px] max-w-[640px] border-[5px] border-alert p-[15px] tablet:p-5"
-          >
-            <p className="type-body">{t('search.unavailable')}</p>
-          </div>
+          <NotificationBanner title={t('alert.error')} tone="error">
+            <p>{t('search.unavailable')}</p>
+          </NotificationBanner>
         )}
 
         {!error && query.trim() && !loading && results.length === 0 && (

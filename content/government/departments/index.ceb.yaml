@@ -1,23 +1,33 @@
 # Cebuano overlay for index.yaml. Entries are matched by slug; omitted
 # fields fall back to English. Official office names are kept in English.
 
+groups:
+  - slug: 'executive-legislative'
+    name: 'Ehekutibo ug lehislatibo'
+  - slug: 'city-offices'
+    name: 'Mga opisina sa siyudad'
+  - slug: 'hospitals'
+    name: 'Mga ospital'
+  - slug: 'education'
+    name: 'Eskwelahan, pagbansay ug librarya'
+
 pages:
   - slug: 'executive'
-    name: 'Ehekutibo'
-    description: 'Ilaila ang inyong Mayor ug Vice Mayor, lakip ang mga umaabot nga kalihokan, ang Mayor''s Community Assistance Program, kasaysayan sa mga mayor, ug impormasyon bahin sa ubang makasaysayanong katungdanan sa lokal nga gobyerno.'
+    name: 'Mayor ug Vice Mayor'
+    description: "Ilaila ang inyong Mayor ug Vice Mayor, lakip ang mga umaabot nga kalihokan, ang Mayor's Community Assistance Program, kasaysayan sa mga mayor, ug impormasyon bahin sa ubang makasaysayanong katungdanan sa lokal nga gobyerno."
 
   - slug: 'legislative'
-    name: 'Lehislatibo'
+    name: 'Konseho sa Siyudad (Sangguniang Panlungsod)'
     description: 'Sa termino 2025–2028, ang Sangguniang Panlungsod (City Council) sa Lapu-Lapu City adunay 12 ka napiling konsehal, ug ang Vice Mayor ang presiding officer sa konseho.'
 
   - slug: 'city-mayors-office'
     description: 'Special permit para sa mga kalihokan, pag-abang og venue, banner ug delivery; mga sertipikasyon para sa trabaho ug biyahe; iskedyul sa kasal; insentibo sa board ug bar passer; ug re-payroll sa cash gift sa senior citizen.'
 
   - slug: 'city-administrators-office'
-    description: 'Occupational permit (Mayor''s Permit for Employment), Mayor''s Clearance para sa uniformed services, ug ang Committee on Discipline and Investigation para sa mga reklamo batok sa mga empleyado sa gobyerno.'
+    description: "Occupational permit (Mayor's Permit for Employment), Mayor's Clearance para sa uniformed services, ug ang Committee on Discipline and Investigation para sa mga reklamo batok sa mga empleyado sa gobyerno."
 
   - slug: 'city-attorneys-office'
-    description: 'Nag-isyu, nag-renew ug nag-amyenda sa Motorized Tricycle Operator''s Permit (MTOP). Bukas Lunes hangtod Biyernes, 8:00 AM hangtod 5:00 PM.'
+    description: "Nag-isyu, nag-renew ug nag-amyenda sa Motorized Tricycle Operator's Permit (MTOP). Bukas Lunes hangtod Biyernes, 8:00 AM hangtod 5:00 PM."
 
   - slug: 'city-treasurers-office'
     description: 'Bayri ang real property tax, business tax ug ubang lokal nga bayronon; pagkuha og real property tax clearance ug sertipikasyon; pagsira sa narehistrong negosyo.'

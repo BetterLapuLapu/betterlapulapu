@@ -1,5 +1,4 @@
 import { parseAsStringLiteral, useQueryState } from 'nuqs';
-import { CheckCircle2, ClipboardList, Coins, Wallet } from 'lucide-react';
 import {
   Bar,
   BarChart,
@@ -166,27 +165,23 @@ function ProjectFund({
               ? `Sum of listed projects. The report prints a total of ${formatPeso(selected.summary.printedTotalCost)}.`
               : formatPeso(totalCost)
           }
-          icon={Coins}
         />
         <StatCard
           label="Spent to date"
           value={formatPeso(spent, { compact: true })}
           subtext={formatPeso(spent)}
-          icon={Wallet}
           tone="expense"
         />
         <StatCard
           label="Utilization"
           value={totalCost ? formatPercent((spent / totalCost) * 100) : '—'}
           subtext="Spent to date ÷ programmed cost"
-          icon={CheckCircle2}
           tone="income"
         />
         <StatCard
           label="Projects"
           value={String(selected.summary.projectCount)}
           subtext={`${done} reported 100% complete`}
-          icon={ClipboardList}
           tone="neutral"
         />
       </div>
@@ -294,13 +289,11 @@ function Ldrrmf({ entries, year }: { entries: LdrrmfEntry[]; year: number }) {
           label="Fund available"
           value={formatPeso(s.totalAvailable, { compact: true })}
           subtext={formatPeso(s.totalAvailable)}
-          icon={Coins}
         />
         <StatCard
           label="Used"
           value={formatPeso(utilized, { compact: true })}
           subtext={formatPeso(utilized)}
-          icon={Wallet}
           tone="expense"
         />
         <StatCard
@@ -310,14 +303,12 @@ function Ldrrmf({ entries, year }: { entries: LdrrmfEntry[]; year: number }) {
               ? formatPercent((utilized / s.totalAvailable) * 100)
               : '—'
           }
-          icon={CheckCircle2}
           tone="income"
         />
         <StatCard
           label="Balance"
           value={formatPeso(s.balance, { compact: true })}
           subtext={formatPeso(s.balance)}
-          icon={ClipboardList}
           tone="neutral"
         />
       </div>
@@ -447,7 +438,6 @@ function Sef({ entries, year }: { entries: SefEntry[]; year: number }) {
           label="SEF receipts"
           value={formatPeso(s.receipts, { compact: true })}
           subtext={formatPeso(s.receipts)}
-          icon={Coins}
           tone="income"
         />
         <StatCard
@@ -458,14 +448,12 @@ function Sef({ entries, year }: { entries: SefEntry[]; year: number }) {
               ? `${formatPercent((s.totalDisbursements / s.receipts) * 100)} of receipts`
               : undefined
           }
-          icon={Wallet}
           tone="expense"
         />
         <StatCard
           label="Balance"
           value={formatPeso(s.balance, { compact: true })}
           subtext={formatPeso(s.balance)}
-          icon={ClipboardList}
           tone="neutral"
         />
       </div>

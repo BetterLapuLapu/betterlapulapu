@@ -1,5 +1,4 @@
 import { parseAsString, useQueryState } from 'nuqs';
-import { Award, FileSignature, PiggyBank, Receipt } from 'lucide-react';
 import { useMemo } from 'react';
 import {
   Bar,
@@ -198,20 +197,17 @@ export default function ProcurementSection({
             label="Contracts awarded"
             value={filtered.length.toLocaleString()}
             subtext={`${year}, ${category === 'All' ? 'all types' : category}`}
-            icon={FileSignature}
           />
           <StatCard
             label="Total contract amount"
             value={formatPeso(awarded, { compact: true })}
             subtext={formatPeso(awarded)}
-            icon={Receipt}
             tone="expense"
           />
           <StatCard
             label="Approved budgets"
             value={formatPeso(budget, { compact: true })}
             subtext="Approved Budget for the Contract (ABC)"
-            icon={Award}
             tone="neutral"
           />
           <StatCard
@@ -222,7 +218,6 @@ export default function ProcurementSection({
                 ? `${formatPercent((savings / budget) * 100)} under the ABC`
                 : undefined
             }
-            icon={PiggyBank}
             tone="income"
           />
         </div>

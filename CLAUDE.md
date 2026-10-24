@@ -86,7 +86,7 @@ The app uses `VITE_GOVERNMENT_NAME` (referenced in `Services.tsx`) for branding.
 
 The design system's colours, `tablet:` breakpoint (641px), `width-container`, `type-*` text sizes, `link*` styles, `.button` and `.checkbox` are defined in `src/index.css`.
 
-Reusable primitives live in `src/components/ui/`: `Section`, `Heading`, `Text`, `Breadcrumbs`, `LinkList`, `RelatedLinks`, `SummaryList`, `StepList`, `Tabs`, `Accordion`, `Details`, `ScrollToTop`. Use these instead of raw HTML elements for consistency.
+Reusable primitives live in `src/components/ui/`: `Section`, `Heading`, `Text`, `Breadcrumbs`, `LinkList`, `RelatedLinks`, `SummaryList`, `StepList`, `Tabs`, `Accordion`, `Details`, `NotificationBanner`, `ScrollToTop`. Use these instead of raw HTML elements for consistency.
 
 Content pages render through `src/components/guide/GuideBody.tsx`, which splits the markdown at `## ` headings (`src/lib/guideSections.ts`) and shows the content template's sections as components: "What You Need to Know" table → summary list, "How to Apply" `### Option` subsections → tabs and `Step N` headings (or a `1. **Title**` list) → step by step, "Official Citizen's Charter" → details, "Contact Information" `- **Key**: value` lines → summary list, "Frequently Asked Questions" `**Q:**`/`A:` pairs → accordion, and "Related Services" links → the sidebar. A section that doesn't match its expected shape renders as plain markdown.
 
