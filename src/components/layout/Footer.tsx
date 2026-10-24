@@ -7,12 +7,21 @@ import {
 } from '../../data/navigation';
 import { useLocalizedCategories } from '../../hooks/useLocalizedCategories';
 import { Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 
 // Social icons are hidden for now; set to true to show them again.
 const SHOW_SOCIAL_LINKS = false;
 
 const isExternal = (href: string) => /^https?:\/\//.test(href);
+
+// What building the site has cost so far, in pesos. Leave VITE_BUILD_COST
+// unset to hide the line.
+const buildCost = Number(import.meta.env.VITE_BUILD_COST || NaN);
+const peso = new Intl.NumberFormat('en-PH', {
+  style: 'currency',
+  currency: 'PHP',
+  maximumFractionDigits: 0,
+});
 
 function FooterLink({ href, label }: { href: string; label: string }) {
   return isExternal(href) ? (
@@ -68,41 +77,66 @@ const Footer: React.FC = () => {
 
         <hr className="my-[30px] border-rule tablet:my-10" />
 
-        <div className="flex flex-wrap items-end justify-between gap-[30px]">
-          <div className="max-w-[640px]">
-            <h2 className="sr-only">{t('footer.supportLinks')}</h2>
-            <ul className="mb-[25px] flex flex-wrap gap-x-[15px] gap-y-2.5">
-              {getSupportLinks(t).map(link => (
-                <li key={link.href}>
-                  <FooterLink href={link.href} label={link.label} />
-                </li>
-              ))}
-            </ul>
-            {SHOW_SOCIAL_LINKS && (
-              <ul className="mb-[25px] flex gap-[15px]">
-                {socialLinks.map(link => (
-                  <li key={link.label}>
-                    <a
-                      href={link.href}
-                      aria-label={link.label}
-                      className="link-text"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {getSocialIcon(link.label)}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            )}
-            <p className="mb-2.5">{t('footer.tagline')}</p>
-            <p>{t('footer.copyright', { year: new Date().getFullYear() })}</p>
+        <h2 className="sr-only">{t('footer.supportLinks')}</h2>
+        <ul className="flex flex-wrap gap-x-5 gap-y-2.5">
+          {getSupportLinks(t).map(link => (
+            <li key={link.href}>
+              <FooterLink href={link.href} label={link.label} />
+            </li>
+          ))}
+        </ul>
+        {SHOW_SOCIAL_LINKS && (
+          <ul className="mt-[25px] flex gap-[15px]">
+            {socialLinks.map(link => (
+              <li key={link.label}>
+                <a
+                  href={link.href}
+                  aria-label={link.label}
+                  className="link-text"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {getSocialIcon(link.label)}
+                </a>
+              </li>
+            ))}
+          </ul>
+        )}
+
+        <div className="mt-[30px] flex flex-wrap items-center justify-between gap-[30px] border-t border-rule pt-[30px] tablet:mt-10 tablet:pt-10">
+          <div className="flex max-w-[640px] min-w-0 items-center gap-[15px] tablet:gap-5">
+            <img
+              src="/logo.svg"
+              alt={t('common.logoAlt')}
+              className="h-[60px] w-auto shrink-0 tablet:h-[70px]"
+            />
+            <div>
+              <p className="mb-2.5">{t('footer.tagline')}</p>
+              <p>{t('footer.copyright', { year: new Date().getFullYear() })}</p>
+            </div>
           </div>
-          <img
-            src="/logo.svg"
-            alt={t('common.logoAlt')}
-            className="h-[90px] w-auto"
-          />
+          {Number.isFinite(buildCost) && (
+            <div className="space-y-[5px] rounded-2xl border border-rule bg-white px-5 py-[15px]">
+              <p>
+                <Trans
+                  i18nKey="footer.buildCost"
+                  values={{ cost: peso.format(buildCost) }}
+                  components={{
+                    cost: <span className="font-bold text-alert" />,
+                  }}
+                />
+              </p>
+              <p>
+                <Trans
+                  i18nKey="footer.costToPeople"
+                  values={{ free: peso.format(0) }}
+                  components={{
+                    free: <span className="font-bold text-go" />,
+                  }}
+                />
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </footer>

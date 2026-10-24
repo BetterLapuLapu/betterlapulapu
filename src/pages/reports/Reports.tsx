@@ -1,12 +1,4 @@
 import { parseAsInteger, useQueryState } from 'nuqs';
-import {
-  Banknote,
-  FileSignature,
-  Landmark,
-  Percent,
-  Users,
-  Wallet,
-} from 'lucide-react';
 import { useMemo } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import SEO from '../../components/SEO';
@@ -15,6 +7,7 @@ import { Heading } from '../../components/ui/Heading';
 import Section from '../../components/ui/Section';
 import { Text } from '../../components/ui/Text';
 import LinkList from '../../components/ui/LinkList';
+import NotificationBanner from '../../components/ui/NotificationBanner';
 import { DataDisclaimer } from '../../components/reports/AboutThisData';
 import ChartCard from '../../components/reports/ChartCard';
 import CoverageMatrix from '../../components/reports/CoverageMatrix';
@@ -87,7 +80,6 @@ function Overview({ data, year }: { data: FdpDatasets; year: number }) {
           label="Current operating income"
           value={formatPeso(income, { compact: true })}
           subtext={periodNote(sre)}
-          icon={Banknote}
           tone="income"
           title={formatPeso(income)}
         />
@@ -95,7 +87,6 @@ function Overview({ data, year }: { data: FdpDatasets; year: number }) {
           label="Current operating expenditures"
           value={formatPeso(expenditure, { compact: true })}
           subtext={periodNote(sre)}
-          icon={Landmark}
           tone="expense"
           title={formatPeso(expenditure)}
         />
@@ -107,7 +98,6 @@ function Overview({ data, year }: { data: FdpDatasets; year: number }) {
               : '—'
           }
           subtext="NTA as a share of operating income"
-          icon={Percent}
           tone="neutral"
         />
         <StatCard
@@ -122,20 +112,17 @@ function Overview({ data, year }: { data: FdpDatasets; year: number }) {
               ? `${bids.length} contracts in transcribed bid results`
               : 'No bid results for this year'
           }
-          icon={FileSignature}
         />
         <StatCard
           label="City personnel"
           value={isNumber(headcount) ? formatNumber(headcount) : '—'}
           subtext={periodNote(hr)}
-          icon={Users}
           tone="accent"
         />
         <StatCard
           label="Outstanding debt"
           value={formatPeso(debt?.totalOutstanding, { compact: true })}
           subtext={periodNote(debt)}
-          icon={Wallet}
           tone="neutral"
           title={formatPeso(debt?.totalOutstanding)}
         />
@@ -224,7 +211,7 @@ export default function Reports() {
         </div>
 
         <div className="z-20 border-b border-rule bg-white lg:sticky lg:top-0">
-          <div className="width-container flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+          <div className="width-container">
             <nav
               aria-label="Report sections"
               className="flex gap-x-[25px] overflow-x-auto"
@@ -249,11 +236,13 @@ export default function Reports() {
               })}
             </nav>
             {showYear && years.length > 0 && (
-              <YearSelector
-                years={years}
-                value={year}
-                onChange={y => setYear(y)}
-              />
+              <div className="border-t border-rule py-2.5">
+                <YearSelector
+                  years={years}
+                  value={year}
+                  onChange={y => setYear(y)}
+                />
+              </div>
             )}
           </div>
         </div>
@@ -265,10 +254,12 @@ export default function Reports() {
             </div>
           )}
           {error && (
-            <p className="rounded-md bg-red-50 p-4 text-sm text-red-700">
-              The report data could not be loaded ({error}). Please try again
-              later.
-            </p>
+            <NotificationBanner title="There is a problem" tone="error">
+              <p>
+                The report data could not be loaded ({error}). Please try again
+                later.
+              </p>
+            </NotificationBanner>
           )}
           {data && (
             <>

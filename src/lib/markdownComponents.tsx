@@ -11,6 +11,7 @@ import {
 } from 'react';
 import { TableWithToggle } from './TableWithToggle';
 import { slugify, textOf } from './utils';
+import { Blockquote } from './MarkdownBlockquote';
 
 /**
  * Creates ReactMarkdown components with custom styling based on typography theme
@@ -150,9 +151,9 @@ export function createMarkdownComponents(theme: TypographyTheme) {
       children,
       ...props
     }: { children?: ReactNode } & HTMLAttributes<HTMLQuoteElement>) => (
-      <blockquote className={theme.components.blockquote} {...props}>
+      <Blockquote className={theme.components.blockquote} {...props}>
         {children}
-      </blockquote>
+      </Blockquote>
     ),
     code: ({
       children,

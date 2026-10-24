@@ -5,6 +5,14 @@ export interface Subcategory {
   name: string;
   slug: string;
   description?: string;
+  // Slug of the index's group this page is listed under, if any
+  group?: string;
+}
+
+// A heading that pages in an index can be grouped under (e.g. hospitals)
+export interface IndexGroup {
+  slug: string;
+  name: string;
 }
 
 export interface Category {
@@ -24,6 +32,7 @@ export interface CategoryIndexData {
   title?: string;
   description?: string;
   layout?: 'grid' | 'list';
+  groups?: IndexGroup[];
   pages: Subcategory[];
 }
 
@@ -91,6 +100,7 @@ interface PageOverlay {
 interface CategoryIndexOverlay {
   title?: string;
   description?: string;
+  groups?: { slug: string; name?: string }[];
   pages?: PageOverlay[];
 }
 
@@ -174,6 +184,7 @@ export interface CategoryIndex {
   title?: string;
   description?: string;
   layout: 'grid' | 'list';
+  groups?: IndexGroup[];
   pages: Subcategory[];
 }
 
@@ -209,6 +220,17 @@ export async function loadCategoryIndex(
       title: overlay?.title || indexData.title,
       description: overlay?.description || indexData.description,
       layout: indexData.layout ?? 'list',
+      groups:
+        indexData.groups &&
+        mergeBySlug(
+          indexData.groups,
+          overlay?.groups,
+          entry => entry.slug,
+          (group, translated) => ({
+            ...group,
+            name: translated.name || group.name,
+          })
+        ),
       pages: mergeBySlug(
         indexData.pages || [],
         overlay?.pages,

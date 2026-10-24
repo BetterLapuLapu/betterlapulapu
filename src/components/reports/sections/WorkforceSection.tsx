@@ -1,4 +1,3 @@
-import { Banknote, Briefcase, UserCheck, Users } from 'lucide-react';
 import {
   Bar,
   BarChart,
@@ -69,11 +68,7 @@ export default function WorkforceSection({
             <strong>{formatPeriod(selected.year, selected.quarter)}</strong>.
           </p>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            <StatCard
-              label="Total personnel"
-              value={formatNumber(headcount)}
-              icon={Users}
-            />
+            <StatCard label="Total personnel" value={formatNumber(headcount)} />
             <StatCard
               label="Permanent employees"
               value={formatNumber(permanent)}
@@ -82,7 +77,6 @@ export default function WorkforceSection({
                   ? `${formatPercent((permanent / headcount) * 100)} of personnel`
                   : undefined
               }
-              icon={UserCheck}
               tone="income"
             />
             <StatCard
@@ -93,14 +87,12 @@ export default function WorkforceSection({
                   ? `${formatPercent((jobOrder / headcount) * 100)} of personnel`
                   : undefined
               }
-              icon={Briefcase}
               tone="accent"
             />
             <StatCard
               label="Salaries and benefits"
               value={formatPeso(cost, { compact: true })}
               subtext={cost ? `${formatPeso(cost)} year to date` : undefined}
-              icon={Banknote}
               tone="expense"
             />
           </div>

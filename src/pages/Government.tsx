@@ -10,6 +10,7 @@ import Breadcrumbs from '../components/ui/Breadcrumbs';
 import LinkList from '../components/ui/LinkList';
 import RelatedLinks from '../components/ui/RelatedLinks';
 import SEO from '../components/SEO';
+import Directory from '../components/government/Directory';
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLocalizedCategories } from '../hooks/useLocalizedCategories';
@@ -77,20 +78,51 @@ const Government: React.FC = () => {
     );
   }
 
+  const seo = (
+    <SEO
+      title={categoryData.category || category}
+      description={categoryData.description}
+      keywords={`${categoryData.category}, government services, public services, local government`}
+    />
+  );
+  const caption = (
+    <span className="type-lead mb-[5px] block text-ink-secondary">
+      {t('nav.government')}
+    </span>
+  );
+
+  // An index with groups (departments) is a full-width directory
+  if (!loading && categoryIndex.groups?.length) {
+    return (
+      <>
+        {seo}
+        <Section>
+          <Breadcrumbs />
+          <div className="max-w-[640px]">
+            {caption}
+            <Heading className="tablet:mb-[30px]">
+              {categoryData.category || category}
+            </Heading>
+            <Text size="lg">{categoryData.description}</Text>
+          </div>
+          <Directory
+            groups={categoryIndex.groups}
+            pages={categoryIndex.pages}
+            basePath={`/government/${category}`}
+          />
+        </Section>
+      </>
+    );
+  }
+
   return (
     <>
-      <SEO
-        title={categoryData.category || category}
-        description={categoryData.description}
-        keywords={`${categoryData.category}, government services, public services, local government`}
-      />
+      {seo}
       <Section>
         <Breadcrumbs />
         <div className="flex flex-wrap items-start gap-x-[60px] gap-y-10">
           <div className="min-w-0 flex-[999_1_560px]">
-            <span className="type-lead mb-[5px] block text-ink-secondary">
-              {t('nav.government')}
-            </span>
+            {caption}
             <Heading className="tablet:mb-[30px]">
               {categoryData.category || category}
             </Heading>

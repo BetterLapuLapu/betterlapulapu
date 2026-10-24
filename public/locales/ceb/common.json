@@ -42,7 +42,7 @@
   },
   "services": {
     "title": "Mga Serbisyo ug Impormasyon",
-    "description": "Dali ug sayon nga ma-access ang opisyal nga mga serbisyo sa gobyerno. Pangitaa ang imong kinahanglan para sa pagkalungsuranon, negosyo, edukasyon, ug uban pa.",
+    "description": "Mga giya sa mga serbisyo sa gobyerno sa siyudad: unsay kinahanglan, asa moadto ug pila ang bayad, para sa pagkalungsuranon, negosyo, edukasyon, ug uban pa.",
     "seoTitle": "Mga Serbisyo",
     "allTitle": "Tanang serbisyo sa lokal nga gobyerno",
     "allDescription": "Tanang serbisyo nga gihatag sa gobyerno sa {{governmentName}}. Pangitaa ang imong kinahanglan para sa pagkalungsuranon, negosyo, edukasyon, ug uban pa.",
@@ -54,14 +54,23 @@
     "allDescription": "Mga departamento, opisina, report ug mga dokumento sa transparency sa gobyerno sa {{governmentName}}.",
     "otherCategories": "Dugang gikan sa Gobyerno sa Siyudad"
   },
+  "directory": {
+    "filterLabel": "Pangitaa ang departamento o opisina",
+    "resultCount_one": "{{count}} ka departamento o opisina",
+    "resultCount_other": "{{count}} ka departamento ug opisina",
+    "noResults": "Walay departamento o opisina nga mohaum sa “{{query}}”.",
+    "other": "Ubang mga opisina"
+  },
   "governmentActivity": {
     "title": "Kalihokan sa Gobyerno",
-    "description": "Pabiling updated sa pinakabag-ong mga kalihokan ug pahibalo sa gobyerno."
+    "description": "Kahibalo bahin sa mga departamento, badyet ug gasto, ug mga dokumento sa transparency sa Gobyerno sa Siyudad."
   },
   "footer": {
     "copyright": "© {{year}} BetterLapuLapu. Ang tanang sulod public domain gawas kung adunay laing gipahayag.",
+    "buildCost": "Gasto sa paghimo niini nga site hangtod karon: <cost>{{cost}}</cost>.",
+    "costToPeople": "Gasto sa Katawhan sa Pilipinas: <free>{{free}}</free>.",
     "portalLabel": "Portal sa BetterGov.ph",
-    "tagline": "Usa ka portal sa komunidad nga naghatag og impormasyon ug serbisyo sa mga Pilipino, negosyo, ug bisita.",
+    "tagline": "Usa ka portal sa komunidad nga adunay impormasyon bahin sa mga serbisyo sa gobyerno para sa mga Pilipino, negosyo, ug bisita.",
     "contribute": "Motabang sa GitHub",
     "sections": {
       "about": "Mahitungod",
@@ -98,6 +107,14 @@
     "show": "Ipakita",
     "hide": "Itago",
     "step": "Lakang"
+  },
+  "alert": {
+    "note": "Pahibalo",
+    "tip": "Tambag",
+    "important": "Importante",
+    "warning": "Pasidaan",
+    "caution": "Pag-amping",
+    "error": "Adunay problema"
   },
   "search": {
     "seoDescription": "Pangitaa ang mga serbisyo, opisina ug impormasyon gikan sa gobyerno sa {{governmentName}}.",
