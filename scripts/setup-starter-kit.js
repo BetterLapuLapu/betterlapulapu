@@ -150,6 +150,8 @@ VITE_SITE_DESCRIPTION="Community portal of ${governmentName}"
 VITE_SITE_KEYWORDS="government, local government, services, ${governmentName.toLowerCase()}"
 VITE_OG_IMAGE_URL="${websiteUrl}/og-image.jpg"
 VITE_TWITTER_HANDLE="@your-government"
+# Facebook app ID for link previews (optional; from developers.facebook.com)
+VITE_FACEBOOK_APP_ID=""
 
 # Analytics (Optional)
 VITE_GOOGLE_ANALYTICS_ID=""

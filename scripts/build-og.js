@@ -31,6 +31,8 @@ const WIDTH = 1200;
 const HEIGHT = 630;
 
 const baseUrl = siteUrl();
+// Links shares of the site to a Facebook app (optional)
+const facebookAppId = env.VITE_FACEBOOK_APP_ID;
 const governmentName = env.VITE_GOVERNMENT_NAME || 'Lapu-Lapu City';
 const locale = JSON.parse(
   fs.readFileSync(path.join(rootDir, 'public/locales/en/common.json'), 'utf8')
@@ -260,7 +262,7 @@ const imagePath = page => `/og${page.path === '/' ? '/index' : page.path}.png`;
 // Tags the build replaces: the title, description, canonical link and any
 // Open Graph or Twitter tags already in index.html
 const REPLACED =
-  /\s*<(?:title>[^<]*<\/title>|meta\s+(?:name|property)="(?:description|og:[^"]*|twitter:[^"]*)"[^>]*>|link\s+rel="canonical"[^>]*>)/g;
+  /\s*<(?:title>[^<]*<\/title>|meta\s+(?:name|property)="(?:description|og:[^"]*|fb:[^"]*|twitter:[^"]*)"[^>]*>|link\s+rel="canonical"[^>]*>)/g;
 
 function headTags(page) {
   const url = `${baseUrl}${page.path === '/' ? '/' : page.path}`;
@@ -276,6 +278,7 @@ function headTags(page) {
     `<link rel="canonical" href="${escape(url)}" data-rh="true" />`,
     meta('property', 'og:type', page.type || 'website'),
     meta('property', 'og:site_name', SITE_NAME),
+    ...(facebookAppId ? [meta('property', 'fb:app_id', facebookAppId)] : []),
     meta('property', 'og:locale', 'en_US'),
     meta('property', 'og:url', url),
     meta('property', 'og:title', title),
