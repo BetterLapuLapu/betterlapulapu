@@ -10,7 +10,17 @@ data/fdp/
   catalog.json              every published document, classified (scripts/fdp/catalog.js)
   json/{type}/{id}.json     one transcription per document (source of truth)
   validation-report.md      output of scripts/fdp/validate.js
+  proposed/{year}.json      proposed budget from news reports (see below)
 ```
+
+### Proposed budgets
+
+Between the executive's budget submission (October) and the City posting the
+enacted Annual Budget Report, the only figures for the coming year are the
+totals reported in the news. `proposed/{year}.json` holds those, copied as
+printed with the article in `sources`, and the dashboard shows them as a
+"Proposed, not yet approved" budget. They are not FDP transcriptions: delete
+the file once the official budget is posted and transcribed.
 
 Markdown versions and the dashboard aggregates in `public/data/fdp/` are
 generated from these JSON files by `scripts/fdp/build-fdp-data.js`. Never edit

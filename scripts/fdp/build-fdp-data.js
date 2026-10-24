@@ -13,6 +13,7 @@
  *   workforce.json     Human Resource Complement by quarter
  *   debt.json          loans and outstanding balances
  *   budget.json        annual budget office totals (line items in docs/)
+ *   proposals.json     proposed budgets from data/fdp/proposed/ (news-sourced)
  *   docs/{id}.json     each full transcription
  *   md/{id}.md         each transcription rendered as markdown
  *
@@ -379,6 +380,39 @@ function buildBudget() {
     .sort(byPeriod);
 }
 
+/**
+ * Proposed budgets (data/fdp/proposed/{year}.json): fund and sector totals
+ * reported in the news before the City posts the official budget. Kept apart
+ * from the transcriptions because they have no FDP document behind them.
+ */
+function buildProposals() {
+  const dir = path.join(fdpDir, 'proposed');
+  if (!fs.existsSync(dir)) return [];
+  return fs
+    .readdirSync(dir)
+    .filter(f => f.endsWith('.json'))
+    .map(file => {
+      const proposal = JSON.parse(
+        fs.readFileSync(path.join(dir, file), 'utf8')
+      );
+      const sources = new Set(proposal.sources.map(s => s.key));
+      const items = [
+        proposal.total,
+        ...proposal.funds,
+        ...proposal.sectors,
+        ...proposal.lineItems,
+      ];
+      for (const item of items) {
+        if (typeof item.amount !== 'number' || !sources.has(item.source))
+          throw new Error(
+            `${file}: "${item.label}" needs a numeric amount and a listed source`
+          );
+      }
+      return proposal;
+    })
+    .sort((a, b) => a.year - b.year);
+}
+
 // ---------------------------------------------------------------- catalog
 function buildCatalog() {
   const transcribed = new Map(docs.map(d => [d.id, d]));
@@ -488,6 +522,7 @@ const procurement = buildProcurement();
 const workforce = buildWorkforce();
 const debt = buildDebt();
 const budget = buildBudget();
+const proposals = buildProposals();
 
 write('catalog.json', dataset('FDP document catalog', buildCatalog()));
 write(
@@ -505,6 +540,13 @@ write(
 );
 write('debt.json', dataset('Statement of Indebtedness', debt, { unit: 'PHP' }));
 write('budget.json', dataset('Annual budget', budget, { unit: 'PHP' }));
+write(
+  'proposals.json',
+  dataset('Proposed budgets', proposals, {
+    unit: 'PHP',
+    source: 'News reports of budgets submitted to the City Council',
+  })
+);
 for (const doc of docs) {
   write(`docs/${doc.id}.json`, doc);
   write(`md/${doc.id}.md`, toMarkdown(doc));
@@ -513,5 +555,6 @@ for (const doc of docs) {
 console.log(
   `FDP data: ${docs.length}/${catalog.documents.length} documents transcribed → ` +
     `${finances.length} SRE, ${procurement.length} bid rows, ${workforce.length} HR, ` +
-    `${debt.length} debt, ${budget.length} budget docs in public/data/fdp/`
+    `${debt.length} debt, ${budget.length} budget docs, ` +
+    `${proposals.length} proposed budgets in public/data/fdp/`
 );

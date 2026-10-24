@@ -6,6 +6,7 @@ import type {
   Dataset,
   DebtEntry,
   Funds,
+  ProposedBudget,
   SreEntry,
   WorkforceEntry,
 } from '../types/fdp';
@@ -18,6 +19,7 @@ export interface FdpDatasets {
   workforce: WorkforceEntry[];
   debt: DebtEntry[];
   budget: BudgetEntry[];
+  proposals: ProposedBudget[];
 }
 
 const cache = new Map<string, Promise<unknown>>();
@@ -88,6 +90,7 @@ export function useFdpData(): State<FdpDatasets> {
       'workforce',
       'debt',
       'budget',
+      'proposals',
     ] as const;
     const results = await Promise.all(
       files.map(f => fetchFdp<Dataset<unknown>>(`${f}.json`))

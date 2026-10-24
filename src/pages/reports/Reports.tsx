@@ -54,6 +54,7 @@ function availableYears(data: FdpDatasets) {
     ...data.workforce.map(e => e.year),
     ...data.debt.map(e => e.year),
     ...data.budget.map(e => e.year),
+    ...data.proposals.map(p => p.year),
   ]);
   if (!years.size) data.catalog.documents.forEach(d => years.add(d.year));
   return [...years].sort((a, b) => b - a);
@@ -68,6 +69,7 @@ function Overview({ data, year }: { data: FdpDatasets; year: number }) {
   const headcount = hr ? headcountOf(hr) : null;
   const bids = data.procurement.filter(r => r.year === year);
   const debt = latestForYear(data.debt, year);
+  const proposal = data.proposals.find(p => p.year === year);
   const periodNote = (e?: { year: number; quarter: number | null }) =>
     e
       ? partialLabel(e) || `As of ${formatPeriod(e.year, e.quarter)}`
@@ -75,6 +77,19 @@ function Overview({ data, year }: { data: FdpDatasets; year: number }) {
 
   return (
     <div className="space-y-8">
+      {proposal && !sre && (
+        <NotificationBanner title={`${year} is not under way yet`}>
+          <p>
+            The only {year} figures so far are from the proposed budget of{' '}
+            {formatPeso(proposal.total.amount, { compact: true })}, which the
+            City Council has not yet approved.{' '}
+            <Link to={`${REPORTS_PATH}/budget?year=${year}`} className="link">
+              See the proposed {year} budget
+            </Link>
+            .
+          </p>
+        </NotificationBanner>
+      )}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         <StatCard
           label="Current operating income"
@@ -276,6 +291,7 @@ export default function Reports() {
               {section?.slug === 'budget' && (
                 <BudgetSection
                   entries={data.budget}
+                  proposals={data.proposals}
                   catalog={data.catalog}
                   year={year}
                 />
