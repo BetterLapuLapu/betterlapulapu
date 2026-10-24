@@ -64,7 +64,7 @@ export default function Hero() {
   return (
     <div
       ref={heroRef}
-      className="relative overflow-hidden bg-primary-600 py-[30px] text-white tablet:pt-[50px] tablet:pb-[55px] lg:min-h-[520px]"
+      className="relative overflow-hidden bg-gradient-to-r from-primary-600 to-primary-700 py-[30px] text-white tablet:pt-[50px] tablet:pb-[55px] lg:min-h-[520px]"
     >
       {/* Statue shown from the head down to the waist; the rest is revealed
           on scroll. The bottom edge fades out instead of cutting hard. */}

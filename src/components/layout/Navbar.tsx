@@ -39,7 +39,7 @@ const Navbar: React.FC = () => {
         </div>
       </div>
 
-      <div className="border-b border-primary-300 bg-primary-50">
+      <div className="border-b border-primary-200 bg-primary-50">
         <nav aria-label={t('nav.menu')} className="width-container">
           <button
             type="button"
