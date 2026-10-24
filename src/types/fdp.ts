@@ -180,6 +180,39 @@ export interface BudgetEntry extends DocRef {
   tableCount: number;
 }
 
+export interface ProposalSource {
+  key: string;
+  publisher: string;
+  title: string;
+  date: string;
+  url: string;
+}
+
+export interface ProposalItem {
+  key?: string;
+  label: string;
+  amount: number;
+  previous: number | null;
+  /** Change from the previous year, only when the source prints it. */
+  change?: number;
+  source: string;
+}
+
+/** A budget submitted to the City Council, before it is enacted and posted. */
+export interface ProposedBudget {
+  year: number;
+  previousYear: number;
+  status: 'proposed';
+  submittedOn: string;
+  submittedBy: string;
+  sources: ProposalSource[];
+  total: ProposalItem;
+  funds: ProposalItem[];
+  sectors: ProposalItem[];
+  lineItems: ProposalItem[];
+  notes: string[];
+}
+
 /** A full transcription (public/data/fdp/docs/{id}.json). */
 export interface FdpColumn {
   key: string;

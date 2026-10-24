@@ -1,0 +1,132 @@
+{
+  "year": 2027,
+  "previousYear": 2026,
+  "status": "proposed",
+  "submittedOn": "2026-10-16",
+  "submittedBy": "Mayor Ma. Cynthia \"Cindi\" King-Chan and Vice Mayor Celedonio \"Celsi\" Sitoy, to the City Council",
+  "sources": [
+    {
+      "key": "manila-times",
+      "publisher": "The Manila Times",
+      "title": "Lapu-Lapu City proposes P5.13B budget for 2027",
+      "date": "2026-10-20",
+      "url": "https://www.manilatimes.net/2026/10/20/regions/lapu-lapu-city-proposes-p513b-budget-for-2027/2449092"
+    },
+    {
+      "key": "freeman-city-hall",
+      "publisher": "The Freeman",
+      "title": "King-Chan says P700 million ready for Lapu-Lapu CH complex",
+      "date": "2026-07-26",
+      "url": "https://www.philstar.com/the-freeman/cebu-news/2026/07/26/2544754/king-chan-says-p700-million-ready-lapu-lapu-ch-complex"
+    }
+  ],
+  "total": {
+    "label": "Total proposed budget",
+    "amount": 5130727497,
+    "previous": 4720000000,
+    "change": 409780000,
+    "source": "manila-times"
+  },
+  "funds": [
+    {
+      "key": "generalFund",
+      "label": "General Fund",
+      "amount": 4660000000,
+      "previous": null,
+      "source": "manila-times"
+    },
+    {
+      "key": "hospital",
+      "label": "City Hospital",
+      "amount": 437340000,
+      "previous": 432570000,
+      "source": "manila-times"
+    },
+    {
+      "key": "marketSlaughterhouse",
+      "label": "City Market and Slaughterhouse",
+      "amount": 33300000,
+      "previous": 33000000,
+      "source": "manila-times"
+    }
+  ],
+  "sectors": [
+    {
+      "key": "generalPublicServices",
+      "label": "General public services",
+      "amount": 1850000000,
+      "previous": 2020000000,
+      "change": -171600000,
+      "source": "manila-times"
+    },
+    {
+      "key": "socialServices",
+      "label": "Social services",
+      "amount": 771380000,
+      "previous": 528960000,
+      "change": 242410000,
+      "source": "manila-times"
+    },
+    {
+      "key": "economicServices",
+      "label": "Economic services",
+      "amount": 675530000,
+      "previous": 425960000,
+      "change": 249570000,
+      "source": "manila-times"
+    }
+  ],
+  "lineItems": [
+    {
+      "key": "health",
+      "label": "Health services",
+      "amount": 525680000,
+      "previous": 514470000,
+      "source": "manila-times"
+    },
+    {
+      "key": "developmentFund",
+      "label": "Development projects (20% Development Fund)",
+      "amount": 448260000,
+      "previous": 404760000,
+      "change": 43500000,
+      "source": "manila-times"
+    },
+    {
+      "key": "ldrrmf",
+      "label": "Disaster Risk Reduction and Management Fund",
+      "amount": 233000000,
+      "previous": 212770000,
+      "source": "manila-times"
+    },
+    {
+      "key": "newCityHall",
+      "label": "New City Hall complex (planned allocation)",
+      "amount": 200000000,
+      "previous": null,
+      "source": "freeman-city-hall"
+    },
+    {
+      "key": "education",
+      "label": "Education",
+      "amount": 108320000,
+      "previous": 98930000,
+      "source": "manila-times"
+    },
+    {
+      "key": "barangayAssistance",
+      "label": "Barangay assistance",
+      "amount": 51100000,
+      "previous": 51100000,
+      "source": "manila-times"
+    }
+  ],
+  "notes": [
+    "No official 2027 budget document has been posted. These figures are copied from news reports of the executive budget submitted to the City Council on October 16, 2026, and will be replaced by the Annual Budget Report once the City publishes it.",
+    "Except for the total, the articles print rounded amounts (e.g. P4.66 billion, P437.34 million); amounts here are those rounded figures written out in pesos.",
+    "The 2026 comparison figures are the ones the articles print. The 2026 total is reported only as \"P4.72 billion\".",
+    "The three sectors are the General Fund sectors the article reports; they add up to about P3.30 billion of the P4.66 billion General Fund. The rest (debt service and other items) is not broken down in the report.",
+    "Health, education, the DRRM Fund and the other line items are part of the funds and sectors above, so they should not be added to them.",
+    "The new City Hall allocation is from a July 2026 report of what the City planned to set aside for 2027, before the proposal was submitted."
+  ]
+}

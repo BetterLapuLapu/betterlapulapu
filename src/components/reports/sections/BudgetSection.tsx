@@ -17,10 +17,12 @@ import type {
   BudgetOffice,
   Catalog,
   CatalogDocument,
+  ProposedBudget,
 } from '../../../types/fdp';
 import { AboutThisData } from '../AboutThisData';
 import ChartCard, { EmptyState } from '../ChartCard';
 import DataTable from '../DataTable';
+import ProposedBudgetView from '../ProposedBudgetView';
 import StatCard from '../StatCard';
 import TranscriptModal from '../TranscriptModal';
 import {
@@ -53,14 +55,17 @@ function shortOfficeName(name: string) {
 
 export default function BudgetSection({
   entries,
+  proposals,
   catalog,
   year,
 }: {
   entries: BudgetEntry[];
+  proposals: ProposedBudget[];
   catalog: Catalog;
   year: number;
 }) {
   const [viewing, setViewing] = useState<CatalogDocument | null>(null);
+  const proposal = proposals.find(p => p.year === year);
   const docs = entries.filter(
     e => e.year === year && e.type === 'annual-budget'
   );
@@ -115,12 +120,15 @@ export default function BudgetSection({
 
   return (
     <div className="space-y-6">
+      {proposal && <ProposedBudgetView proposal={proposal} />}
       {!offices.length ? (
-        <EmptyState>
-          No annual budget figures have been transcribed for documents published
-          in {year}. Budget documents exist for 2023, 2025 and 2026; the full
-          list is in the Source Documents tab.
-        </EmptyState>
+        !proposal && (
+          <EmptyState>
+            No annual budget figures have been transcribed for documents
+            published in {year}. Budget documents exist for 2023, 2025 and 2026;
+            the full list is in the Source Documents tab.
+          </EmptyState>
+        )
       ) : (
         <>
           <p className="text-sm text-gray-600">
@@ -341,16 +349,18 @@ export default function BudgetSection({
         </ChartCard>
       )}
 
-      <AboutThisData>
-        <p>
-          The annual budget is prepared on Local Budget Preparation (LBP) forms.
-          Each office lists its objects of expenditure for the past year, the
-          current year and the budget year, grouped into personnel services,
-          maintenance and other operating expenses (MOOE), and capital outlay.
-          The City posted excerpts of these forms, so totals here cover only the
-          offices included in the posted pages.
-        </p>
-      </AboutThisData>
+      {offices.length > 0 && (
+        <AboutThisData>
+          <p>
+            The annual budget is prepared on Local Budget Preparation (LBP)
+            forms. Each office lists its objects of expenditure for the past
+            year, the current year and the budget year, grouped into personnel
+            services, maintenance and other operating expenses (MOOE), and
+            capital outlay. The City posted excerpts of these forms, so totals
+            here cover only the offices included in the posted pages.
+          </p>
+        </AboutThisData>
+      )}
       <TranscriptModal document={viewing} onClose={() => setViewing(null)} />
     </div>
   );
