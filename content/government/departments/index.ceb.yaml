@@ -20,6 +20,10 @@ pages:
     name: 'Konseho sa Siyudad (Sangguniang Panlungsod)'
     description: 'Sa termino 2025–2028, ang Sangguniang Panlungsod (City Council) sa Lapu-Lapu City adunay 12 ka napiling konsehal, ug ang Vice Mayor ang presiding officer sa konseho.'
 
+  - slug: 'barangays'
+    name: 'Mga Barangay ug Opisyal sa Barangay'
+    description: 'Ang 30 ka barangay sa Lapu-Lapu City uban sa ilang mga punong barangay ug SK chairperson sa termino 2023–2026, ug unsa ang buhat sa mga opisyal sa barangay.'
+
   - slug: 'city-mayors-office'
     description: 'Special permit para sa mga kalihokan, pag-abang og venue, banner ug delivery; mga sertipikasyon para sa trabaho ug biyahe; iskedyul sa kasal; insentibo sa board ug bar passer; ug re-payroll sa cash gift sa senior citizen.'
 
