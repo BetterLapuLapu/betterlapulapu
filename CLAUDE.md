@@ -68,7 +68,9 @@ Example: `{MAYOR}` in the markdown is replaced with the `MAYOR` value from `exec
 
 ### Machine-readable output
 
-`scripts/build-llm-files.js` runs on `dev` and `build` and writes generated (gitignored) files into `public/`: `llms.txt`, `llms-full.txt`, a markdown copy of every page at its URL + `.md` (e.g. `/services/business/foo.md`), `sitemap.xml` and `robots.txt`. Absolute URLs use `VITE_WEBSITE_URL`. It and `build-search-index.js` share the content walker in `scripts/lib/content.js`. The human-readable `/sitemap` page is `src/pages/Sitemap.tsx`.
+`scripts/build-llm-files.js` runs on `dev` and `build` and writes generated (gitignored) files into `public/`: `llms.txt`, `llms-full.txt`, a markdown copy of every page at its URL + `.md` (e.g. `/services/business/foo.md`), `sitemap.xml` and `robots.txt`. Absolute URLs use `VITE_WEBSITE_URL`. It and `build-search-index.js` share the content walker in `scripts/lib/content.js`.
+
+`scripts/build-og.js` runs after `vite build` (`npm run og:build`). For every page it writes a 1200×630 share image to `dist/og/<path>.png` and a copy of the app shell at `dist/<path>.html` (served at `/<path>` through `cleanUrls` in `vercel.json`) with that page's title, description, canonical URL and Open Graph / Twitter tags, because link-preview crawlers don't run JavaScript. The `SEO` component points at the same image URL in the browser. The human-readable `/sitemap` page is `src/pages/Sitemap.tsx`.
 
 ### Internationalization
 

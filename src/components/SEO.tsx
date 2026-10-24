@@ -1,5 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
+import { useLocation } from 'react-router-dom';
 
 // Open Graph locale and human-readable language name per UI language.
 const LOCALE_META: Record<string, { og: string; name: string }> = {
@@ -27,6 +28,7 @@ export default function SEO({
   siteName = 'BetterLapuLapu',
 }: SEOProps) {
   const { t, i18n } = useTranslation();
+  const { pathname } = useLocation();
   const locale = LOCALE_META[i18n.resolvedLanguage ?? 'en'] ?? LOCALE_META.en;
   const governmentName =
     import.meta.env.VITE_GOVERNMENT_NAME || 'Lapu-Lapu City';
@@ -41,9 +43,12 @@ export default function SEO({
   const fullTitle = title ? `${title} | ${siteName}` : defaultTitle;
   const fullDescription = description || defaultDescription;
   const fullKeywords = keywords || defaultKeywords;
-  const fullUrl = url || import.meta.env.VITE_WEBSITE_URL || '';
+  const siteUrl = (import.meta.env.VITE_WEBSITE_URL || '').replace(/\/+$/, '');
+  const path = pathname.replace(/\/+$/, '') || '/';
+  const fullUrl = url || `${siteUrl}${path}`;
+  // Share images are generated per page by scripts/build-og.js
   const fullImage =
-    image || import.meta.env.VITE_OG_IMAGE_URL || `${fullUrl}/og-image.jpg`;
+    image || `${siteUrl}/og${path === '/' ? '/index' : path}.png`;
   const twitterHandle = import.meta.env.VITE_TWITTER_HANDLE || '';
 
   return (
@@ -63,18 +68,17 @@ export default function SEO({
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={fullDescription} />
       <meta property="og:image" content={fullImage} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
       <meta property="og:site_name" content={siteName} />
       <meta property="og:locale" content={locale.og} />
 
       {/* Twitter */}
-      <meta property="twitter:card" content="summary_large_image" />
-      <meta property="twitter:url" content={fullUrl} />
-      <meta property="twitter:title" content={fullTitle} />
-      <meta property="twitter:description" content={fullDescription} />
-      <meta property="twitter:image" content={fullImage} />
-      {twitterHandle && (
-        <meta property="twitter:site" content={twitterHandle} />
-      )}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={fullTitle} />
+      <meta name="twitter:description" content={fullDescription} />
+      <meta name="twitter:image" content={fullImage} />
+      {twitterHandle && <meta name="twitter:site" content={twitterHandle} />}
 
       {/* Additional Meta Tags */}
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />

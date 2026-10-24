@@ -53,11 +53,18 @@ function extractTitle(markdown) {
   return markdown.match(/^#\s+(.+)$/m)?.[1].trim();
 }
 
+// The plain paragraph straight after the title
 function extractDescription(markdown) {
-  return markdown
-    .match(/^#\s+.+$\n\n(.+?)(?:\n\n|$)/s)?.[1]
-    .replace(/^>\s*/, '')
-    .trim();
+  const title = markdown.match(/^#\s+.+$/m);
+  if (!title) return undefined;
+  const [paragraph] = markdown
+    .slice(title.index + title[0].length)
+    .replace(/^\s+/, '')
+    .split(/\n\s*\n/);
+  if (!paragraph || /^(#|\||[-*+] |\d+\. |```|---)/.test(paragraph)) {
+    return undefined;
+  }
+  return paragraph.replace(/^>\s*/, '').trim();
 }
 
 function loadMarkdownPage(mdPath) {
