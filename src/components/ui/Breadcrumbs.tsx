@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { ChevronRight, Home } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useLocalizedCategories } from '../../hooks/useLocalizedCategories';
+import { cn } from '../../lib/utils';
 
 interface BreadcrumbItem {
   label: string;
@@ -68,27 +69,35 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items, className = '' }) => {
 
   return (
     <nav
-      className={`flex items-center space-x-1 text-sm text-gray-600 ${className}`}
+      className={cn(
+        'type-small mt-[15px] mb-[30px] tablet:mb-[40px]',
+        className
+      )}
       aria-label={t('common.breadcrumb')}
     >
-      {breadcrumbItems.map((item, index) => (
-        <React.Fragment key={index}>
-          {index === 0 && <Home className="h-4 w-4" />}
-          {index > 0 && <ChevronRight className="h-4 w-4 text-gray-400" />}
-          {item.href ? (
-            <Link
-              to={item.href}
-              className="hover:text-primary-600 transition-colors duration-200"
-            >
-              {item.label.charAt(0).toUpperCase() + item.label.slice(1)}
-            </Link>
-          ) : (
-            <span className="text-gray-900 font-medium" aria-current="page">
-              {item.label.charAt(0).toUpperCase() + item.label.slice(1)}
-            </span>
-          )}
-        </React.Fragment>
-      ))}
+      <ol className="flex flex-wrap items-center gap-x-2.5 gap-y-1">
+        {breadcrumbItems.map((item, index) => {
+          const label =
+            item.label.charAt(0).toUpperCase() + item.label.slice(1);
+          return (
+            <li key={index} className="flex items-center gap-2.5">
+              {index > 0 && (
+                <ChevronRight
+                  className="h-3.5 w-3.5 text-ink-secondary"
+                  aria-hidden="true"
+                />
+              )}
+              {item.href ? (
+                <Link to={item.href} className="link-text">
+                  {label}
+                </Link>
+              ) : (
+                <span aria-current="page">{label}</span>
+              )}
+            </li>
+          );
+        })}
+      </ol>
     </nav>
   );
 };

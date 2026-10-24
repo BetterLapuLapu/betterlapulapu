@@ -2,19 +2,19 @@ import Section from '../components/ui/Section';
 import Breadcrumbs from '../components/ui/Breadcrumbs';
 import { Heading } from '../components/ui/Heading';
 import { Text } from '../components/ui/Text';
-import { Banner } from '@bettergov/kapwa/banner';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
-import rehypeRaw from 'rehype-raw';
 import {
   loadMarkdownContent,
   type MarkdownContent,
 } from '../lib/markdownLoader';
-import { createMarkdownComponents } from '../lib/markdownComponents';
-import { Card, CardContent, CardHeader } from '@bettergov/kapwa/card';
-import { getTypographyTheme } from '../lib/typographyThemes';
+import {
+  isSection,
+  parseLinkList,
+  SECTION,
+  splitSections,
+} from '../lib/guideSections';
+import GuideBody from '../components/guide/GuideBody';
 import {
   getCategorySubcategories,
   isNestedCategory,
@@ -22,6 +22,8 @@ import {
   type CategoryIndex,
 } from '../data/yamlLoader';
 import SEO from '../components/SEO';
+import LinkList from '../components/ui/LinkList';
+import RelatedLinks from '../components/ui/RelatedLinks';
 import { useTranslation } from 'react-i18next';
 import { useLocalizedCategories } from '../hooks/useLocalizedCategories';
 
@@ -41,12 +43,11 @@ export default function Document({
   const [markdownContent, setMarkdownContent] =
     useState<MarkdownContent | null>(null);
   const [nestedIndex, setNestedIndex] = useState<CategoryIndex | null>(null);
+  // Other pages in the same category, for the sidebar
+  const [siblings, setSiblings] = useState<Subcategory[]>([]);
+  const [categoryName, setCategoryName] = useState('');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-
-  const markdownComponents = createMarkdownComponents(
-    getTypographyTheme(initialTheme)
-  );
 
   const [breadcrumbs, setBreadcrumbs] = useState([
     { label: t('common.home'), href: '/' },
@@ -64,6 +65,7 @@ export default function Document({
         setLoading(true);
         setError(null);
         setNestedIndex(null);
+        setSiblings([]);
 
         const isGovernment = categoryType === 'government';
         const categories = isGovernment
@@ -74,6 +76,7 @@ export default function Document({
           : t('nav.services');
         const sectionHref = isGovernment ? '/government' : '/services';
         const categoryData = categories.find(c => c.slug === category);
+        setCategoryName(categoryData?.category ?? '');
 
         // If the slug maps to its own index, render it as a nested listing
         if (isNestedCategory(documentSlug)) {
@@ -100,6 +103,11 @@ export default function Document({
           categoryType
         );
         setMarkdownContent(content);
+        getCategorySubcategories(category, lang)
+          .then(index =>
+            setSiblings(index.pages.filter(page => page.slug !== documentSlug))
+          )
+          .catch(() => setSiblings([]));
 
         setBreadcrumbs([
           { label: t('common.home'), href: '/' },
@@ -133,25 +141,28 @@ export default function Document({
 
   if (loading) {
     return (
-      <Section className="p-3 mb-12">
-        <Banner type="info" description={t('common.loading')} />
+      <Section>
+        <Text className="mt-[30px]">{t('common.loading')}</Text>
       </Section>
     );
   }
 
   if (error) {
     return (
-      <Section className="p-3 mb-12">
-        <Breadcrumbs className="mb-8" items={breadcrumbs} />
-        <Banner
-          type="error"
-          title={t('document.notFound')}
-          description={error}
-          icon
-        />
+      <Section>
+        <Breadcrumbs items={breadcrumbs} />
+        <Heading>{t('document.notFound')}</Heading>
+        <Text>{error}</Text>
       </Section>
     );
   }
+
+  const sectionPath = categoryType === 'government' ? 'government' : 'services';
+  const caption = categoryName && (
+    <span className="type-lead mb-[5px] block text-ink-secondary">
+      {categoryName}
+    </span>
+  );
 
   if (nestedIndex) {
     const nestedPages: Subcategory[] = nestedIndex.pages;
@@ -161,51 +172,28 @@ export default function Document({
           title={nestedIndex.title ?? documentSlug}
           keywords={`${documentSlug}, government services, local government`}
         />
-        <Section className="p-3 mb-12">
-          <Breadcrumbs className="mb-8" items={breadcrumbs} />
-          {nestedIndex.title && (
-            <Heading level={2}>{nestedIndex.title}</Heading>
-          )}
-          {nestedIndex.description && (
-            <Text className="text-gray-600 mb-4">
-              {nestedIndex.description}
-            </Text>
-          )}
-          {nestedIndex.layout === 'grid' ? (
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {nestedPages.map((page, i) => (
-                <Card hoverable key={page.slug ?? i} className="h-full">
-                  <CardContent>
-                    <h4 className="text-lg font-medium text-primary-600 underline underline-offset-4">
-                      {page.name}
-                    </h4>
-                    {page.description && (
-                      <p className="mt-2 text-sm text-gray-600">
-                        {page.description}
-                      </p>
-                    )}
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          ) : (
-            <div className="space-y-4">
-              {nestedPages.map((page, i) => (
-                <Card key={page.slug ?? i} className="mb-4">
-                  <CardContent>
-                    <h4 className="text-lg font-medium text-primary-600 underline underline-offset-4">
-                      {page.name}
-                    </h4>
-                    {page.description && (
-                      <p className="mt-2 text-sm text-gray-600">
-                        {page.description}
-                      </p>
-                    )}
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          )}
+        <Section>
+          <Breadcrumbs items={breadcrumbs} />
+          <div className="max-w-[640px]">
+            {caption}
+            {nestedIndex.title && (
+              <Heading className="tablet:mb-[30px]">
+                {nestedIndex.title}
+              </Heading>
+            )}
+            {nestedIndex.description && (
+              <Text size="lg">{nestedIndex.description}</Text>
+            )}
+          </div>
+          <LinkList
+            layout={nestedIndex.layout}
+            headingLevel={2}
+            items={nestedPages.map((page, i) => ({
+              key: page.slug ?? String(i),
+              title: page.name,
+              description: page.description,
+            }))}
+          />
         </Section>
       </>
     );
@@ -214,6 +202,17 @@ export default function Document({
   if (!markdownContent) {
     return null;
   }
+
+  // Related Services links move to the sidebar
+  const allSections = splitSections(markdownContent.body);
+  const relatedSection = allSections.find(section =>
+    isSection(section, SECTION.related)
+  );
+  const relatedLinks = relatedSection && parseLinkList(relatedSection.body);
+  const sections = relatedLinks
+    ? allSections.filter(section => section !== relatedSection)
+    : allSections;
+  const contents = sections.filter(section => section.heading);
 
   return (
     <>
@@ -225,22 +224,54 @@ export default function Document({
         }
         keywords={`${documentSlug}, government services, public services, local government`}
       />
-      <Section className="p-3 mb-12">
-        <Breadcrumbs className="mb-8" items={breadcrumbs} />
-        <Card className="mb-8 markdown-content">
-          <CardHeader>
+      <Section>
+        <Breadcrumbs items={breadcrumbs} />
+        <div className="flex flex-wrap items-start gap-x-[60px] gap-y-10">
+          <article className="min-w-0 flex-[999_1_560px]">
+            {caption}
+            <Heading className="tablet:mb-[30px]">
+              {markdownContent.title || documentSlug}
+            </Heading>
             {markdownContent.description && (
-              <CardContent>{markdownContent.description}</CardContent>
+              <Text size="lg">{markdownContent.description}</Text>
             )}
-            <ReactMarkdown
-              remarkPlugins={[remarkGfm]}
-              rehypePlugins={[rehypeRaw]}
-              components={markdownComponents}
-            >
-              {markdownContent.content}
-            </ReactMarkdown>
-          </CardHeader>
-        </Card>
+
+            {contents.length >= 3 && (
+              <nav
+                aria-labelledby="contents-title"
+                className="mb-[30px] tablet:mb-10"
+              >
+                <h2 id="contents-title" className="type-s mb-2.5">
+                  {t('document.contents')}
+                </h2>
+                <ol className="type-small space-y-[5px]">
+                  {contents.map(item => (
+                    <li key={item.id} className="flex gap-2.5">
+                      <span aria-hidden="true">—</span>
+                      <a href={`#${item.id}`} className="link">
+                        {item.heading}
+                      </a>
+                    </li>
+                  ))}
+                </ol>
+              </nav>
+            )}
+
+            <GuideBody sections={sections} theme={initialTheme} />
+          </article>
+          <div className="min-w-0 flex-[1_1_300px] space-y-10">
+            {relatedLinks && (
+              <RelatedLinks title={t('guide.related')} links={relatedLinks} />
+            )}
+            <RelatedLinks
+              title={t('document.moreIn', { category: categoryName })}
+              links={siblings.slice(0, 10).map(page => ({
+                label: page.name,
+                href: `/${sectionPath}/${category}/${page.slug}`,
+              }))}
+            />
+          </div>
+        </div>
       </Section>
     </>
   );

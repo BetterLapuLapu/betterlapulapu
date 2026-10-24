@@ -6,6 +6,8 @@ interface LanguageSwitcherProps {
   className?: string;
 }
 
+// Sits in the blue header: the current language in bold, the others as
+// underlined white text.
 export default function LanguageSwitcher({
   className = '',
 }: LanguageSwitcherProps) {
@@ -17,7 +19,7 @@ export default function LanguageSwitcher({
     <div
       role="group"
       aria-label={t('common.language')}
-      className={`flex items-center divide-x divide-gray-300 ${className}`}
+      className={`type-small flex items-center divide-x divide-white ${className}`}
     >
       {SWITCHER_LANGUAGES.map((code: LanguageType) => {
         const isActive = current === code;
@@ -30,10 +32,10 @@ export default function LanguageSwitcher({
             aria-label={LANGUAGES[code].nativeName}
             aria-pressed={isActive}
             onClick={() => i18n.changeLanguage(code)}
-            className={`cursor-pointer px-2 text-xs uppercase leading-none transition-colors first:pl-0 last:pr-0 focus:outline-none focus-visible:underline ${
+            className={`cursor-pointer px-2.5 leading-none text-white uppercase first:pl-0 last:pr-0 ${
               isActive
-                ? 'font-semibold text-primary-600'
-                : 'text-gray-800 hover:text-primary-600'
+                ? 'font-bold'
+                : 'underline underline-offset-[0.1578em] hover:decoration-[3px]'
             }`}
           >
             {code}

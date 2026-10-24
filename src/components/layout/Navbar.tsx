@@ -1,266 +1,97 @@
 import React, { useState } from 'react';
-import { X, Menu, ChevronDown, Globe, Search } from 'lucide-react';
-import { getMainNavigation } from '../../data/navigation';
-import { useLocalizedCategories } from '../../hooks/useLocalizedCategories';
-import { Link } from 'react-router-dom';
+import { ChevronDown } from 'lucide-react';
+import { getMainNavigation, REPORTS_HREF } from '../../data/navigation';
+import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from '../LanguageSwitcher';
+import { cn } from '../../lib/utils';
 
+// Site header (blue bar with the logo) followed by the service navigation.
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeMenu, setActiveMenu] = useState<string | null>(null);
-  // Desktop dropdown closed with Escape; stays closed until focus or the
-  // pointer leaves it, so hover/focus-within can't immediately reopen it.
-  const [dismissedMenu, setDismissedMenu] = useState<string | null>(null);
   const { t } = useTranslation('common');
-  const { serviceCategories, governmentCategories } = useLocalizedCategories();
-  const mainNavigation = getMainNavigation(
-    t,
-    serviceCategories,
-    governmentCategories
-  );
+  const { pathname } = useLocation();
+  const mainNavigation = getMainNavigation(t);
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-    if (isOpen) {
-      setActiveMenu(null);
+  // Reports lives under /government but has its own menu item.
+  const isActive = (href: string) => {
+    if (href === '/') return pathname === '/';
+    if (href === '/government' && pathname.startsWith(REPORTS_HREF)) {
+      return false;
     }
-  };
-
-  const closeMenu = () => {
-    setIsOpen(false);
-    setActiveMenu(null);
-  };
-
-  const toggleSubmenu = (label: string) => {
-    setActiveMenu(activeMenu === label ? null : label);
+    return pathname === href || pathname.startsWith(`${href}/`);
   };
 
   return (
-    <nav className="bg-white shadow-sm sticky top-0 z-50">
-      {/* Top bar with language switcher and additional links */}
-      <div className="border-b border-gray-200">
-        <div className="container mx-auto px-4 flex justify-end items-center h-10">
-          <div className="flex items-center space-x-4">
-            <a
-              href="https://bettergov.ph/join-us"
-              className="text-xs text-primary-600 hover:text-primary-700 font-semibold transition-colors"
-              target="_blank"
-            >
-              🚀 {t('nav.joinUs')}
-            </a>
-            <a
-              href="https://bettergov.ph/about"
-              className="text-xs text-gray-800 hover:text-primary-600 transition-colors"
-              target="_blank"
-            >
-              {t('nav.aboutBetterGov')}
-            </a>
-            <a
-              href="https://www.gov.ph"
-              className="text-xs text-gray-800 hover:text-primary-600 transition-colors"
-              target="_blank"
-            >
-              {t('nav.officialGovPh')}
-            </a>
-
-            <a
-              href="https://bettergov.ph/philippines/hotlines"
-              className="text-xs text-gray-800 hover:text-primary-600 transition-colors"
-              target="_blank"
-              rel="noreferrer"
-            >
-              {t('nav.hotlines')}
-            </a>
-            <LanguageSwitcher className="hidden md:flex" />
-          </div>
+    <header>
+      <div className="bg-primary-600 text-white">
+        <div className="width-container flex flex-wrap items-center justify-between gap-x-8 gap-y-2 py-2.5">
+          <Link
+            to="/"
+            className="link-plain inline-flex items-center gap-2.5 text-white"
+          >
+            <img src="/logo-white.svg" alt="" className="h-11 w-auto" />
+            <span className="text-[1.375rem] leading-none font-bold tablet:text-[1.75rem]">
+              {t('site_title')}
+            </span>
+          </Link>
+          <LanguageSwitcher />
         </div>
       </div>
 
-      {/* Main navigation */}
-      <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center py-4">
-          <div className="flex items-center">
-            <Link to="/" className="flex items-center">
-              <img
-                src="/logo.svg"
-                alt={t('common.logoAlt')}
-                className="h-12 w-auto mr-3"
-              />
-              <div>
-                <div className="text-black font-bold">{t('site_title')}</div>
-                <div className="text-xs text-gray-800">
-                  {t('site_description')}
-                </div>
-              </div>
-            </Link>
-          </div>
-
-          {/* Desktop navigation */}
-          <div className="hidden lg:flex items-center space-x-8 pr-24">
-            {mainNavigation.map(item => (
-              <div
-                key={item.href}
-                className="relative group"
-                onKeyDown={e => {
-                  if (e.key !== 'Escape' || !item.children) return;
-                  setDismissedMenu(item.href);
-                  e.currentTarget.querySelector('a')?.focus();
-                }}
-                onBlur={e => {
-                  if (!e.currentTarget.contains(e.relatedTarget)) {
-                    setDismissedMenu(null);
-                  }
-                }}
-                onMouseLeave={() => setDismissedMenu(null)}
-              >
-                <a
-                  href={item.href}
-                  className="flex items-center text-gray-700 hover:text-primary-600 font-medium transition-colors"
-                >
-                  {item.label}
-                  {item.children && (
-                    <ChevronDown
-                      className="ml-1 h-4 w-4 text-gray-800 group-hover:text-primary-600 transition-colors"
-                      aria-hidden="true"
-                    />
+      <div className="border-b border-primary-200 bg-primary-50">
+        <nav aria-label={t('nav.menu')} className="width-container">
+          <button
+            type="button"
+            aria-expanded={isOpen}
+            aria-controls="service-navigation"
+            onClick={() => setIsOpen(!isOpen)}
+            className="type-body my-2 inline-flex cursor-pointer items-center gap-1.5 py-1.5 font-bold text-link tablet:hidden"
+          >
+            {t('nav.menu')}
+            <ChevronDown
+              className={cn('h-4 w-4 transition-transform', {
+                'rotate-180': isOpen,
+              })}
+              aria-hidden="true"
+            />
+          </button>
+          <ul
+            id="service-navigation"
+            className={cn(
+              'type-body pb-2.5 tablet:flex tablet:flex-wrap tablet:gap-x-[30px] tablet:pb-0',
+              isOpen ? 'block' : 'hidden'
+            )}
+          >
+            {mainNavigation.map(item => {
+              const active = isActive(item.href);
+              return (
+                <li
+                  key={item.href}
+                  className={cn(
+                    'py-2 tablet:border-b-[5px] tablet:pt-[15px] tablet:pb-2.5',
+                    active
+                      ? 'border-l-[5px] border-primary-600 pl-2.5 tablet:border-l-0 tablet:pl-0'
+                      : 'tablet:border-transparent'
                   )}
-                </a>
-                {item.children && (
-                  <div
-                    className={`absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible transition-all duration-200 z-50 ${
-                      dismissedMenu === item.href
-                        ? ''
-                        : 'group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible'
-                    }`}
+                >
+                  <Link
+                    to={item.href}
+                    onClick={() => setIsOpen(false)}
+                    aria-current={active ? 'page' : undefined}
+                    className={cn('link-plain text-link', {
+                      'font-bold': active,
+                    })}
                   >
-                    <ul className="py-1">
-                      {item.children.map(child => (
-                        <li key={child.href}>
-                          <Link
-                            to={child.href}
-                            className="text-left block px-4 py-2 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-600 focus:bg-primary-50 focus:text-primary-600"
-                          >
-                            {child.label}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-          <div className="hidden lg:flex items-center space-x-6">
-            <Link
-              to="/about"
-              className="flex items-center text-gray-700 hover:text-primary-600 font-medium transition-colors"
-            >
-              {t('nav.about')}
-            </Link>
-            <Link
-              to="/search"
-              className="flex items-center text-gray-700 hover:text-primary-600 font-medium transition-colors"
-            >
-              <Search className="h-4 w-4 mr-1" />
-              {t('common.search')}
-            </Link>
-            {/* <Link
-              to="/sitemap"
-              className="flex items-center text-gray-700 hover:text-primary-600 font-medium transition-colors"
-            >
-              Sitemap
-            </Link> */}
-          </div>
-
-          {/* Mobile menu button */}
-          <div className="lg:hidden flex items-center">
-            <button
-              onClick={toggleMenu}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-primary-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500"
-            >
-              <span className="sr-only">{t('nav.openMenu')}</span>
-              {isOpen ? (
-                <X className="block h-6 w-6" aria-hidden="true" />
-              ) : (
-                <Menu className="block h-6 w-6" aria-hidden="true" />
-              )}
-            </button>
-          </div>
-        </div>
+                    {item.label}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
       </div>
-
-      {/* Mobile menu */}
-      <div className={`lg:hidden ${isOpen ? 'block' : 'hidden'}`}>
-        <div className="container mx-auto px-2 pt-2 pb-4 space-y-1 border-t border-gray-200 bg-white">
-          {mainNavigation.map(item => (
-            <div key={item.href}>
-              <button
-                onClick={() => toggleSubmenu(item.href)}
-                className="w-full flex justify-between items-center px-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-primary-500"
-              >
-                {item.label}
-                {item.children && (
-                  <ChevronDown
-                    className={`h-5 w-5 transition-transform ${
-                      activeMenu === item.href ? 'transform rotate-180' : ''
-                    }`}
-                  />
-                )}
-              </button>
-              {item.children && activeMenu === item.href && (
-                <div className="pl-6 py-2 space-y-1 bg-gray-50">
-                  {item.children.map(child => (
-                    <Link
-                      key={child.href}
-                      to={child.href}
-                      onClick={closeMenu}
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-primary-500"
-                    >
-                      {child.label}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
-          ))}
-          <Link
-            to="/join-us"
-            onClick={closeMenu}
-            className="block px-4 py-2 text-base font-semibold text-primary-600 hover:bg-primary-50 hover:text-primary-700"
-          >
-            🚀 {t('nav.joinUs')}
-          </Link>
-          <Link
-            to="/about"
-            onClick={closeMenu}
-            className="block px-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-primary-500"
-          >
-            {t('nav.about')}
-          </Link>
-          <Link
-            to="/search"
-            onClick={closeMenu}
-            className="block px-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-primary-500"
-          >
-            {t('common.search')}
-          </Link>
-          <Link
-            to="/sitemap"
-            onClick={closeMenu}
-            className="block px-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-primary-500"
-          >
-            {t('common.sitemap')}
-          </Link>
-          <div className="px-4 py-3 border-t border-gray-200">
-            <div className="flex items-center">
-              <Globe className="h-5 w-5 text-gray-800 mr-2" />
-              <LanguageSwitcher />
-            </div>
-          </div>
-        </div>
-      </div>
-    </nav>
+    </header>
   );
 };
 

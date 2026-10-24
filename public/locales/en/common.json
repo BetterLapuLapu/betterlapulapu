@@ -25,7 +25,9 @@
     "officialGovPh": "Official Gov.ph",
     "hotlines": "Hotlines",
     "about": "About",
-    "openMenu": "Open main menu"
+    "openMenu": "Open main menu",
+    "menu": "Menu",
+    "reports": "Reports and statistics"
   },
   "hero": {
     "welcome": "Welcome to",
@@ -33,17 +35,24 @@
     "searchLabel": "Search",
     "searchPlaceholder": "e.g. business permit, birth certificate"
   },
+  "phase": {
+    "tag": "Beta",
+    "text": "This is a community-run portal, not an official government website.",
+    "feedback": "Tell us how to improve it"
+  },
   "services": {
     "title": "Services & Information",
     "description": "Access official government services quickly and easily. Find what you need for citizenship, business, education, and more.",
     "seoTitle": "Services",
     "allTitle": "All local government services",
-    "allDescription": "All services provided by the {{governmentName}} government. Find what you need for citizenship, business, education, and more."
+    "allDescription": "All services provided by the {{governmentName}} government. Find what you need for citizenship, business, education, and more.",
+    "otherCategories": "Other services"
   },
   "government": {
     "seoTitle": "Government",
     "allTitle": "Local government",
-    "allDescription": "Departments, offices, reports and transparency documents of the {{governmentName}} government."
+    "allDescription": "Departments, offices, reports and transparency documents of the {{governmentName}} government.",
+    "otherCategories": "More from the City Government"
   },
   "governmentActivity": {
     "title": "Government Activity",
@@ -70,13 +79,25 @@
       "foi": "Freedom of Information",
       "contactCenter": "Contact Center",
       "officialGazette": "Official Gazette"
-    }
+    },
+    "supportLinks": "Support links"
   },
   "document": {
     "noneSpecified": "No document specified",
     "loadFailed": "Failed to load document",
     "notFound": "Document Not Found",
-    "seoDescription": "Government service information for {{slug}}"
+    "seoDescription": "Government service information for {{slug}}",
+    "contents": "Contents",
+    "moreIn": "More in {{category}}"
+  },
+  "guide": {
+    "charterSummary": "Steps, fees and processing times from the Citizen’s Charter",
+    "related": "Related content",
+    "showAll": "Show all sections",
+    "hideAll": "Hide all sections",
+    "show": "Show",
+    "hide": "Hide",
+    "step": "Step"
   },
   "search": {
     "seoDescription": "Search services, offices and information from the {{governmentName}} government.",

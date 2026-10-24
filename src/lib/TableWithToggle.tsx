@@ -14,6 +14,7 @@ import {
 import { Table, List } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { type TypographyTheme } from './typographyThemes';
+import { cn, textOf } from './utils';
 
 type ElementProps = {
   children?: ReactNode;
@@ -25,15 +26,6 @@ type ElementProps = {
 const tagNameOf = (element: ReactElement<ElementProps>): string | undefined =>
   element.props.node?.tagName ??
   (typeof element.type === 'string' ? element.type : undefined);
-
-const textOf = (node: ReactNode): string => {
-  if (typeof node === 'string' || typeof node === 'number') {
-    return String(node);
-  }
-  if (Array.isArray(node)) return node.map(textOf).join('');
-  if (isValidElement<ElementProps>(node)) return textOf(node.props.children);
-  return '';
-};
 
 // Collect each row's cells (keeping their rich content) and note which rows
 // come from the table head
@@ -95,30 +87,33 @@ export const TableWithToggle = ({
 
   const showTable = viewMode === 'table' || tableData.rows.length === 0;
 
+  // Secondary buttons; the pressed one is filled black
+  const toggleClass = (mode: 'table' | 'list') =>
+    cn(
+      'button button-secondary type-small mb-0 py-[5px] tablet:text-base',
+      viewMode === mode && 'bg-ink text-white shadow-none hover:bg-ink'
+    );
+
   return (
-    <div className="-mx-4 sm:mx-0 mb-6">
+    <div className="mb-[20px] tablet:mb-[30px]">
       {/* View Toggle Buttons */}
-      <div className="flex justify-end mb-4 gap-2 px-4 sm:px-0">
+      <div className="mb-[15px] flex justify-end gap-2.5">
         <button
+          type="button"
+          aria-pressed={viewMode === 'table'}
           onClick={() => setViewMode('table')}
-          className={`px-3 py-2 text-sm font-medium rounded-md transition-colors flex items-center gap-2 ${
-            viewMode === 'table'
-              ? 'bg-blue-600 text-white'
-              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-          }`}
+          className={toggleClass('table')}
         >
-          <Table size={16} />
+          <Table size={16} aria-hidden="true" />
           {t('common.table')}
         </button>
         <button
+          type="button"
+          aria-pressed={viewMode === 'list'}
           onClick={() => setViewMode('list')}
-          className={`px-3 py-2 text-sm font-medium rounded-md transition-colors flex items-center gap-2 ${
-            viewMode === 'list'
-              ? 'bg-blue-600 text-white'
-              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-          }`}
+          className={toggleClass('list')}
         >
-          <List size={16} />
+          <List size={16} aria-hidden="true" />
           {t('common.list')}
         </button>
       </div>
@@ -138,73 +133,66 @@ export const TableWithToggle = ({
           </table>
         </div>
       ) : tableData.hasHeaders ? (
-        <div className="space-y-4 px-4 sm:px-0">
+        // Summary cards: one card per row, headers as keys
+        <div className="space-y-[20px]">
           {tableData.rows.map((cells, index) => (
-            <div
-              key={index}
-              className="bg-white border border-gray-200 rounded-lg p-4 shadow-sm mx-2 sm:mx-0"
-            >
-              <div className="grid gap-3">
-                {/* Cells under blank headers (e.g. a row number or item
-                    name) have no label, so they become the card's title */}
-                {cells.some(
-                  (cell, cellIndex) =>
-                    !tableData.isNamed[cellIndex] && textOf(cell).trim()
-                ) && (
-                  <div className="font-semibold text-gray-900 text-sm">
-                    {cells.map(
-                      (cell, cellIndex) =>
-                        !tableData.isNamed[cellIndex] && (
-                          <span key={cellIndex} className="mr-1">
-                            {cell}
-                          </span>
-                        )
-                    )}
-                  </div>
-                )}
+            <div key={index} className="border border-rule">
+              {/* Cells under blank headers (e.g. a row number or item
+                  name) have no label, so they become the card's title */}
+              {cells.some(
+                (cell, cellIndex) =>
+                  !tableData.isNamed[cellIndex] && textOf(cell).trim()
+              ) && (
+                <div className="type-s border-b border-rule bg-surface px-[15px] py-2.5 tablet:px-5 tablet:py-[15px]">
+                  {cells.map(
+                    (cell, cellIndex) =>
+                      !tableData.isNamed[cellIndex] && (
+                        <span key={cellIndex} className="mr-1">
+                          {cell}
+                        </span>
+                      )
+                  )}
+                </div>
+              )}
+              <dl className="type-body px-[15px] tablet:px-5">
                 {tableData.headers.map((header, headerIndex) =>
                   !tableData.isNamed[headerIndex] ? null : (
                     <div
                       key={headerIndex}
-                      className="flex flex-col sm:flex-row sm:items-center"
+                      className="flex flex-col border-b border-rule py-2.5 last:border-b-0 tablet:flex-row"
                     >
-                      <div className="font-semibold text-gray-800 text-sm mb-1 sm:mb-0 sm:w-1/3 sm:pr-4">
-                        {header}:
-                      </div>
-                      <div className="text-gray-700 text-sm sm:w-2/3">
-                        {cells[headerIndex]}
-                      </div>
+                      <dt className="mb-[5px] font-bold tablet:mb-0 tablet:w-1/3 tablet:pr-5">
+                        {header}
+                      </dt>
+                      <dd className="tablet:w-2/3">{cells[headerIndex]}</dd>
                     </div>
                   )
                 )}
-              </div>
+              </dl>
             </div>
           ))}
         </div>
       ) : (
         // Header-less tables are label/value lists: the first cell of each
-        // row is the label and the remaining cells are its value
-        <div className="px-4 sm:px-0">
-          <div className="bg-white border border-gray-200 rounded-lg p-4 shadow-sm mx-2 sm:mx-0">
-            <div className="grid gap-3">
-              {tableData.rows.map(([label, ...values], index) => (
-                <div
-                  key={index}
-                  className="flex flex-col sm:flex-row sm:items-center"
-                >
-                  <div className="font-semibold text-gray-800 text-sm mb-1 sm:mb-0 sm:w-1/3 sm:pr-4">
-                    {label}
-                  </div>
-                  <div className="text-gray-700 text-sm sm:w-2/3">
-                    {values.map((value, valueIndex) => (
-                      <div key={valueIndex}>{value}</div>
-                    ))}
-                  </div>
-                </div>
-              ))}
+        // row is the label and the remaining cells are its value. Shown as
+        // a summary list.
+        <dl className="type-body border-t border-rule">
+          {tableData.rows.map(([label, ...values], index) => (
+            <div
+              key={index}
+              className="flex flex-col border-b border-rule py-2.5 tablet:flex-row"
+            >
+              <dt className="mb-[5px] font-bold tablet:mb-0 tablet:w-1/3 tablet:pr-5">
+                {label}
+              </dt>
+              <dd className="tablet:w-2/3">
+                {values.map((value, valueIndex) => (
+                  <div key={valueIndex}>{value}</div>
+                ))}
+              </dd>
             </div>
-          </div>
-        </div>
+          ))}
+        </dl>
       )}
     </div>
   );
