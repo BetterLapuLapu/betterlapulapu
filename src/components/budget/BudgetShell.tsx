@@ -100,6 +100,31 @@ export default function BudgetShell({
 
       <div className="width-container space-y-[40px] pt-[30px] pb-[30px] tablet:space-y-[60px] tablet:pb-[60px]">
         {children}
+        {/* Required by the API's licence (CC BY 4.0): credit, the licence,
+            and what this site changed. */}
+        <p className="type-small max-w-[760px] text-ink-secondary">
+          Data:{' '}
+          <a
+            href="https://budget.bettergov.ph/docs"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="link"
+          >
+            BetterGov.ph Budget API
+          </a>
+          , licensed under{' '}
+          <a
+            href="https://creativecommons.org/licenses/by/4.0/"
+            target="_blank"
+            rel="noopener noreferrer license"
+            className="link"
+          >
+            CC BY 4.0
+          </a>
+          . This site lists only the projects whose title names Lapu-Lapu City
+          and adds up the totals shown; each project’s figures are as the API
+          publishes them.
+        </p>
       </div>
     </div>
   );
