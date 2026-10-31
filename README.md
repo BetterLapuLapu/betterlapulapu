@@ -11,6 +11,7 @@ A modern, multilingual, and accessible website template designed specifically fo
 - **🎨 Customizable**: Easy theming and branding customization
 - **⚡ Fast Performance**: Built with Vite for optimal loading speeds
 - **🔍 SEO Optimized**: Built-in SEO with react-helmet, meta tags, and Open Graph support
+- **💰 Budget Transparency**: FY 2027 national budget projects for the City (`/government/budget-projects`), adapted from the BetterGov.ph [Transparency Portal](https://github.com/bettergovph/transparency-portal)
 
 ## 🚀 Quick Start
 
@@ -282,6 +283,7 @@ This project is licensed under the Creative Commons Zero (CC0) License - see the
 - Icons by [Lucide React](https://lucide.dev/)
 - Content management with [YAML](https://yaml.org/)
 - Internationalization with [i18next](https://www.i18next.com/)
+- FY 2027 budget projects section (`/government/budget-projects`) adapted from the BetterGov.ph [Transparency Portal](https://github.com/bettergovph/transparency-portal) (MIT License, © 2026 BetterGov.ph; notice in [`src/lib/budget/LICENSE`](src/lib/budget/LICENSE)), with data from the [BetterGov.ph Budget API](https://budget.bettergov.ph/docs)
 
 ---
 

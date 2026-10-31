@@ -7,6 +7,7 @@ import { Heading } from '../../components/ui/Heading';
 import Section from '../../components/ui/Section';
 import { Text } from '../../components/ui/Text';
 import LinkList from '../../components/ui/LinkList';
+import RelatedLinks from '../../components/ui/RelatedLinks';
 import NotificationBanner from '../../components/ui/NotificationBanner';
 import { DataDisclaimer } from '../../components/reports/AboutThisData';
 import ChartCard from '../../components/reports/ChartCard';
@@ -40,6 +41,7 @@ import {
   formatPeso,
   isNumber,
 } from '../../lib/format';
+import { BUDGET_PATH, BUDGET_TITLE } from '../../lib/budget/config';
 import { cn } from '../../lib/utils';
 
 const governmentName = import.meta.env.VITE_GOVERNMENT_NAME || 'the City';
@@ -155,6 +157,21 @@ function Overview({ data, year }: { data: FdpDatasets; year: number }) {
             href: `${REPORTS_PATH}/${s.slug}${s.slug === 'documents' ? '' : `?year=${year}`}`,
             description: s.description,
           }))}
+        />
+      </div>
+
+      {/* The national budget is still a bill: linked here, not counted with
+          the City's own reports. */}
+      <div className="max-w-[640px]">
+        <RelatedLinks
+          title="Related"
+          links={[
+            {
+              label: BUDGET_TITLE,
+              href: BUDGET_PATH,
+              note: '— projects naming the City in the proposed 2027 national budget (the NEP and the House bill). Not yet law.',
+            },
+          ]}
         />
       </div>
 

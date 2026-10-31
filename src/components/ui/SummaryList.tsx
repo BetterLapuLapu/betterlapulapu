@@ -1,10 +1,11 @@
 import type { ReactNode } from 'react';
 
-// Summary list: bold keys beside their values, one row per line.
+// Summary list: bold keys beside their values, one row per line. `label`
+// replaces the key's text when the key needs more than words (an icon).
 export default function SummaryList({
   rows,
 }: {
-  rows: { key: string; value: ReactNode }[];
+  rows: { key: string; label?: ReactNode; value: ReactNode }[];
 }) {
   return (
     <dl className="type-body mb-[20px] tablet:mb-[30px]">
@@ -14,7 +15,7 @@ export default function SummaryList({
           className="flex flex-col border-b border-rule py-2.5 tablet:flex-row tablet:gap-5"
         >
           <dt className="mb-[5px] font-bold tablet:mb-0 tablet:w-[30%] tablet:shrink-0">
-            {row.key}
+            {row.label ?? row.key}
           </dt>
           <dd className="min-w-0 tablet:flex-1">{row.value}</dd>
         </div>

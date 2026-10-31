@@ -105,18 +105,21 @@ function collectPages() {
     }
   }
 
-  // The reports dashboard's sections are listed in government.yaml
+  // Dashboards rendered by their own pages (Reports and Statistics, FY 2027
+  // Budget Projects) list their sections as subcategories in government.yaml
   const { categories = [] } = readYaml(
     path.join(rootDir, 'src/data/government.yaml')
   );
-  const reports = categories.find(c => c.slug === 'reports-and-statistics');
-  for (const sub of reports?.subcategories || []) {
-    pages.push({
-      path: `/government/reports-and-statistics/${sub.slug}`,
-      title: sub.name,
-      caption: reports.category,
-      description: reports.description,
-    });
+  for (const slug of ['reports-and-statistics', 'budget-projects']) {
+    const dashboard = categories.find(c => c.slug === slug);
+    for (const sub of dashboard?.subcategories || []) {
+      pages.push({
+        path: `/government/${slug}/${sub.slug}`,
+        title: sub.name,
+        caption: dashboard.category,
+        description: dashboard.description,
+      });
+    }
   }
 
   return pages;

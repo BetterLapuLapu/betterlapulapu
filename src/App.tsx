@@ -23,6 +23,21 @@ const reports = (
   </Suspense>
 );
 
+// FY 2027 budget projects, read live from the BetterGov.ph Budget API.
+const BudgetLayout = lazy(() =>
+  import('./components/budget/BudgetShell').then(m => ({
+    default: m.BudgetLayout,
+  }))
+);
+const BudgetProjects = lazy(() => import('./pages/budget/BudgetProjects'));
+const BudgetProject = lazy(() => import('./pages/budget/BudgetProject'));
+const BudgetAbout = lazy(() => import('./pages/budget/BudgetAbout'));
+const budget = (
+  <Suspense fallback={<div className="min-h-screen" />}>
+    <BudgetLayout />
+  </Suspense>
+);
+
 function App() {
   const { t } = useTranslation();
 
@@ -61,6 +76,14 @@ function App() {
                   path="/government/reports-and-statistics/:section"
                   element={reports}
                 />
+                <Route path="/government/budget-projects" element={budget}>
+                  <Route index element={<BudgetProjects />} />
+                  <Route
+                    path="projects/:dataset/:id"
+                    element={<BudgetProject />}
+                  />
+                  <Route path="about-the-data" element={<BudgetAbout />} />
+                </Route>
                 <Route path="/government/:category" element={<Government />} />
                 <Route path="/government" element={<Government />} />
                 <Route
