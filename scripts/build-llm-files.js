@@ -31,13 +31,28 @@ const { sections, missing } = collectContent();
 const baseUrl = siteUrl();
 const governmentName = env.VITE_GOVERNMENT_NAME || 'Local Government';
 
-/** Dashboard sections, listed as subcategories in src/data/government.yaml. */
-function governmentReportSections() {
+/**
+ * Government categories rendered by their own pages rather than markdown:
+ * Reports and Statistics (src/pages/reports) and FY 2027 Budget Projects
+ * (src/pages/budget). Their sub-pages are listed as subcategories in
+ * src/data/government.yaml.
+ */
+const DASHBOARD_CATEGORIES = ['reports-and-statistics', 'budget-projects'];
+
+/** Every dashboard route: each dashboard and its sub-pages. */
+function governmentDashboardRoutes() {
   const { categories = [] } = readYaml(
     path.join(rootDir, 'src', 'data', 'government.yaml')
   );
-  const category = categories.find(c => c.slug === 'reports-and-statistics');
-  return (category?.subcategories || []).map(sub => sub.slug);
+  return DASHBOARD_CATEGORIES.flatMap(slug => {
+    const category = categories.find(c => c.slug === slug);
+    if (!category) return [];
+    const base = `/government/${slug}`;
+    return [
+      base,
+      ...(category.subcategories || []).map(sub => `${base}/${sub.slug}`),
+    ];
+  });
 }
 
 function writePublic(file, content) {
@@ -230,11 +245,10 @@ function buildSitemap() {
       routes.push(category.url, ...category.pages.map(page => page.url));
     }
   }
-  // Reports and Statistics dashboard sections (src/pages/reports/Reports.tsx)
-  const reportSections = governmentReportSections();
-  routes.push(
-    ...reportSections.map(slug => `/government/reports-and-statistics/${slug}`)
-  );
+  // Dashboards and their sections (Reports and Statistics, Budget Projects)
+  for (const route of governmentDashboardRoutes()) {
+    if (!routes.includes(route)) routes.push(route);
+  }
 
   const urls = routes
     .map(

@@ -38,6 +38,14 @@ categories:
       - slug: 'documents'
         name: 'Gigikanan nga mga Dokumento'
 
+  - slug: 'budget-projects'
+    category: 'Mga Proyekto sa Budget sa FY 2027'
+    description: 'Ang matag proyekto sa gisugyot nga nasudnong budget sa FY 2027 nga naghisgot sa Lapu-Lapu City sa titulo, sa NEP ug sa House bill: kantidad, status ug ang panid sa gigikanan sa matag usa. Dili pa balaod.'
+    summary: 'Gisugyot nga mga proyekto sa nasudnong budget para sa Siyudad sa 2027.'
+    subcategories:
+      - slug: 'about-the-data'
+        name: 'Mahitungod sa Datos'
+
   - slug: 'transparency-documents'
     category: 'Mga Dokumento sa Transparency'
     description: 'Tan-awa ang mga Freedom of Information release ug mga dokumento sa transparency para sa pagkamay-tulubagon sa lokal nga gobyerno.'
