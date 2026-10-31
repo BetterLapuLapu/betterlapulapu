@@ -268,12 +268,17 @@ All contributors are recognized in our project documentation. Your contributions
 
 This project is licensed under the Creative Commons Zero (CC0) License - see the [LICENSE](LICENSE) file for details.
 
+**Exceptions:**
+
+- The FY 2027 budget projects code (`src/lib/budget/`, `src/components/budget/`, `src/pages/budget/`) is adapted from the BetterGov.ph [Transparency Portal](https://github.com/bettergovph/transparency-portal) and stays under its MIT License; keep the notice in [`src/lib/budget/LICENSE`](src/lib/budget/LICENSE) with it.
+- The budget data that section shows comes from the [BetterGov.ph Budget API](https://budget.bettergov.ph/docs) under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), which requires attribution; the pages credit it.
+
 **CC0 License Benefits:**
 
 - **Public Domain**: No restrictions on use, modification, or distribution
 - **Government Friendly**: Perfect for public sector projects
 - **Maximum Reusability**: Anyone can use, modify, and distribute freely
-- **No Attribution Required**: Though attribution is appreciated
+- **No Attribution Required**: Though attribution is appreciated (except for the MIT and CC BY 4.0 parts above)
 
 ## 🙏 Acknowledgments
 
