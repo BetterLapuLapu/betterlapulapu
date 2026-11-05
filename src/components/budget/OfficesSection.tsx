@@ -253,7 +253,7 @@ function Office({ view }: { view: OfficeView }) {
         )}
       </div>
 
-      <div className="mb-[30px] grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 tablet:mb-[40px]">
+      <div className="mb-[30px] grid grid-cols-1 gap-3 min-[360px]:grid-cols-2 sm:gap-4 lg:grid-cols-4 tablet:mb-[40px]">
         <Link
           to={filter()}
           className="link-plain row-span-3 grid grid-rows-subgrid gap-y-[5px] border-t-[5px] border-t-primary-600 bg-surface px-[15px] pt-2.5 pb-[15px] text-ink tablet:px-5 tablet:pb-5"
