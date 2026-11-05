@@ -1,4 +1,4 @@
-import { Download, Search } from 'lucide-react';
+import { ArrowDown, Download, Search } from 'lucide-react';
 import { useEffect, useMemo, type ReactNode } from 'react';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import SEO from '../../components/SEO';
@@ -197,6 +197,7 @@ function Projects({
       header: 'Project',
       value: p => p.title,
       className: 'min-w-[16rem]',
+      mobile: 'lead',
       render: p => (
         <span className="block space-y-1 text-left">
           <Link to={projectPath(p.dataset, p.id)} className="link font-bold">
@@ -213,6 +214,7 @@ function Projects({
     {
       key: 'status',
       header: 'Status',
+      mobile: 'lead',
       value: p => p.status_label,
       render: p => (
         <StatusChip
@@ -226,6 +228,7 @@ function Projects({
       key: 'nep',
       header: 'NEP',
       align: 'right',
+      mobile: 'stat',
       value: p => p.nep_php,
       render: p => php(p.nep_php),
     },
@@ -233,6 +236,7 @@ function Projects({
       key: 'house',
       header: 'House bill',
       align: 'right',
+      mobile: 'stat',
       value: p => p.house_php,
       render: p => <strong>{php(p.house_php)}</strong>,
     },
@@ -240,6 +244,7 @@ function Projects({
       key: 'change',
       header: 'Change',
       align: 'right',
+      mobile: 'stat',
       value: p => p.delta_php,
       render: p => (
         <span
@@ -255,14 +260,14 @@ function Projects({
   ];
 
   const selectClass =
-    'rounded-md border border-gray-300 bg-white py-1.5 pl-2 pr-8 text-sm';
+    'w-full rounded-md border border-gray-300 bg-white py-2 pr-6 pl-2 text-base sm:py-1.5 sm:pr-8 sm:text-sm';
   const select = (
     label: string,
     key: string,
     value: string,
     options: [string, string][]
   ) => (
-    <label className="text-sm">
+    <label className="min-w-[calc(50%-0.25rem)] flex-1 text-sm sm:min-w-0 sm:flex-none">
       <span className="sr-only">{label}</span>
       <select
         value={value}
@@ -284,7 +289,17 @@ function Projects({
       title={`${plural(summary.rows, 'project')} for ${config.shortName} in the 2027 national budget`}
       lede={<Lede summary={summary} />}
     >
-      <Stats summary={summary} programName={programName} />
+      <div>
+        {/* A plain anchor keeps any filters in the URL and works when tapped
+            again after scrolling back up. */}
+        <p className="type-body mb-[20px]">
+          <a href="#projects" className="link inline-flex items-center gap-1.5">
+            <ArrowDown className="h-4 w-4 shrink-0" aria-hidden />
+            Jump to the list of {plural(filtered.length, 'project')}
+          </a>
+        </p>
+        <Stats summary={summary} programName={programName} />
+      </div>
 
       <OfficesSection />
 
@@ -299,7 +314,7 @@ function Projects({
         <div
           role="group"
           aria-label="Show projects by status"
-          className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4"
+          className="grid grid-cols-1 gap-3 min-[360px]:grid-cols-2 sm:gap-4 lg:grid-cols-4"
         >
           {shownGroups.map(g => {
             const cell = summary.groups[g];
@@ -354,7 +369,11 @@ function Projects({
         )}
       </section>
 
-      <section id="projects" aria-labelledby="list-h" className="scroll-mt-28">
+      <section
+        id="projects"
+        aria-labelledby="list-h"
+        className="scroll-mt-5 lg:scroll-mt-28"
+      >
         <div className="flex flex-wrap items-baseline justify-between gap-x-5">
           <Heading level={2} size="l" id="list-h">
             {narrowed
@@ -402,7 +421,7 @@ function Projects({
           emptyMessage="No project matches. Try fewer words or clear the filters."
           toolbar={
             <>
-              <label className="relative min-w-0 flex-1 sm:max-w-xs">
+              <label className="relative min-w-full flex-1 sm:max-w-xs sm:min-w-64">
                 <span className="sr-only">Search projects</span>
                 <Search
                   className="pointer-events-none absolute top-1/2 left-2.5 h-4 w-4 -translate-y-1/2 text-gray-400"
@@ -413,7 +432,7 @@ function Projects({
                   value={q}
                   placeholder="Barangay, road, school…"
                   onChange={e => setParam('q', e.target.value)}
-                  className="w-full rounded-md border border-gray-300 py-1.5 pr-3 pl-8 text-sm focus:border-primary-500 focus:ring-1 focus:ring-primary-500 focus:outline-none"
+                  className="w-full rounded-md border border-gray-300 py-2 pr-3 pl-8 text-base focus:border-primary-500 focus:ring-1 focus:ring-primary-500 focus:outline-none sm:py-1.5 sm:text-sm"
                 />
               </label>
               {select('Program', 'program', program, [
@@ -521,7 +540,7 @@ function Stats({
     .map(([k, c]) => `${programName(k)} ${count(c.rows)}`)
     .join(' · ');
   return (
-    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+    <div className="grid grid-cols-1 gap-3 min-[360px]:grid-cols-2 sm:gap-4 lg:grid-cols-4">
       <StatCard
         label="Projects"
         value={count(summary.rows)}
