@@ -18,6 +18,7 @@
     "search:index": "node scripts/build-search-index.js",
     "llm:build": "node scripts/build-llm-files.js",
     "og:build": "node scripts/build-og.js",
+    "social": "node scripts/build-social.js",
     "i18n:check": "node scripts/check-locales.js",
     "fdp:build": "node scripts/fdp/build-fdp-data.js",
     "fdp:validate": "node scripts/fdp/validate.js"

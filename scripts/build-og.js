@@ -15,8 +15,6 @@
 
 import fs from 'fs';
 import path from 'path';
-import satori from 'satori';
-import { Resvg } from '@resvg/resvg-js';
 import {
   collectContent,
   env,
@@ -24,9 +22,17 @@ import {
   rootDir,
   siteUrl,
 } from './lib/content.js';
+import {
+  BLUE_GRADIENT,
+  SITE_NAME,
+  colors,
+  h,
+  logo as brandLogo,
+  renderPng,
+  sun as brandSun,
+} from './lib/brand.js';
 
 const distDir = path.join(rootDir, 'dist');
-const SITE_NAME = 'BetterLapuLapu';
 const WIDTH = 1200;
 const HEIGHT = 630;
 
@@ -128,40 +134,10 @@ function collectPages() {
 // ---------------------------------------------------------------------------
 // Share image
 
-const font = weight =>
-  fs.readFileSync(
-    path.join(
-      rootDir,
-      `node_modules/@fontsource/arimo/files/arimo-latin-${weight}-normal.woff`
-    )
-  );
-const fonts = [
-  { name: 'Arimo', data: font(400), weight: 400, style: 'normal' },
-  { name: 'Arimo', data: font(700), weight: 700, style: 'normal' },
-];
-
 // The white logo, rasterised once and embedded in every image
-const logo = `data:image/png;base64,${new Resvg(
-  fs.readFileSync(path.join(rootDir, 'public/logo-white.svg'), 'utf8'),
-  { fitTo: { mode: 'height', value: 160 }, font: { loadSystemFonts: false } }
-)
-  .render()
-  .asPng()
-  .toString('base64')}`;
-
+const logo = brandLogo('white', 160);
 // The sun from the flag, drawn faintly behind the title
-const sun = (() => {
-  const rays = Array.from({ length: 8 }, (_, i) => {
-    const a = (i * Math.PI) / 4;
-    const point = (r, da) =>
-      `${(300 + r * Math.cos(a + da)).toFixed(1)},${(300 + r * Math.sin(a + da)).toFixed(1)}`;
-    return `<polygon points="${point(300, 0)} ${point(130, 0.2)} ${point(130, -0.2)}"/>`;
-  }).join('');
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" fill="#ffffff">${rays}<circle cx="300" cy="300" r="115"/></svg>`;
-  return `data:image/svg+xml;base64,${Buffer.from(svg).toString('base64')}`;
-})();
-
-const h = (type, style, children) => ({ type, props: { style, children } });
+const sun = brandSun();
 
 // The image shows the title without the "— Lapu-Lapu City" most pages
 // carry; the logo already says where it's from.
@@ -176,7 +152,7 @@ function titleSize(title) {
 
 async function renderImage(page) {
   const title = imageTitle(page.title);
-  const svg = await satori(
+  return renderPng(
     h(
       'div',
       {
@@ -187,8 +163,8 @@ async function renderImage(page) {
         flexDirection: 'column',
         justifyContent: 'space-between',
         padding: '64px 72px',
-        backgroundImage: 'linear-gradient(135deg, #0052bc 0%, #003d8d 100%)',
-        color: '#ffffff',
+        backgroundImage: BLUE_GRADIENT,
+        color: colors.white,
         fontFamily: 'Arimo',
         position: 'relative',
       },
@@ -216,7 +192,7 @@ async function renderImage(page) {
         ]),
         h('div', { display: 'flex', flexDirection: 'column', gap: 16 }, [
           page.caption
-            ? h('div', { fontSize: 30, color: '#cce0fb' }, page.caption)
+            ? h('div', { fontSize: 30, color: colors.primary100 }, page.caption)
             : null,
           h(
             'div',
@@ -233,21 +209,19 @@ async function renderImage(page) {
           h('div', {
             width: 96,
             height: 8,
-            backgroundColor: '#f2c91d',
+            backgroundColor: colors.sun,
           }),
-          h('div', { fontSize: 26, color: '#e6f0fd' }, new URL(baseUrl).host),
+          h(
+            'div',
+            { fontSize: 26, color: colors.primary50 },
+            new URL(baseUrl).host
+          ),
         ]),
       ]
     ),
-    { width: WIDTH, height: HEIGHT, fonts }
+    WIDTH,
+    HEIGHT
   );
-  // Satori draws text as paths, so resvg needs no fonts of its own
-  return new Resvg(svg, {
-    fitTo: { mode: 'width', value: WIDTH },
-    font: { loadSystemFonts: false },
-  })
-    .render()
-    .asPng();
 }
 
 // ---------------------------------------------------------------------------
